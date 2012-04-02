@@ -1,0 +1,861 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.barchart.base</groupId>
+	<artifactId>barchart-archon</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<url>http://www.barchart.com/</url>
+	<name>${project.artifactId}</name>
+	<description>${project.artifactId}</description>
+	<inceptionYear>2012</inceptionYear>
+
+	<organization>
+		<name>Barchart, Inc.</name>
+		<url>http://www.barchart.com/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The BSD License</name>
+			<url>http://www.opensource.org/licenses/bsd-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+
+		<developer>
+			<id>barchart</id>
+			<name>Barchart, Inc</name>
+			<email>http://www.barchart.com/</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+
+	</developers>
+
+	<mailingLists>
+		<mailingList>
+			<name>barchart</name>
+			<post>tag : barchart</post>
+			<subscribe>http://stackoverflow.com/users/login</subscribe>
+			<archive>http://stackoverflow.com/tags/barachart</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<url>https://github.com/barchart/barchart-archon</url>
+		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
+	</scm>
+
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- barchart required version -->
+		<barchartJavaVersion>1.6</barchartJavaVersion>
+		<barchartScalaVersion>2.9.1</barchartScalaVersion>
+		<barchartMavenVersion>3.0.4</barchartMavenVersion>
+
+		<!-- barchart private repository -->
+		<amazonActiveRepo>activate-via-profile</amazonActiveRepo>
+		<amazonReleaseRepo>maven.aws.barchart.com</amazonReleaseRepo>
+		<amazonStagingRepo>maven.aws-dev.barchart.com</amazonStagingRepo>
+
+		<!-- barchart public repository -->
+		<sonatypeReleaseURL>https://oss.sonatype.org/content/repositories/releases</sonatypeReleaseURL>
+		<sonatypeStagingURL>https://oss.sonatype.org/service/local/staging/deploy/maven2/</sonatypeStagingURL>
+		<sonatypeSnapshotsURL>https://oss.sonatype.org/content/repositories/snapshots</sonatypeSnapshotsURL>
+
+		<releaseArguments>--define resume=false</releaseArguments>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- MAIN -->
+
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${barchartScalaVersion}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>4.3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>4.2.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.6.4</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.0.1</version>
+			</dependency>
+
+			<!-- TEST -->
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>6.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>3.1</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<extensions>
+
+			<!-- enable amazon bucket transport -->
+			<extension>
+				<groupId>org.kuali.maven.wagons</groupId>
+				<artifactId>maven-s3-wagon</artifactId>
+				<version>1.1.10</version>
+			</extension>
+
+		</extensions>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>com.mycila.maven-license-plugin</groupId>
+					<artifactId>maven-license-plugin</artifactId>
+					<version>1.10.b1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>1.0-beta-3</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>2.1.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-patch-plugin</artifactId>
+					<version>1.1.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.6</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>${barchartJavaVersion}</source>
+						<target>${barchartJavaVersion}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+
+				<!-- keep in sync with <reporting> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.8.1</version>
+					<configuration>
+						<quiet>true</quiet>
+						<show>protected</show>
+						<linksource>true</linksource>
+						<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></windowtitle>
+						<doctitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></doctitle>
+						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></header>
+						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></footer>
+						<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<configuration>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>groovy-maven-plugin</artifactId>
+					<version>1.4</version>
+				</plugin>
+
+				<!-- support both junit and testng -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit4</artifactId>
+							<version>2.12</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-testng</artifactId>
+							<version>2.12</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.3.7</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.scala-tools</groupId>
+					<artifactId>maven-scala-plugin</artifactId>
+					<version>2.15.2</version>
+					<configuration>
+						<scalaVersion>${barchartScalaVersion}</scalaVersion>
+						<sendJavaToScalac>false</sendJavaToScalac>
+						<checkMultipleScalaVersions>false</checkMultipleScalaVersions>
+						<jvmArgs>
+							<jvmArg>-Xms64m</jvmArg>
+							<jvmArg>-Xmx1024m</jvmArg>
+						</jvmArgs>
+					</configuration>
+					<executions>
+						<!-- compile java first, scala second -->
+						<execution>
+							<goals>
+								<goal>add-source</goal>
+								<goal>compile</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-enforcer-plugin</artifactId>
+										<versionRange>[0,)</versionRange>
+										<goals>
+											<goal>enforce</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>groovy-maven-plugin</artifactId>
+										<versionRange>[0,)</versionRange>
+										<goals>
+											<goal>execute</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.0.1</version>
+					<executions>
+						<execution>
+							<id>enforce-maven</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<version>${barchartMavenVersion}</version>
+										<message><![CDATA[you must have mavenVersion >= ${barchartMavenVersion}]]></message>
+									</requireMavenVersion>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.2.1</version>
+					<configuration>
+						<!-- invocataion: release:prepare -->
+						<preparationGoals>validate clean verify</preparationGoals>
+						<!-- invocataion: release:perform -->
+						<goals>validate deploy</goals>
+						<!-- nested invocation arguments for both release:prepare and release:perform -->
+						<arguments>${releaseArguments}</arguments>
+					</configuration>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+
+		<!-- build plugins active by default -->
+		<plugins>
+
+			<!-- enforce maven version -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+			</plugin>
+
+			<!-- enforce java version -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<!-- ebable osgi bundle packaging -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- provide custom properties -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>groovy-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>provide-custom-properties</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<source>
+		<![CDATA[
+		//
+		import java.text.MessageFormat;
+		//
+		barchartTimeLong = System.currentTimeMillis();
+		project.properties["barchartTimeLong"] = barchartTimeLong;
+		println("### barchartTimeLong=" + barchartTimeLong);
+		//
+		barchartTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}",barchartTimeLong);
+		project.properties["barchartTimeFile"] = barchartTimeFile;
+		println("### barchartTimeFile=" + barchartTimeFile);
+		//
+		barchartTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}",barchartTimeLong);
+		project.properties["barchartTimeISO"] = barchartTimeISO;
+		println("### barchartTimeISO=" + barchartTimeISO);
+		//
+		barchartTimeYear=MessageFormat.format("{0,date,yyyy}",barchartTimeLong);
+		project.properties["barchartTimeYear"] = barchartTimeYear;
+		println("### barchartTimeYear=" + barchartTimeYear);
+		//
+		]]>
+							</source>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<profiles>
+
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- private barchart buckets -->
+		<profile>
+			<id>amazon-release</id>
+			<properties>
+				<amazonActiveRepo>${amazonReleaseRepo}</amazonActiveRepo>
+			</properties>
+		</profile>
+		<profile>
+			<id>amazon-staging</id>
+			<properties>
+				<amazonActiveRepo>${amazonStagingRepo}</amazonActiveRepo>
+			</properties>
+		</profile>
+
+		<!-- private barchart distribution -->
+		<profile>
+			<id>amazon-distribution</id>
+			<activation>
+				<file>
+					<exists>.amazon</exists>
+				</file>
+			</activation>
+			<distributionManagement>
+				<repository>
+					<id>com.barchart.maven.s3.release</id>
+					<url>s3://${amazonReleaseRepo}/maven</url>
+				</repository>
+				<snapshotRepository>
+					<id>com.barchart.maven.s3.staging</id>
+					<url>s3://${amazonStagingRepo}/maven</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+
+		<!-- private barchart repository -->
+		<profile>
+			<id>amazon-repository</id>
+			<activation>
+				<file>
+					<exists>.amazon</exists>
+				</file>
+			</activation>
+			<properties>
+				<amazonBucketHost>s3.amazonaws.com</amazonBucketHost>
+			</properties>
+			<repositories>
+				<repository>
+					<id>com.barchart.maven.http.release</id>
+					<url>https://${amazonBucketHost}/${amazonReleaseRepo}/maven</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>com.barchart.maven.http.staging</id>
+					<url>https://${amazonBucketHost}/${amazonStagingRepo}/maven</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+
+		<!-- public barchart distribution -->
+		<profile>
+			<id>sonatype-nexus-staging</id>
+			<activation>
+				<file>
+					<missing>.amazon</missing>
+				</file>
+			</activation>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>sonatype-nexus-snapshots</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>${sonatypeSnapshotsURL}</url>
+				</snapshotRepository>
+				<repository>
+					<id>sonatype-nexus-staging</id>
+					<name>Sonatype Nexus Staging</name>
+					<url>${sonatypeStagingURL}</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+
+		<!-- public barchart snapshots -->
+		<profile>
+			<id>sonatype-nexus-snapshots</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<id>sonatype-nexus-snapshots</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>${sonatypeSnapshotsURL}</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>sonatype-nexus-snapshots</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>${sonatypeSnapshotsURL}</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+		<!-- public barchart releases (before promotion to central) -->
+		<profile>
+			<id>sonatype-nexus-releases</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<id>sonatype-nexus-releases</id>
+					<name>Sonatype Nexus Releases</name>
+					<url>${sonatypeReleaseURL}</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>sonatype-nexus-releases</id>
+					<name>Sonatype Nexus Releases</name>
+					<url>${sonatypeReleaseURL}</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+		<!-- license editor -->
+		<profile>
+			<id>license</id>
+			<properties>
+
+				<licenseSource>src/license</licenseSource>
+				<licenseTarget>target/license</licenseTarget>
+				<licenseFile>license-osi-bsd.txt</licenseFile>
+
+				<licenseYear>${project.inceptionYear}-${barchartTimeYear}</licenseYear>
+				<licenseName>${project.organization.name}</licenseName>
+				<licenseMail>${project.organization.url}</licenseMail>
+
+				<licenseGroupId>com.barchart.base</licenseGroupId>
+				<licenseArtifactId>barchart-archon-license</licenseArtifactId>
+				<licenseVersion>RELEASE</licenseVersion>
+
+			</properties>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>license-unpack</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${licenseGroupId}</groupId>
+											<artifactId>${licenseArtifactId}</artifactId>
+											<version>${licenseVersion}</version>
+											<type>jar</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${licenseTarget}</outputDirectory>
+									<overWriteIfNewer>true</overWriteIfNewer>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>com.mycila.maven-license-plugin</groupId>
+						<artifactId>maven-license-plugin</artifactId>
+						<configuration>
+							<header>${licenseTarget}/${licenseFile}</header>
+							<strictCheck>true</strictCheck>
+							<properties>
+								<year>${licenseYear}</year>
+								<name>${licenseName}</name>
+								<mail>${licenseMail}</mail>
+							</properties>
+							<mapping>
+								<md>XML_STYLE</md>
+								<ant>XML_STYLE</ant>
+								<scala>JAVADOC_STYLE</scala>
+								<gitignore>SCRIPT_STYLE</gitignore>
+							</mapping>
+							<excludes>
+								<entry>**/${licenseSource}/**</entry>
+								<entry>**/*.template</entry>
+								<entry>**/*.json</entry>
+							</excludes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>license-format</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>format</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<reporting>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+
+			<!-- keep in sync with <build> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<quiet>true</quiet>
+					<show>protected</show>
+					<linksource>true</linksource>
+					<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></windowtitle>
+					<doctitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></doctitle>
+					<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></header>
+					<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></footer>
+					<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</reporting>
+
+</project>

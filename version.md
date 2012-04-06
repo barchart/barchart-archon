@@ -9,3 +9,6 @@
 -->
 ### 2.0.0
 original release
+
+### 2.0.1
+added support for https://nexus.barchart.com/  

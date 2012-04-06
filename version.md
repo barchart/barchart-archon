@@ -12,3 +12,7 @@ original release
 
 ### 2.1.0
 added support for https://nexus.barchart.com/  
+
+### 2.1.1
+made profile sonatype-nexus-repository always active
+  

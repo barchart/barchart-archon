@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -69,9 +70,15 @@
 		<amazonStagingRepo>maven.aws-dev.barchart.com</amazonStagingRepo>
 
 		<!-- barchart public repository -->
+		<sonatypeArchonURL>https://oss.sonatype.org/content/groups/public</sonatypeArchonURL>
 		<sonatypeReleaseURL>https://oss.sonatype.org/content/repositories/releases</sonatypeReleaseURL>
-		<sonatypeStagingURL>https://oss.sonatype.org/service/local/staging/deploy/maven2/</sonatypeStagingURL>
 		<sonatypeSnapshotsURL>https://oss.sonatype.org/content/repositories/snapshots</sonatypeSnapshotsURL>
+		<sonatypeStagingURL>https://oss.sonatype.org/service/local/staging/deploy/maven2/</sonatypeStagingURL>
+
+		<!-- barchart private repository -->
+		<barchartArchonURL>https://nexus.barchart.com/content/groups/archon</barchartArchonURL>
+		<barchartReleaseURL>https://nexus.barchart.com/content/repositories/releases</barchartReleaseURL>
+		<barchartSnapshotsURL>https://nexus.barchart.com/content/repositories/snapshots</barchartSnapshotsURL>
 
 		<releaseArguments>--define resume=false</releaseArguments>
 
@@ -522,6 +529,9 @@
 
 	<profiles>
 
+		<!-- ================================ -->
+
+		<!-- see maven-release-plugin -->
 		<profile>
 			<id>release</id>
 			<activation>
@@ -572,6 +582,8 @@
 			</build>
 		</profile>
 
+		<!-- ================================ -->
+
 		<!-- private barchart buckets -->
 		<profile>
 			<id>amazon-release</id>
@@ -586,12 +598,12 @@
 			</properties>
 		</profile>
 
-		<!-- private barchart distribution -->
+		<!-- private barchart amazon distribution -->
 		<profile>
-			<id>amazon-distribution</id>
+			<id>barchart-amazon-distribution</id>
 			<activation>
 				<file>
-					<exists>.amazon</exists>
+					<exists>maven-amazon.md</exists>
 				</file>
 			</activation>
 			<distributionManagement>
@@ -606,12 +618,12 @@
 			</distributionManagement>
 		</profile>
 
-		<!-- private barchart repository -->
+		<!-- private barchart amazon repository -->
 		<profile>
-			<id>amazon-repository</id>
+			<id>barchart-amazon-repository</id>
 			<activation>
 				<file>
-					<exists>.amazon</exists>
+					<exists>maven-amazon.md</exists>
 				</file>
 			</activation>
 			<properties>
@@ -620,6 +632,7 @@
 			<repositories>
 				<repository>
 					<id>com.barchart.maven.http.release</id>
+					<name>Barchart Amazon Releases</name>
 					<url>https://${amazonBucketHost}/${amazonReleaseRepo}</url>
 					<releases>
 						<enabled>true</enabled>
@@ -630,6 +643,7 @@
 				</repository>
 				<repository>
 					<id>com.barchart.maven.http.staging</id>
+					<name>Barchart Amazon Snapshots</name>
 					<url>https://${amazonBucketHost}/${amazonStagingRepo}</url>
 					<releases>
 						<enabled>false</enabled>
@@ -641,12 +655,75 @@
 			</repositories>
 		</profile>
 
-		<!-- public barchart distribution -->
+		<!-- ================================ -->
+
+		<!-- private barchart nexus distribution; must activate -->
 		<profile>
-			<id>sonatype-nexus-staging</id>
+			<id>barchart-nexus-distribution</id>
 			<activation>
 				<file>
-					<missing>.amazon</missing>
+					<exists>maven-barchart.md</exists>
+				</file>
+			</activation>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>barchart-nexus-snapshots</id>
+					<name>Barchart Nexus Snapshots</name>
+					<url>${barchartSnapshotsURL}</url>
+				</snapshotRepository>
+				<repository>
+					<id>barchart-nexus-releases</id>
+					<name>Barchart Nexus Releases</name>
+					<url>${barchartReleaseURL}</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+
+		<!-- private barchart nexus repository; must activate -->
+		<profile>
+			<id>barchart-nexus-repository</id>
+			<activation>
+				<file>
+					<exists>maven-barchart.md</exists>
+				</file>
+			</activation>
+			<repositories>
+				<repository>
+					<id>barchart-nexus-archon</id>
+					<name>Barchart Nexus Archon / Regular</name>
+					<url>${barchartArchonURL}</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>barchart-nexus-archon</id>
+					<name>Barchart Nexus Archon / Plugins</name>
+					<url>${barchartArchonURL}</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+			
+		</profile>
+
+		<!-- ================================ -->
+
+		<!-- public barchart nexus distribution; must activate -->
+		<profile>
+			<id>sonatype-nexus-distribution</id>
+			<activation>
+				<file>
+					<exists>maven-central.md</exists>
 				</file>
 			</activation>
 			<distributionManagement>
@@ -663,19 +740,19 @@
 			</distributionManagement>
 		</profile>
 
-		<!-- public barchart snapshots -->
+		<!-- public barchart nexus repository; always active -->
 		<profile>
-			<id>sonatype-nexus-snapshots</id>
+			<id>sonatype-nexus-repository</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<repositories>
 				<repository>
-					<id>sonatype-nexus-snapshots</id>
-					<name>Sonatype Nexus Snapshots</name>
-					<url>${sonatypeSnapshotsURL}</url>
+					<id>sonatype-nexus-archon</id>
+					<name>Sonatype Nexus Archon / Regular</name>
+					<url>${sonatypeArchonURL}</url>
 					<releases>
-						<enabled>false</enabled>
+						<enabled>true</enabled>
 					</releases>
 					<snapshots>
 						<enabled>true</enabled>
@@ -684,11 +761,11 @@
 			</repositories>
 			<pluginRepositories>
 				<pluginRepository>
-					<id>sonatype-nexus-snapshots</id>
-					<name>Sonatype Nexus Snapshots</name>
-					<url>${sonatypeSnapshotsURL}</url>
+					<id>sonatype-nexus-archon</id>
+					<name>Sonatype Nexus Archon / Plugins</name>
+					<url>${sonatypeArchonURL}</url>
 					<releases>
-						<enabled>false</enabled>
+						<enabled>true</enabled>
 					</releases>
 					<snapshots>
 						<enabled>true</enabled>
@@ -697,39 +774,7 @@
 			</pluginRepositories>
 		</profile>
 
-		<!-- public barchart releases (before promotion to central) -->
-		<profile>
-			<id>sonatype-nexus-releases</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<repositories>
-				<repository>
-					<id>sonatype-nexus-releases</id>
-					<name>Sonatype Nexus Releases</name>
-					<url>${sonatypeReleaseURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>sonatype-nexus-releases</id>
-					<name>Sonatype Nexus Releases</name>
-					<url>${sonatypeReleaseURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
+		<!-- ================================ -->
 
 		<!-- license editor -->
 		<profile>
@@ -817,6 +862,8 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<!-- ================================ -->
 
 	</profiles>
 

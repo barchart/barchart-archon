@@ -7,5 +7,6 @@
     http://www.opensource.org/licenses/bsd-license.php
 
 -->
-### 2.0.0
-original release
+### maven build marker
+when this file is present in project root folder, 
+project artifacts will be published to the maven central

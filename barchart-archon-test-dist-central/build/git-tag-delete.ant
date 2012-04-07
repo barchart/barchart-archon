@@ -11,7 +11,7 @@
 
 	<echo message="basedir : ${basedir}" />
 
-	<property name="tag" value="barchart-archon-license-2.0.0" />
+	<property name="tag" value="barchart-archon-test-dist-central-2.1.1" />
 
 	<target name="git">
 		<exec executable="git">

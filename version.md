@@ -16,6 +16,9 @@ added support for https://nexus.barchart.com/
 ### 2.1.1
 made profile sonatype-nexus-repository always active
   
-### 2.1.1
+### 2.1.2
 * new property: barchartBuildUser
 * new plugin: maven-deploy-plugin
+
+### 2.1.3
+* new plugin: maven-jarsigner-plugin

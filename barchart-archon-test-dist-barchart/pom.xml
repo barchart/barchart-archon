@@ -8,7 +8,7 @@
 		<version>2.1.1</version>
 	</parent>
 
-	<version>2.1.2-SNAPSHOT</version>
+	<version>2.1.2</version>
 	<artifactId>barchart-archon-test-dist-barchart</artifactId>
 	<packaging>jar</packaging>
 

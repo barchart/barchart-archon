@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.1.3-SNAPSHOT</version>
+	<version>2.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -53,6 +54,10 @@
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
 	</scm>
 
+	<prerequisites>
+		<maven>3.0.4</maven>
+	</prerequisites>
+
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +65,7 @@
 
 		<!-- barchart required version -->
 		<barchartJavaVersion>1.6</barchartJavaVersion>
-		<barchartScalaVersion>2.9.1</barchartScalaVersion>
+		<barchartScalaVersion>2.9.2</barchartScalaVersion>
 		<barchartMavenVersion>3.0.4</barchartMavenVersion>
 
 		<!-- barchart private repository -->
@@ -79,9 +84,14 @@
 		<barchartReleaseURL>https://nexus.barchart.com/content/repositories/releases</barchartReleaseURL>
 		<barchartSnapshotsURL>https://nexus.barchart.com/content/repositories/snapshots</barchartSnapshotsURL>
 
-		<releaseArguments>--define resume=false</releaseArguments>
-		
+		<!-- to include in jar manifest -->
 		<barchartBuildUser>${user.name}</barchartBuildUser>
+
+		<!-- see maven-release-plugin -->
+		<releaseProfiles></releaseProfiles>
+		<releaseNestedArguments>-Dresume=false</releaseNestedArguments>
+		<releasePrepareGoals>clean verify</releasePrepareGoals>
+		<releasePerformGoals>deploy</releasePerformGoals>
 
 	</properties>
 
@@ -104,7 +114,7 @@
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.compendium</artifactId>
-				<version>4.2.0</version>
+				<version>4.3.0</version>
 			</dependency>
 
 			<dependency>
@@ -116,17 +126,17 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.6.4</version>
+				<version>1.6.6</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.7</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.7</version>
 			</dependency>
 
 			<!-- TEST -->
@@ -140,13 +150,19 @@
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
-				<version>6.4</version>
+				<version>6.7</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>3.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>1.9.5-rc1</version>
 			</dependency>
 
 		</dependencies>
@@ -176,7 +192,7 @@
 			<extension>
 				<groupId>org.kuali.maven.wagons</groupId>
 				<artifactId>maven-s3-wagon</artifactId>
-				<version>1.1.10</version>
+				<version>1.1.14</version>
 			</extension>
 
 		</extensions>
@@ -187,14 +203,14 @@
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jarsigner-plugin</artifactId>
-					<version>1.2</version>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.5</version>
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.7</version>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.2.1</version>
 				</plugin>
 
 				<plugin>
@@ -212,19 +228,31 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-plugin-plugin</artifactId>
-					<version>2.9</version>
+					<version>3.1</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.5</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0-beta-3</version>
+					<version>1.0-beta-4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.kuali.maven.plugins</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>1.0.3</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.kuali.maven.plugins</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>1.3.2</version>
 				</plugin>
 
 				<plugin>
@@ -254,7 +282,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-scm-plugin</artifactId>
-					<version>1.6</version>
+					<version>1.7</version>
 				</plugin>
 
 				<plugin>
@@ -266,7 +294,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.0</version>
+					<version>3.1</version>
 				</plugin>
 
 				<plugin>
@@ -278,7 +306,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.5</version>
+					<version>2.6</version>
 				</plugin>
 
 				<plugin>
@@ -290,7 +318,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.4.1</version>
+					<version>2.5</version>
 				</plugin>
 
 				<plugin>
@@ -300,12 +328,18 @@
 				</plugin>
 
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>1.3.1</version>
+				</plugin>
+
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
+					<version>2.5.1</version>
 					<configuration>
-						<source>${barchartJavaVersion}</source>
-						<target>${barchartJavaVersion}</target>
+						<source>${carrotJavaVersion}</source>
+						<target>${carrotJavaVersion}</target>
 					</configuration>
 				</plugin>
 
@@ -324,10 +358,10 @@
 						<quiet>true</quiet>
 						<show>protected</show>
 						<linksource>true</linksource>
-						<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></windowtitle>
-						<doctitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></doctitle>
-						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></header>
-						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></footer>
+						<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${carrotTimeISO}]]></windowtitle>
+						<doctitle><![CDATA[${project.artifactId}-${project.version} / ${carrotTimeISO}]]></doctitle>
+						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${carrotTimeISO}]]></header>
+						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${carrotTimeISO}]]></footer>
 						<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
 					</configuration>
 				</plugin>
@@ -335,9 +369,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.1.2</version>
-					<configuration>
-					</configuration>
+					<version>2.2</version>
 				</plugin>
 
 				<plugin>
@@ -350,32 +382,31 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.12</version>
+					<version>2.12.2</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.surefire</groupId>
 							<artifactId>surefire-junit4</artifactId>
-							<version>2.12</version>
+							<version>2.12.2</version>
 						</dependency>
 						<dependency>
 							<groupId>org.apache.maven.surefire</groupId>
 							<artifactId>surefire-testng</artifactId>
-							<version>2.12</version>
+							<version>2.12.2</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>maven-bundle-plugin</artifactId>
 					<version>2.3.7</version>
-					<configuration>
-						<archive>
-							<manifestEntries>
-								<Built-By>${barchartBuildUser}</Built-By>
-							</manifestEntries>
-						</archive>
-					</configuration>
 				</plugin>
 
 				<plugin>
@@ -383,9 +414,32 @@
 					<artifactId>maven-scala-plugin</artifactId>
 					<version>2.15.2</version>
 					<configuration>
-						<scalaVersion>${barchartScalaVersion}</scalaVersion>
+						<scalaVersion>${carrotScalaVersion}</scalaVersion>
 						<sendJavaToScalac>false</sendJavaToScalac>
 						<checkMultipleScalaVersions>false</checkMultipleScalaVersions>
+						<jvmArgs>
+							<jvmArg>-Xms64m</jvmArg>
+							<jvmArg>-Xmx1024m</jvmArg>
+						</jvmArgs>
+					</configuration>
+					<executions>
+						<!-- compile java first, scala second -->
+						<execution>
+							<goals>
+								<goal>add-source</goal>
+								<goal>compile</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>scala-maven-plugin</artifactId>
+					<version>3.1.0</version>
+					<configuration>
+						<scalaVersion>${carrotScalaVersion}</scalaVersion>
 						<jvmArgs>
 							<jvmArg>-Xms64m</jvmArg>
 							<jvmArg>-Xmx1024m</jvmArg>
@@ -444,7 +498,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.0.1</version>
+					<version>1.1.1</version>
 					<executions>
 						<execution>
 							<id>enforce-maven</id>
@@ -454,8 +508,8 @@
 							<configuration>
 								<rules>
 									<requireMavenVersion>
-										<version>${barchartMavenVersion}</version>
-										<message><![CDATA[you must have mavenVersion >= ${barchartMavenVersion}]]></message>
+										<version>${carrotMavenVersion}</version>
+										<message><![CDATA[you must have mavenVersion >= ${carrotMavenVersion}]]></message>
 									</requireMavenVersion>
 								</rules>
 							</configuration>
@@ -466,15 +520,57 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.2.1</version>
+					<version>2.3.2</version>
 					<configuration>
+
 						<!-- invocataion: release:prepare -->
-						<preparationGoals>validate clean verify</preparationGoals>
+						<preparationGoals>${releasePrepareGoals}</preparationGoals>
+
 						<!-- invocataion: release:perform -->
-						<goals>validate deploy</goals>
+						<useReleaseProfile>true</useReleaseProfile>
+						<goals>${releasePerformGoals}</goals>
+						<releaseProfiles>${releaseProfiles}</releaseProfiles>
+
 						<!-- nested invocation arguments for both release:prepare and release:perform -->
-						<arguments>${releaseArguments}</arguments>
+						<arguments>${releaseNestedArguments}</arguments>
+
 					</configuration>
+				</plugin>
+
+				<!-- generate component descriptors -->
+				<plugin>
+					<groupId>com.carrotgarden.maven</groupId>
+					<artifactId>carrot-maven-scr-plugin</artifactId>
+					<version>1.1.4</version>
+					<configuration>
+						<excludedServices>
+							<service>java.lang.Runnable</service>
+						</excludedServices>
+						<eclipseSettings>
+							<!-- eclipse maven console settings -->
+							<logBuildTimes>true</logBuildTimes>
+							<logExcludedServices>true</logExcludedServices>
+							<logInvocationDetails>true</logInvocationDetails>
+							<logErrorTraces>true</logErrorTraces>
+							<logComponentDescriptors>true</logComponentDescriptors>
+						</eclipseSettings>
+					</configuration>
+					<executions>
+						<execution>
+							<id>clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>generate</id>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 			</plugins>

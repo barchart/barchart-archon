@@ -29,6 +29,7 @@
 			<arg value="license" />
 			
 		</exec>
+		
 	</target>
 
 </project>

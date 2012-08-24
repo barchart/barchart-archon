@@ -26,6 +26,7 @@
 			<arg value="deploy" />
 
 		</exec>
+		
 	</target>
 
 </project>

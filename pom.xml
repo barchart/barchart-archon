@@ -338,8 +338,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.5.1</version>
 					<configuration>
-						<source>${carrotJavaVersion}</source>
-						<target>${carrotJavaVersion}</target>
+						<source>${barchartJavaVersion}</source>
+						<target>${barchartJavaVersion}</target>
 					</configuration>
 				</plugin>
 
@@ -358,10 +358,10 @@
 						<quiet>true</quiet>
 						<show>protected</show>
 						<linksource>true</linksource>
-						<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${carrotTimeISO}]]></windowtitle>
-						<doctitle><![CDATA[${project.artifactId}-${project.version} / ${carrotTimeISO}]]></doctitle>
-						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${carrotTimeISO}]]></header>
-						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${carrotTimeISO}]]></footer>
+						<windowtitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></windowtitle>
+						<doctitle><![CDATA[${project.artifactId}-${project.version} / ${barchartTimeISO}]]></doctitle>
+						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></header>
+						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version} / ${barchartTimeISO}]]></footer>
 						<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
 					</configuration>
 				</plugin>
@@ -408,7 +408,7 @@
 					<artifactId>maven-scala-plugin</artifactId>
 					<version>2.15.2</version>
 					<configuration>
-						<scalaVersion>${carrotScalaVersion}</scalaVersion>
+						<scalaVersion>${barchartScalaVersion}</scalaVersion>
 						<sendJavaToScalac>false</sendJavaToScalac>
 						<checkMultipleScalaVersions>false</checkMultipleScalaVersions>
 						<jvmArgs>
@@ -433,7 +433,7 @@
 					<artifactId>scala-maven-plugin</artifactId>
 					<version>3.1.0</version>
 					<configuration>
-						<scalaVersion>${carrotScalaVersion}</scalaVersion>
+						<scalaVersion>${barchartScalaVersion}</scalaVersion>
 						<jvmArgs>
 							<jvmArg>-Xms64m</jvmArg>
 							<jvmArg>-Xmx1024m</jvmArg>
@@ -502,8 +502,8 @@
 							<configuration>
 								<rules>
 									<requireMavenVersion>
-										<version>${carrotMavenVersion}</version>
-										<message><![CDATA[you must have mavenVersion >= ${carrotMavenVersion}]]></message>
+										<version>${barchartMavenVersion}</version>
+										<message><![CDATA[you must have mavenVersion >= ${barchartMavenVersion}]]></message>
 									</requireMavenVersion>
 								</rules>
 							</configuration>

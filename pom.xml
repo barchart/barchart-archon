@@ -1171,6 +1171,19 @@
 
 		<!-- ================================ -->
 
+		<!-- jenkins build profile -->
+		<profile>
+			<id>build-jenkins</id>
+			<activation>
+				<property>
+					<name>env.JENKINS_HOME</name>
+				</property>
+			</activation>
+			<properties>
+				<jenkins.manifest.testing.phase>process-classes</jenkins.manifest.testing.phase>
+			</properties>
+		</profile>
+
 		<!-- pax exam v 2.x testing profile -->
 		<profile>
 			<id>pax-exam-2</id>
@@ -1280,7 +1293,7 @@
 			<build>
 				<plugins>
 
-					<!-- generate dependencies versions -->
+					<!-- generate dependencies versions for pax exam -->
 					<plugin>
 						<groupId>org.apache.servicemix.tooling</groupId>
 						<artifactId>depends-maven-plugin</artifactId>
@@ -1289,6 +1302,21 @@
 								<id>generate-depends-file</id>
 								<goals>
 									<goal>generate-depends-file</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- generate manifest to test inside pax exam -->
+					<plugin>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>maven-bundle-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>manifest-testing</id>
+								<phase>${jenkins.manifest.testing.phase}</phase>
+								<goals>
+									<goal>manifest</goal>
 								</goals>
 							</execution>
 						</executions>

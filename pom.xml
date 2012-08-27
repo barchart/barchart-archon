@@ -1189,7 +1189,7 @@
 			<id>pax-exam-2</id>
 			<activation>
 				<file>
-					<exists>pax-exam-2.md</exists>
+					<exists>maven-pax-exam-2.md</exists>
 				</file>
 			</activation>
 			<properties>

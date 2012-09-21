@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2012 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -149,11 +150,11 @@
 				<version>4.10</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>6.7</version>
-			</dependency>
+			<!-- <dependency> -->
+			<!-- <groupId>org.testng</groupId> -->
+			<!-- <artifactId>testng</artifactId> -->
+			<!-- <version>6.7</version> -->
+			<!-- </dependency> -->
 
 			<dependency>
 				<groupId>org.easymock</groupId>
@@ -178,11 +179,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.testng</groupId> -->
+		<!-- <artifactId>testng</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 
 	</dependencies>
 
@@ -386,7 +387,6 @@
 					<version>1.4</version>
 				</plugin>
 
-				<!-- support both junit and testng -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -397,11 +397,11 @@
 							<artifactId>surefire-junit4</artifactId>
 							<version>2.12.2</version>
 						</dependency>
-						<dependency>
-							<groupId>org.apache.maven.surefire</groupId>
-							<artifactId>surefire-testng</artifactId>
-							<version>2.12.2</version>
-						</dependency>
+						<!-- <dependency> -->
+						<!-- <groupId>org.apache.maven.surefire</groupId> -->
+						<!-- <artifactId>surefire-testng</artifactId> -->
+						<!-- <version>2.12.2</version> -->
+						<!-- </dependency> -->
 					</dependencies>
 				</plugin>
 

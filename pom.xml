@@ -536,8 +536,12 @@
 								<rules>
 									<requireMavenVersion>
 										<version>${projectMavenVersion}</version>
-										<message><![CDATA[you must have mavenVersion >= ${projectMavenVersion}]]></message>
+										<message><![CDATA[you must have projectMavenVersion >= ${projectMavenVersion}]]></message>
 									</requireMavenVersion>
+									<requireJavaVersion>
+										<version>${projectJavaVersion}</version>
+										<message><![CDATA[you must have projectJavaVersion >= ${projectJavaVersion}]]></message>
+									</requireJavaVersion>
 								</rules>
 							</configuration>
 						</execution>

@@ -76,16 +76,18 @@
 		<amazonReleaseRepo>maven.aws.barchart.com</amazonReleaseRepo>
 		<amazonStagingRepo>maven.aws-dev.barchart.com</amazonStagingRepo>
 
-		<!-- barchart public repository -->
-		<sonatypeArchonURL>https://oss.sonatype.org/content/groups/public</sonatypeArchonURL>
-		<sonatypeReleaseURL>https://oss.sonatype.org/content/repositories/releases</sonatypeReleaseURL>
-		<sonatypeSnapshotsURL>https://oss.sonatype.org/content/repositories/snapshots</sonatypeSnapshotsURL>
-		<sonatypeStagingURL>https://oss.sonatype.org/service/local/staging/deploy/maven2/</sonatypeStagingURL>
-
 		<!-- barchart private repository -->
-		<barchartArchonURL>https://nexus.barchart.com/content/groups/archon</barchartArchonURL>
-		<barchartReleaseURL>https://nexus.barchart.com/content/repositories/releases</barchartReleaseURL>
-		<barchartSnapshotsURL>https://nexus.barchart.com/content/repositories/snapshots</barchartSnapshotsURL>
+		<barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
+		<barchartArchonURL>${barchartNexusURL}/content/groups/archon/</barchartArchonURL>
+		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases/</barchartReleaseURL>
+		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots/</barchartSnapshotsURL>
+
+		<!-- barchart public repository -->
+		<sonatypeNexusURL>https://oss.sonatype.org</sonatypeNexusURL>
+		<sonatypeArchonURL>${sonatypeNexusURL}/content/groups/public</sonatypeArchonURL>
+		<sonatypeReleaseURL>${sonatypeNexusURL}/content/repositories/releases</sonatypeReleaseURL>
+		<sonatypeSnapshotsURL>${sonatypeNexusURL}/content/repositories/snapshots</sonatypeSnapshotsURL>
+		<sonatypeStagingURL>${sonatypeNexusURL}/service/local/staging/deploy/maven2/</sonatypeStagingURL>
 
 		<!-- to include in jar manifest -->
 		<barchartBuildUser>${user.name}</barchartBuildUser>

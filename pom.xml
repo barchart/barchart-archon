@@ -1354,8 +1354,8 @@
 		<profile>
 			<id>sonatype-staging</id>
 			<properties>
-				<staging-wagon-phase>validate</staging-wagon-phase>
-				<staging-close-phase>disabled</staging-close-phase>
+				<staging-wagon-phase>site</staging-wagon-phase>
+				<staging-close-phase>none</staging-close-phase>
 			</properties>
 			<build>
 				<plugins>

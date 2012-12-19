@@ -78,16 +78,16 @@
 
 		<!-- barchart private repository -->
 		<barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
-		<barchartArchonURL>${barchartNexusURL}/content/groups/archon/</barchartArchonURL>
-		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases/</barchartReleaseURL>
-		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots/</barchartSnapshotsURL>
+		<barchartArchonURL>${barchartNexusURL}/content/groups/archon</barchartArchonURL>
+		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases</barchartReleaseURL>
+		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots</barchartSnapshotsURL>
 
 		<!-- barchart public repository -->
 		<sonatypeNexusURL>https://oss.sonatype.org</sonatypeNexusURL>
 		<sonatypeArchonURL>${sonatypeNexusURL}/content/groups/public</sonatypeArchonURL>
 		<sonatypeReleaseURL>${sonatypeNexusURL}/content/repositories/releases</sonatypeReleaseURL>
 		<sonatypeSnapshotsURL>${sonatypeNexusURL}/content/repositories/snapshots</sonatypeSnapshotsURL>
-		<sonatypeStagingURL>${sonatypeNexusURL}/service/local/staging/deploy/maven2/</sonatypeStagingURL>
+		<sonatypeStagingURL>${sonatypeNexusURL}/service/local/staging/deploy/maven2</sonatypeStagingURL>
 
 		<!-- to include in jar manifest -->
 		<barchartBuildUser>${user.name}</barchartBuildUser>
@@ -199,7 +199,14 @@
 			<extension>
 				<groupId>org.kuali.maven.wagons</groupId>
 				<artifactId>maven-s3-wagon</artifactId>
-				<version>1.1.14</version>
+				<version>1.1.19</version>
+			</extension>
+
+			<!-- enable generic http/https wagon -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-http</artifactId>
+				<version>2.3</version>
 			</extension>
 
 		</extensions>
@@ -207,6 +214,12 @@
 		<pluginManagement>
 
 			<plugins>
+
+				<plugin>
+					<groupId>com.carrotgarden.maven</groupId>
+					<artifactId>carrot-maven-staging-plugin</artifactId>
+					<version>1.0.0</version>
+				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -271,7 +284,7 @@
 				<plugin>
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>properties-maven-plugin</artifactId>
-					<version>1.5.0</version>
+					<version>1.5.2</version>
 				</plugin>
 
 				<plugin>
@@ -507,12 +520,9 @@
 										<groupId>org.apache.servicemix.tooling
 										</groupId>
 										<artifactId>depends-maven-plugin</artifactId>
-										<versionRange>[0,)
-										</versionRange>
+										<versionRange>[0,)</versionRange>
 										<goals>
-											<goal>
-												generate-depends-file
-											</goal>
+											<goal>generate-depends-file</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -1335,6 +1345,46 @@
 						</executions>
 					</plugin>
 
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- ================================ -->
+
+		<!-- copy private released artifacts to sonatype for staging -->
+		<profile>
+			<id>sonatype-staging</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.carrotgarden.maven</groupId>
+						<artifactId>carrot-maven-staging-plugin</artifactId>
+						<configuration>
+							<wagonPlugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>wagon-maven-plugin</artifactId>
+								<version>1.0-beta-4</version>
+							</wagonPlugin>
+							<nexusPlugin>
+								<groupId>org.sonatype.plugins</groupId>
+								<artifactId>nexus-maven-plugin</artifactId>
+								<version>2.1</version>
+							</nexusPlugin>
+							<sourceServerId>barchart-nexus-archon</sourceServerId>
+							<sourceServerURL>${barchartArchonURL}</sourceServerURL>
+							<targetServerId>sonatype-nexus-staging</targetServerId>
+							<targetServerURL>${sonatypeStagingURL}</targetServerURL>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sonatype-staging</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>sonatype-staging</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>

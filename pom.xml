@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2012 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -217,7 +218,7 @@
 				<plugin>
 					<groupId>com.carrotgarden.maven</groupId>
 					<artifactId>carrot-maven-staging-plugin</artifactId>
-					<version>1.0.0</version>
+					<version>1.1.0</version>
 				</plugin>
 
 				<plugin>
@@ -1353,6 +1354,10 @@
 		<!-- copy private released artifacts to sonatype for staging -->
 		<profile>
 			<id>sonatype-staging</id>
+			<properties>
+				<staging-wagon-phase>validate</staging-wagon-phase>
+				<staging-close-phase>disabled</staging-close-phase>
+			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -1376,10 +1381,17 @@
 						</configuration>
 						<executions>
 							<execution>
-								<id>sonatype-staging</id>
-								<phase>validate</phase>
+								<id>staging-wagon</id>
+								<phase>${staging-wagon-phase}</phase>
 								<goals>
-									<goal>sonatype-staging</goal>
+									<goal>sonatype-staging-wagon</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>staging-close</id>
+								<phase>${staging-close-phase}</phase>
+								<goals>
+									<goal>sonatype-staging-close</goal>
 								</goals>
 							</execution>
 						</executions>

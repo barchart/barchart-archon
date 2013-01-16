@@ -97,6 +97,10 @@
 		<releasePrepareGoals>clean verify</releasePrepareGoals>
 		<releasePerformGoals>deploy</releasePerformGoals>
 
+		<!-- see maven site profiles -->
+		<maven.site.skip>true</maven.site.skip>
+		<maven.site.deploy.skip>true</maven.site.deploy.skip>
+
 	</properties>
 
 	<dependencyManagement>
@@ -1404,6 +1408,11 @@
 		<!-- generate and publish project/module maven site to github pages -->
 		<profile>
 			<id>maven-site-github-pages</id>
+			<activation>
+				<file>
+					<exists>maven-site-github-pages.md</exists>
+				</file>
+			</activation>
 			<properties>
 
 				<!-- clone of github site repo -->
@@ -1427,7 +1436,8 @@
 				<!-- target folder of maven site in the github site repo -->
 				<siteTarget>${siteRepo}/${siteFolder}</siteTarget>
 
-				<!-- this profile is a replacement for standard site-deploy contract -->
+				<!-- this profile is a replacement for standard site lifecycle -->
+				<maven.site.skip>false</maven.site.skip>
 				<maven.site.deploy.skip>true</maven.site.deploy.skip>
 
 			</properties>

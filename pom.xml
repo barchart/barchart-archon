@@ -1198,15 +1198,31 @@
 
 		<!-- ================================ -->
 
-		<!-- jenkins build profile -->
+		<!-- properties for developer-interactive / manual mode -->
 		<profile>
-			<id>build-jenkins</id>
+			<id>build-human</id>
+			<activation>
+				<property>
+					<name>!env.JENKINS_HOME</name>
+				</property>
+			</activation>
+			<properties>
+				<!-- provided by developer  -->
+				<projectIntegrationVersion>${integrationVersion}</projectIntegrationVersion>
+			</properties>
+		</profile>
+
+		<!-- properties for continuous-integration / automatic mode -->
+		<profile>
+			<id>build-robot</id>
 			<activation>
 				<property>
 					<name>env.JENKINS_HOME</name>
 				</property>
 			</activation>
 			<properties>
+				<!-- provided by invoker plug-in  -->
+				<projectIntegrationVersion>@project.version@</projectIntegrationVersion>
 				<jenkins.manifest.testing.phase>process-classes</jenkins.manifest.testing.phase>
 			</properties>
 		</profile>
@@ -1350,6 +1366,19 @@
 					</plugin>
 
 				</plugins>
+			</build>
+		</profile>
+
+		<!-- pax exam v 3.x testing profile -->
+		<profile>
+			<id>pax-exam-3</id>
+			<activation>
+				<file>
+					<exists>maven-pax-exam-3.md</exists>
+				</file>
+			</activation>
+			<build>
+				<!-- TODO -->
 			</build>
 		</profile>
 

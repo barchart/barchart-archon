@@ -1,12 +1,13 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.3.10-SNAPSHOT</version>
+	<version>2.4.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -53,7 +54,7 @@
 		<url>https://github.com/barchart/barchart-archon</url>
 		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>master</tag>
 	</scm>
 
 	<prerequisites>
@@ -62,77 +63,84 @@
 
 	<properties>
 
+		<!-- Always use UTF-8 file encoding. -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- barchart required version -->
+		<!-- Barchart required versions. -->
 		<projectJavaVersion>1.6</projectJavaVersion>
 		<projectScalaVersion>2.9.2</projectScalaVersion>
 		<projectMavenVersion>3.0.4</projectMavenVersion>
 
-		<!-- barchart private repository -->
+		<!-- Barchart private repository at Amazon. -->
 		<amazonActiveRepo>activate-via-profile</amazonActiveRepo>
 		<amazonReleaseRepo>maven.aws.barchart.com</amazonReleaseRepo>
 		<amazonStagingRepo>maven.aws-dev.barchart.com</amazonStagingRepo>
 
-		<!-- barchart private repository -->
+		<!-- Barchart private repository in Office. -->
 		<barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
 		<barchartArchonURL>${barchartNexusURL}/content/groups/archon</barchartArchonURL>
 		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases</barchartReleaseURL>
 		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots</barchartSnapshotsURL>
 
-		<!-- barchart public repository -->
+		<!-- Barchart public repository at Sonatype. -->
 		<sonatypeNexusURL>https://oss.sonatype.org</sonatypeNexusURL>
 		<sonatypeArchonURL>${sonatypeNexusURL}/content/groups/public</sonatypeArchonURL>
 		<sonatypeReleaseURL>${sonatypeNexusURL}/content/repositories/releases</sonatypeReleaseURL>
 		<sonatypeSnapshotsURL>${sonatypeNexusURL}/content/repositories/snapshots</sonatypeSnapshotsURL>
 		<sonatypeStagingURL>${sonatypeNexusURL}/service/local/staging/deploy/maven2</sonatypeStagingURL>
 
-		<!-- to include in jar manifest -->
+		<!-- Manifest user name customization. -->
 		<barchartBuildUser>${user.name}</barchartBuildUser>
 
-		<!-- see maven-release-plugin -->
+		<!-- Release customization. See maven-release-plugin. -->
 		<releaseProfiles />
 		<releaseArguments>-Dresume=false</releaseArguments>
 		<releasePrepareGoals>clean verify</releasePrepareGoals>
 		<releasePerformGoals>deploy</releasePerformGoals>
 
-		<!-- see maven site profiles -->
+		<!-- Maven site customization. See maven site profiles. -->
 		<maven.site.skip>true</maven.site.skip>
 		<maven.site.deploy.skip>true</maven.site.deploy.skip>
 
+		<!-- OSGI bundle DS component descriptors location in the jar. -->
+		<bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
+
 	</properties>
 
+	<!-- Ensure default versions for popular libraries. -->
 	<dependencyManagement>
 		<dependencies>
 
 			<!-- MAIN -->
 
+			<!-- Scala runtime. -->
 			<dependency>
 				<groupId>org.scala-lang</groupId>
 				<artifactId>scala-library</artifactId>
 				<version>${projectScalaVersion}</version>
 			</dependency>
 
+			<!-- OSGI specification. -->
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
-				<version>4.3.0</version>
+				<version>4.3.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.compendium</artifactId>
-				<version>4.2.0</version>
-				<!-- ### this introduces changes that need more review ### -->
-				<!-- <version>4.3.0</version> -->
+				<version>4.3.1</version>
 			</dependency>
 
+			<!-- Date and Time library. -->
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>2.1</version>
 			</dependency>
 
+			<!-- Logging library. -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -151,24 +159,28 @@
 
 			<!-- TEST -->
 
+			<!-- Default test framework. -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
 			</dependency>
 
+			<!-- Do not use. -->
 			<!-- <dependency> -->
 			<!-- <groupId>org.testng</groupId> -->
 			<!-- <artifactId>testng</artifactId> -->
 			<!-- <version>6.7</version> -->
 			<!-- </dependency> -->
 
+			<!-- Java mock object library. -->
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>3.1</version>
 			</dependency>
 
+			<!-- Java mock object library. -->
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
@@ -178,6 +190,7 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<!-- Libraries included in all projects. -->
 	<dependencies>
 
 		<dependency>
@@ -186,6 +199,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Do not use. -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.testng</groupId> -->
 		<!-- <artifactId>testng</artifactId> -->
@@ -198,22 +212,23 @@
 
 		<extensions>
 
-			<!-- enable amazon bucket transport -->
+			<!-- Enable Amazon S3 bucket transport. -->
 			<extension>
 				<groupId>org.kuali.maven.wagons</groupId>
 				<artifactId>maven-s3-wagon</artifactId>
 				<version>1.1.19</version>
 			</extension>
 
-			<!-- enable generic http/https wagon -->
+			<!-- Enable generic HTTP/HTTPS transport. -->
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-http</artifactId>
-				<version>2.3</version>
+				<version>2.4</version>
 			</extension>
 
 		</extensions>
 
+		<!-- Ensure default plug-ins configurations and versions. -->
 		<pluginManagement>
 
 			<plugins>
@@ -287,13 +302,13 @@
 				<plugin>
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>properties-maven-plugin</artifactId>
-					<version>1.5.2</version>
+					<version>1.5.3</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-help-plugin</artifactId>
-					<version>2.1.1</version>
+					<version>2.2</version>
 				</plugin>
 
 				<plugin>
@@ -384,7 +399,7 @@
 					<version>2.9</version>
 				</plugin>
 
-				<!-- keep in sync with <reporting> -->
+				<!-- Keep in sync with <reporting>. -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -416,17 +431,18 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.12.4</version>
+					<version>2.13</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.surefire</groupId>
 							<artifactId>surefire-junit4</artifactId>
-							<version>2.12.4</version>
+							<version>2.13</version>
 						</dependency>
+						<!-- Do not use. -->
 						<!-- <dependency> -->
 						<!-- <groupId>org.apache.maven.surefire</groupId> -->
 						<!-- <artifactId>surefire-testng</artifactId> -->
-						<!-- <version>2.12.4</version> -->
+						<!-- <version>2.13</version> -->
 						<!-- </dependency> -->
 					</dependencies>
 				</plugin>
@@ -451,7 +467,7 @@
 						</jvmArgs>
 					</configuration>
 					<executions>
-						<!-- compile java first, scala second -->
+						<!-- Compile java first, scala second. -->
 						<execution>
 							<goals>
 								<goal>add-source</goal>
@@ -474,7 +490,7 @@
 						</jvmArgs>
 					</configuration>
 					<executions>
-						<!-- compile java first, scala second -->
+						<!-- Compile java first, scala second. -->
 						<execution>
 							<goals>
 								<goal>add-source</goal>
@@ -485,6 +501,7 @@
 					</executions>
 				</plugin>
 
+				<!-- Provide Maven/Eclipse plug-ins connector policies. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -493,6 +510,7 @@
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
 								<pluginExecution>
+									<!-- Do not run enforcer in Eclipse. -->
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-enforcer-plugin</artifactId>
@@ -506,6 +524,7 @@
 									</action>
 								</pluginExecution>
 								<pluginExecution>
+									<!-- Do not run groovy in Eclipse. -->
 									<pluginExecutionFilter>
 										<groupId>org.codehaus.mojo</groupId>
 										<artifactId>groovy-maven-plugin</artifactId>
@@ -519,6 +538,7 @@
 									</action>
 								</pluginExecution>
 								<pluginExecution>
+									<!-- Generate Pax Exam dependencies in Eclipse. -->
 									<pluginExecutionFilter>
 										<groupId>org.apache.servicemix.tooling
 										</groupId>
@@ -537,6 +557,7 @@
 					</configuration>
 				</plugin>
 
+				<!-- Enforce Maven and Java versions. -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -563,9 +584,11 @@
 					</executions>
 				</plugin>
 
+				<!-- Manage maven release process. -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
+					<!-- Do not use 2.4 -->
 					<version>2.3.2</version>
 					<configuration>
 
@@ -583,28 +606,41 @@
 					</configuration>
 				</plugin>
 
-				<!-- generate osgi scr component descriptors -->
+				<!-- Generate OSGI DS component descriptors. -->
+				<!-- M2E integration is provided by "CarrotGarden SCR" Eclipe plug-in. -->
 				<plugin>
 					<groupId>com.carrotgarden.maven</groupId>
 					<artifactId>carrot-maven-scr-plugin</artifactId>
-					<version>1.1.4</version>
+					<version>2.0.0</version>
 					<configuration>
-						<targetDirectorySCR>OSGI-INF/service-component</targetDirectorySCR>
+
+						<!-- DS component descriptors location. See maven-bundle-plugin. -->
+						<targetDirectorySCR>${bundleServiceComponent}</targetDirectorySCR>
+
+						<!-- Execute this plug-in only for OSGI bundle projects. -->
+						<properPackaging>
+							<packaging>bundle</packaging>
+						</properPackaging>
+
+						<!-- Remove these interfaces form DS component services. -->
 						<excludedServices>
 							<service>scala.ScalaObject</service>
 							<service>java.lang.Runnable</service>
 							<service>java.io.Serializable</service>
 						</excludedServices>
+
+						<!-- Eclipse maven console settings. -->
 						<eclipseSettings>
-							<!-- eclipse maven console settings -->
 							<logBuildTimes>true</logBuildTimes>
 							<logExcludedServices>true</logExcludedServices>
 							<logInvocationDetails>true</logInvocationDetails>
 							<logErrorTraces>true</logErrorTraces>
 							<logComponentDescriptors>true</logComponentDescriptors>
 						</eclipseSettings>
+
 					</configuration>
 					<executions>
+						<!-- Remove DS component descriptors during "clean". -->
 						<execution>
 							<id>clean</id>
 							<phase>clean</phase>
@@ -612,6 +648,7 @@
 								<goal>clean</goal>
 							</goals>
 						</execution>
+						<!-- Generate DS component descriptors after "compile". -->
 						<execution>
 							<id>generate</id>
 							<phase>process-classes</phase>
@@ -622,14 +659,18 @@
 					</executions>
 				</plugin>
 
-				<!-- include osgi scr component descriptors -->
+				<!-- Generate OSGI bundle. -->
+				<!-- M2E integration is provided by "Tycho Connectors" Eclipse plug-in. -->
 				<plugin>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>maven-bundle-plugin</artifactId>
 					<version>2.3.7</version>
+					<!-- Enable "bundle" packaging and lifecycle. -->
+					<extensions>true</extensions>
 					<configuration>
 						<instructions>
-							<Service-Component>OSGI-INF/service-component/*.xml</Service-Component>
+							<!-- DS component descriptors location. See carrot-maven-scr-plugin. -->
+							<Service-Component>${bundleServiceComponent}/*.xml</Service-Component>
 						</instructions>
 					</configuration>
 				</plugin>
@@ -638,35 +679,34 @@
 
 		</pluginManagement>
 
-		<!-- build plugins active by default -->
+		<!-- Build plugins active by default. -->
 		<plugins>
 
-			<!-- enforce maven version -->
+			<!-- Enforce maven and java version. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 			</plugin>
 
-			<!-- enforce java version -->
+			<!-- Enforce java compiler settings. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 
-			<!-- generate osgi scr component descriptors -->
+			<!-- Generate OSGI DS component descriptors. -->
 			<plugin>
 				<groupId>com.carrotgarden.maven</groupId>
 				<artifactId>carrot-maven-scr-plugin</artifactId>
 			</plugin>
 
-			<!-- enable osgi bundle packaging -->
+			<!-- Generate OSGI bundle packaging with bundle lifecycle. -->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 			</plugin>
 
-			<!-- provide custom properties -->
+			<!-- Provide custom project properties. -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>groovy-maven-plugin</artifactId>
@@ -680,25 +720,27 @@
 						<configuration>
 							<source>
 		<![CDATA[
-		//
-		import java.text.MessageFormat;
-		//
-		projectTimeLong = System.currentTimeMillis();
-		project.properties["projectTimeLong"] = projectTimeLong;
-		println("### projectTimeLong=" + projectTimeLong);
-		//
-		projectTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}",projectTimeLong);
-		project.properties["projectTimeFile"] = projectTimeFile;
-		println("### projectTimeFile=" + projectTimeFile);
-		//
-		projectTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}",projectTimeLong);
-		project.properties["projectTimeISO"] = projectTimeISO;
-		println("### projectTimeISO=" + projectTimeISO);
-		//
-		projectTimeYear=MessageFormat.format("{0,date,yyyy}",projectTimeLong);
-		project.properties["projectTimeYear"] = projectTimeYear;
-		println("### projectTimeYear=" + projectTimeYear);
-		//
+		import java.text.MessageFormat
+		
+		// Date/Time in milliseconds UTC.
+		def projectTimeLong = System.currentTimeMillis()
+		project.properties["projectTimeLong"] = projectTimeLong
+		println("### projectTimeLong=" + projectTimeLong)
+		
+		// Date/Time in file-system-safe path element. 
+		def projectTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}", projectTimeLong)
+		project.properties["projectTimeFile"] = projectTimeFile
+		println("### projectTimeFile=" + projectTimeFile)
+		
+		// Date/Time in standard ISO format.
+		def projectTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}", projectTimeLong)
+		project.properties["projectTimeISO"] = projectTimeISO
+		println("### projectTimeISO=" + projectTimeISO)
+		
+		// Date/Time year field only.
+		def projectTimeYear=MessageFormat.format("{0,date,yyyy}", projectTimeLong)
+		project.properties["projectTimeYear"] = projectTimeYear
+		println("### projectTimeYear=" + projectTimeYear)
 		]]>
 							</source>
 						</configuration>
@@ -714,7 +756,7 @@
 
 		<!-- ================================ -->
 
-		<!-- see maven-release-plugin -->
+		<!-- Activated during release. See maven-release-plugin. -->
 		<profile>
 			<id>release</id>
 			<activation>
@@ -724,6 +766,7 @@
 			</activation>
 			<build>
 				<plugins>
+					<!-- Release must contain sources. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
@@ -736,6 +779,7 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!-- Release must contain javadoc. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
@@ -748,6 +792,7 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!-- Release must be signed. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
@@ -767,7 +812,7 @@
 
 		<!-- ================================ -->
 
-		<!-- private barchart buckets -->
+		<!-- Private barchart buckets. -->
 		<profile>
 			<id>amazon-release</id>
 			<properties>
@@ -781,7 +826,7 @@
 			</properties>
 		</profile>
 
-		<!-- private barchart amazon distribution -->
+		<!-- Private Barchart Amazon distribution. -->
 		<profile>
 			<id>barchart-amazon-distribution</id>
 			<activation>
@@ -801,7 +846,7 @@
 			</distributionManagement>
 		</profile>
 
-		<!-- private barchart amazon repository -->
+		<!-- Private Barchart Amazon repository; must activate. -->
 		<profile>
 			<id>barchart-amazon-repository</id>
 			<activation>
@@ -840,7 +885,7 @@
 
 		<!-- ================================ -->
 
-		<!-- private barchart nexus distribution; must activate -->
+		<!-- Private Barchart Nexus distribution; must activate. -->
 		<profile>
 			<id>barchart-nexus-distribution</id>
 			<activation>
@@ -862,7 +907,7 @@
 			</distributionManagement>
 		</profile>
 
-		<!-- private barchart nexus repository; must activate -->
+		<!-- Private Barchart Nexus repository; must activate. -->
 		<profile>
 			<id>barchart-nexus-repository</id>
 			<activation>
@@ -901,7 +946,7 @@
 
 		<!-- ================================ -->
 
-		<!-- public barchart nexus distribution; must activate -->
+		<!-- Public Barchart Nexus distribution; must activate. -->
 		<profile>
 			<id>sonatype-nexus-distribution</id>
 			<activation>
@@ -923,7 +968,7 @@
 			</distributionManagement>
 		</profile>
 
-		<!-- public barchart nexus repository; always active -->
+		<!-- Public Barchart Nexus repository; always active. -->
 		<profile>
 			<id>sonatype-nexus-repository</id>
 			<activation>
@@ -961,7 +1006,7 @@
 
 		<!-- ================================ -->
 
-		<!-- license editor -->
+		<!-- License editor. -->
 		<profile>
 			<id>license</id>
 			<properties>
@@ -982,6 +1027,7 @@
 			<build>
 				<plugins>
 
+					<!-- Unpack licence template. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -1010,6 +1056,7 @@
 						</executions>
 					</plugin>
 
+					<!-- Apply licence template. -->
 					<plugin>
 						<groupId>com.mycila.maven-license-plugin</groupId>
 						<artifactId>maven-license-plugin</artifactId>
@@ -1198,7 +1245,7 @@
 
 		<!-- ================================ -->
 
-		<!-- properties for developer-interactive / manual mode -->
+		<!-- Properties for developer-interactive / manual mode. -->
 		<profile>
 			<id>build-human</id>
 			<activation>
@@ -1207,12 +1254,13 @@
 				</property>
 			</activation>
 			<properties>
-				<!-- provided by developer  -->
+				<!-- provided by developer -->
 				<projectIntegrationVersion>${integrationVersion}</projectIntegrationVersion>
+				<bundle.manifest.testing.phase>process-ignored</bundle.manifest.testing.phase>
 			</properties>
 		</profile>
 
-		<!-- properties for continuous-integration / automatic mode -->
+		<!-- Properties for continuous-integration / automatic mode. -->
 		<profile>
 			<id>build-robot</id>
 			<activation>
@@ -1221,13 +1269,13 @@
 				</property>
 			</activation>
 			<properties>
-				<!-- provided by invoker plug-in  -->
+				<!-- provided by invoker plug-in -->
 				<projectIntegrationVersion>@project.version@</projectIntegrationVersion>
-				<jenkins.manifest.testing.phase>process-classes</jenkins.manifest.testing.phase>
+				<bundle.manifest.testing.phase>process-classes</bundle.manifest.testing.phase>
 			</properties>
 		</profile>
 
-		<!-- pax exam v 2.x testing profile -->
+		<!-- Pax Exam v 2.x testing profile. -->
 		<profile>
 			<id>pax-exam-2</id>
 			<activation>
@@ -1242,7 +1290,7 @@
 			</properties>
 			<dependencies>
 
-				<!-- config admin run time -->
+				<!-- Config admin runtime. -->
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.configadmin</artifactId>
@@ -1250,7 +1298,7 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- declarative services run time -->
+				<!-- Declarative services runtime. -->
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.scr</artifactId>
@@ -1258,7 +1306,7 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- event admin run time -->
+				<!-- Event admin runtime. -->
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.eventadmin</artifactId>
@@ -1266,7 +1314,7 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- pax exam core -->
+				<!-- Pax Exam core. -->
 				<dependency>
 					<groupId>org.ops4j.pax.exam</groupId>
 					<artifactId>pax-exam-junit4</artifactId>
@@ -1292,7 +1340,7 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- pax exam url -->
+				<!-- Pax URL -->
 				<dependency>
 					<groupId>org.ops4j.pax.url</groupId>
 					<artifactId>pax-url-aether</artifactId>
@@ -1324,7 +1372,7 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- osgi framework -->
+				<!-- OSGI framework. -->
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.framework</artifactId>
@@ -1336,7 +1384,7 @@
 			<build>
 				<plugins>
 
-					<!-- generate dependencies versions for pax exam -->
+					<!-- Generate dependencies versions for Pax Exam. -->
 					<plugin>
 						<groupId>org.apache.servicemix.tooling</groupId>
 						<artifactId>depends-maven-plugin</artifactId>
@@ -1350,14 +1398,14 @@
 						</executions>
 					</plugin>
 
-					<!-- generate manifest to test inside pax exam -->
+					<!-- Generate manifest early to test with Pax Exam. -->
 					<plugin>
 						<groupId>org.apache.felix</groupId>
 						<artifactId>maven-bundle-plugin</artifactId>
 						<executions>
 							<execution>
 								<id>manifest-testing</id>
-								<phase>${jenkins.manifest.testing.phase}</phase>
+								<phase>${bundle.manifest.testing.phase}</phase>
 								<goals>
 									<goal>manifest</goal>
 								</goals>
@@ -1369,7 +1417,7 @@
 			</build>
 		</profile>
 
-		<!-- pax exam v 3.x testing profile -->
+		<!-- Pax Exam v 3.x Testing profile. -->
 		<profile>
 			<id>pax-exam-3</id>
 			<activation>
@@ -1377,14 +1425,273 @@
 					<exists>maven-pax-exam-3.md</exists>
 				</file>
 			</activation>
+			<properties>
+				<projectFelixVersion>4.2.0</projectFelixVersion>
+				<projectOsgiVersion>4.3.1</projectOsgiVersion>
+				<projectPaxExamVersion>3.0.0</projectPaxExamVersion>
+				<projectPaxUrlVersion>1.5.2</projectPaxUrlVersion>
+				<projectPaxWebVersion>3.0.0.M2</projectPaxWebVersion>
+			</properties>
+			<dependencies>
+
+				<!-- OSGI framework. -->
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.framework</artifactId>
+					<version>${projectFelixVersion}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- OSGI specification. -->
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.core</artifactId>
+					<version>${projectOsgiVersion}</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.compendium</artifactId>
+					<scope>provided</scope>
+					<version>${projectOsgiVersion}</version>
+				</dependency>
+
+				<!-- Config admin runtime. -->
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.configadmin</artifactId>
+					<version>1.6.0</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Event admin runtime. -->
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.eventadmin</artifactId>
+					<version>1.3.2</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Declarative services runtime. -->
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.scr</artifactId>
+					<version>1.6.2</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Pax Exam core. -->
+				<dependency>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>pax-exam</artifactId>
+					<version>${projectPaxExamVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>pax-exam-junit4</artifactId>
+					<version>${projectPaxExamVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<!-- <dependency> -->
+				<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+				<!-- <artifactId>pax-exam-container-native</artifactId> -->
+				<!-- <version>${projectPaxExamVersion}</version> -->
+				<!-- <scope>test</scope> -->
+				<!-- </dependency> -->
+				<dependency>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>pax-exam-container-forked</artifactId>
+					<version>${projectPaxExamVersion}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>pax-exam-inject</artifactId>
+					<version>${projectPaxExamVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>pax-exam-link-mvn</artifactId>
+					<version>${projectPaxExamVersion}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Pax URL. -->
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-aether</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-wrap</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-war</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-reference</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-obr</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-classpath</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Web container development. -->
+				<dependency>
+					<groupId>org.ops4j.pax.web</groupId>
+					<artifactId>pax-web-api</artifactId>
+					<version>${projectPaxWebVersion}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.web</groupId>
+					<artifactId>pax-web-spi</artifactId>
+					<version>${projectPaxWebVersion}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.web</groupId>
+					<artifactId>pax-web-runtime</artifactId>
+					<version>${projectPaxWebVersion}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.web</groupId>
+					<artifactId>pax-web-jetty</artifactId>
+					<version>${projectPaxWebVersion}</version>
+				</dependency>
+
+				<!-- Web container API. -->
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-osgi-locator</artifactId>
+					<version>1.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-osgi-registry</artifactId>
+					<version>1.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-activation_1.1_spec</artifactId>
+					<version>1.1</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-atinject_1.0_spec</artifactId>
+					<version>1.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-servlet_2.5_spec</artifactId>
+					<version>1.2</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-jta_1.1_spec</artifactId>
+					<version>1.1.1</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Byte code manipulation. -->
+				<dependency>
+					<groupId>org.apache.servicemix.bundles</groupId>
+					<artifactId>org.apache.servicemix.bundles.asm</artifactId>
+					<version>3.3.1_1</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.servicemix.bundles</groupId>
+					<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
+					<version>1.0_6</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.servicemix.bundles</groupId>
+					<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
+					<version>2.2.2_1</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Web container unit tests. -->
+				<dependency>
+					<groupId>org.openengsb.wrapped</groupId>
+					<artifactId>net.sourceforge.htmlunit-all</artifactId>
+					<version>2.8.w1</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Misceleneous. -->
+				<dependency>
+					<groupId>org.apache.servicemix.bundles</groupId>
+					<artifactId>org.apache.servicemix.bundles.javax.mail</artifactId>
+					<version>1.4.1_5</version>
+					<scope>test</scope>
+				</dependency>
+
+			</dependencies>
 			<build>
-				<!-- TODO -->
+				<plugins>
+
+					<!-- Generate dependencies versions for Pax Exam. -->
+					<plugin>
+						<groupId>org.apache.servicemix.tooling</groupId>
+						<artifactId>depends-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>generate-depends-file</id>
+								<goals>
+									<goal>generate-depends-file</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Generate manifest early to test with Pax Exam. -->
+					<plugin>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>maven-bundle-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>manifest-testing</id>
+								<phase>${bundle.manifest.testing.phase}</phase>
+								<goals>
+									<goal>manifest</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+
 			</build>
 		</profile>
 
 		<!-- ================================ -->
 
-		<!-- copy private released artifacts to sonatype for staging -->
+		<!-- Copy private released artifacts to Sonatype for staging. -->
 		<profile>
 			<id>sonatype-staging</id>
 			<properties>
@@ -1435,7 +1742,7 @@
 
 		<!-- ================================ -->
 
-		<!-- generate and publish project/module maven site to github pages -->
+		<!-- Generate and publish project/module maven site to Github Pages. -->
 		<profile>
 			<id>maven-site-github-pages</id>
 			<activation>
@@ -1569,7 +1876,7 @@
 			</plugin>
 
 
-			<!-- keep in sync with <build> -->
+			<!-- Keep in sync with <build>. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>

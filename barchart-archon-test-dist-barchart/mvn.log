@@ -1,0 +1,1567 @@
+###.mavenrc##################################
+###java_keys.sh#################################
+###java_keys.sh#################################
+###.mavenrc##################################
+Apache Maven 3.0.4 (r1232337; 2012-01-17 02:44:56-0600)
+Maven home: /opt/apache/apache-maven-3.0.4
+Java version: 1.6.0_31, vendor: Sun Microsystems Inc.
+Java home: /opt/oracle/java32/jdk1.6.0_31/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.0.0-17-generic-pae", arch: "i386", family: "unix"
+[INFO] Error stacktraces are turned on.
+[DEBUG] Reading global settings from /opt/apache/apache-maven-3.0.4/conf/settings.xml
+[DEBUG] Reading user settings from /home/user1/.m2/settings.xml
+[DEBUG] Using local repository at /home/user1/.m2/repository
+[DEBUG] Using manager EnhancedLocalRepositoryManager with priority 10 for /home/user1/.m2/repository
+[INFO] Scanning for projects...
+[DEBUG] org.kuali.maven.wagons:maven-s3-wagon:jar:1.1.10:
+[DEBUG]    com.amazonaws:aws-java-sdk:jar:1.2.15:compile
+[DEBUG]    org.codehaus.jackson:jackson-core-asl:jar:1.9.3:compile
+[DEBUG]    org.apache.httpcomponents:httpclient:jar:4.1.2:compile
+[DEBUG]       org.apache.httpcomponents:httpcore:jar:4.1.2:compile
+[DEBUG]       commons-codec:commons-codec:jar:1.4:compile
+[DEBUG]    org.apache.maven.wagon:wagon-provider-api:jar:2.2:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:3.0:compile
+[DEBUG]    org.apache.commons:commons-io:jar:1.3.2:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.6:compile
+[DEBUG]    org.kuali.common.threads:kuali-threads:jar:1.0.8:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:1.6.4:compile
+[DEBUG]    org.slf4j:slf4j-log4j12:jar:1.6.4:compile
+[DEBUG]       log4j:log4j:jar:1.2.16:compile
+[DEBUG]    org.slf4j:jcl-over-slf4j:jar:1.6.4:compile
+[DEBUG] Created new class realm maven.api
+[DEBUG] Importing foreign packages into class realm maven.api
+[DEBUG]   Imported: org.apache.maven.wagon.events < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.transfer < plexus.core
+[DEBUG]   Imported: org.apache.maven.exception < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.metadata < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.Xpp3Dom < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.collection < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.version < plexus.core
+[DEBUG]   Imported: org.apache.maven.monitor < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.resource < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.logging < plexus.core
+[DEBUG]   Imported: org.apache.maven.profiles < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.classrealm < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.artifact < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.spi < plexus.core
+[DEBUG]   Imported: org.apache.maven.reporting < plexus.core
+[DEBUG]   Imported: org.apache.maven.usability < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.container < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.component < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlSerializer < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authentication < plexus.core
+[DEBUG]   Imported: org.apache.maven.lifecycle < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.classworlds < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.graph < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.settings < plexus.core
+[DEBUG]   Imported: org.codehaus.classworlds < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.impl < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.toolchain < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.deployment < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.observers < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParserException < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParser < plexus.core
+[DEBUG]   Imported: org.apache.maven.configuration < plexus.core
+[DEBUG]   Imported: org.apache.maven.cli < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.installation < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.context < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authorization < plexus.core
+[DEBUG]   Imported: org.apache.maven.project < plexus.core
+[DEBUG]   Imported: org.apache.maven.rtinfo < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.lifecycle < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.configuration < plexus.core
+[DEBUG]   Imported: org.apache.maven.artifact < plexus.core
+[DEBUG]   Imported: org.apache.maven.model < plexus.core
+[DEBUG]   Imported: org.apache.maven.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.proxy < plexus.core
+[DEBUG]   Imported: org.sonatype.aether.resolution < plexus.core
+[DEBUG]   Imported: org.apache.maven.plugin < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.* < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.personality < plexus.core
+[DEBUG] Populating class realm maven.api
+[DEBUG] Created new class realm extension>org.kuali.maven.wagons:maven-s3-wagon:1.1.10
+[DEBUG] Importing foreign packages into class realm extension>org.kuali.maven.wagons:maven-s3-wagon:1.1.10
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm extension>org.kuali.maven.wagons:maven-s3-wagon:1.1.10
+[DEBUG]   Included: org.kuali.maven.wagons:maven-s3-wagon:jar:1.1.10
+[DEBUG]   Included: com.amazonaws:aws-java-sdk:jar:1.2.15
+[DEBUG]   Included: org.codehaus.jackson:jackson-core-asl:jar:1.9.3
+[DEBUG]   Included: org.apache.httpcomponents:httpclient:jar:4.1.2
+[DEBUG]   Included: org.apache.httpcomponents:httpcore:jar:4.1.2
+[DEBUG]   Included: commons-codec:commons-codec:jar:1.4
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0
+[DEBUG]   Included: org.apache.commons:commons-io:jar:1.3.2
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.6
+[DEBUG]   Included: org.kuali.common.threads:kuali-threads:jar:1.0.8
+[DEBUG]   Included: org.slf4j:slf4j-api:jar:1.6.4
+[DEBUG]   Included: org.slf4j:slf4j-log4j12:jar:1.6.4
+[DEBUG]   Included: log4j:log4j:jar:1.2.16
+[DEBUG]   Included: org.slf4j:jcl-over-slf4j:jar:1.6.4
+[DEBUG] org.apache.felix:maven-bundle-plugin:jar:2.3.7:
+[DEBUG]    biz.aQute:bndlib:jar:1.50.0:compile
+[DEBUG]    org.apache.felix:org.apache.felix.bundlerepository:jar:1.6.6:compile
+[DEBUG]       org.osgi:org.osgi.core:jar:4.1.0:compile
+[DEBUG]       org.easymock:easymock:jar:2.4:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.7:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-api:jar:2.0.7:compile
+[DEBUG]          org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0.7:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.1:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-project:jar:2.0.7:compile
+[DEBUG]          org.apache.maven:maven-plugin-registry:jar:2.0.7:compile
+[DEBUG]       commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-api:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.7:compile
+[DEBUG]       org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.7:compile
+[DEBUG]       classworlds:classworlds:jar:1.1:compile
+[DEBUG]    org.apache.maven:maven-archiver:jar:2.4.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-archiver:jar:1.0:compile
+[DEBUG]          org.codehaus.plexus:plexus-io:jar:1.0:compile
+[DEBUG]       org.codehaus.plexus:plexus-interpolation:jar:1.13:compile
+[DEBUG]    org.apache.maven.shared:maven-dependency-tree:jar:1.2:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:2.1:compile
+[DEBUG] Created new class realm extension>org.apache.felix:maven-bundle-plugin:2.3.7
+[DEBUG] Importing foreign packages into class realm extension>org.apache.felix:maven-bundle-plugin:2.3.7
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm extension>org.apache.felix:maven-bundle-plugin:2.3.7
+[DEBUG]   Included: org.apache.felix:maven-bundle-plugin:jar:2.3.7
+[DEBUG]   Included: biz.aQute:bndlib:jar:1.50.0
+[DEBUG]   Included: org.apache.felix:org.apache.felix.bundlerepository:jar:1.6.6
+[DEBUG]   Included: org.osgi:org.osgi.core:jar:4.1.0
+[DEBUG]   Included: org.easymock:easymock:jar:2.4
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.7
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: org.apache.maven:maven-archiver:jar:2.4.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-archiver:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-io:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.13
+[DEBUG]   Included: org.apache.maven.shared:maven-dependency-tree:jar:1.2
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:2.1
+[DEBUG] Extension realms for project com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT: [ClassRealm[extension>org.kuali.maven.wagons:maven-s3-wagon:1.1.10, parent: sun.misc.Launcher$AppClassLoader@182f0db], ClassRealm[extension>org.apache.felix:maven-bundle-plugin:2.3.7, parent: sun.misc.Launcher$AppClassLoader@182f0db]]
+[DEBUG] Created new class realm project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Looking up lifecyle mappings for packaging jar from ClassRealm[project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[DEBUG] === REACTOR BUILD PLAN ================================================
+[DEBUG] Project: com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT
+[DEBUG] Tasks:   [clean, deploy]
+[DEBUG] Style:   Regular
+[DEBUG] =======================================================================
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building barchart-archon-test-dist-barchart 2.1.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] === PROJECT BUILD PLAN ================================================
+[DEBUG] Project:       com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Dependencies (collect): []
+[DEBUG] Dependencies (resolve): [compile, runtime, test]
+[DEBUG] Repositories (dependencies): [barchart-nexus-archon (https://nexus.barchart.com/content/groups/archon, releases+snapshots), central (http://repo.maven.apache.org/maven2, releases)]
+[DEBUG] Repositories (plugins)     : [barchart-nexus-archon (https://nexus.barchart.com/content/groups/archon, releases+snapshots), central (http://repo.maven.apache.org/maven2, releases)]
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-clean-plugin:2.4.1:clean (default-clean)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <directory default-value="${project.build.directory}"/>
+  <excludeDefaultDirectories default-value="false">${clean.excludeDefaultDirectories}</excludeDefaultDirectories>
+  <failOnError default-value="true">${maven.clean.failOnError}</failOnError>
+  <followSymLinks default-value="false">${clean.followSymLinks}</followSymLinks>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <reportDirectory default-value="${project.reporting.outputDirectory}"/>
+  <skip default-value="false">${clean.skip}</skip>
+  <testOutputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <verbose>${clean.verbose}</verbose>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-enforcer-plugin:1.0.1:enforce (enforce-maven)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <fail default-value="true">${enforcer.fail}</fail>
+  <failFast default-value="false">${enforcer.failFast}</failFast>
+  <ignoreCache default-value="false">${enforcer.ignoreCache}</ignoreCache>
+  <project>${project}</project>
+  <rules>
+    <requireMavenVersion>
+      <version>3.0.4</version>
+      <message>you must have mavenVersion &gt;= 3.0.4</message>
+    </requireMavenVersion>
+  </rules>
+  <session>${session}</session>
+  <skip default-value="false">${enforcer.skip}</skip>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.codehaus.mojo:groovy-maven-plugin:1.4:execute (provide-custom-properties)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <artifactRepository>${localRepository}</artifactRepository>
+  <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
+  <pluginArtifacts>${plugin.artifacts}</pluginArtifacts>
+  <project>${project}</project>
+  <providerSelection>${gmaven.runtime}</providerSelection>
+  <remoteRepositories>${project.pluginArtifactRepositories}</remoteRepositories>
+  <sanitizeErrors default-value="true"/>
+  <session>${session}</session>
+  <settings>${settings}</settings>
+  <source>//
+		import java.text.MessageFormat;
+		//
+		barchartTimeLong = System.currentTimeMillis();
+		project.properties[&quot;barchartTimeLong&quot;] = barchartTimeLong;
+		println(&quot;### barchartTimeLong=&quot; + barchartTimeLong);
+		//
+		barchartTimeFile = MessageFormat.format(&quot;{0,date,yyyy-MM-dd_HH-mm-ss}&quot;,barchartTimeLong);
+		project.properties[&quot;barchartTimeFile&quot;] = barchartTimeFile;
+		println(&quot;### barchartTimeFile=&quot; + barchartTimeFile);
+		//
+		barchartTimeISO=MessageFormat.format(&quot;{0,date,yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZ}&quot;,barchartTimeLong);
+		project.properties[&quot;barchartTimeISO&quot;] = barchartTimeISO;
+		println(&quot;### barchartTimeISO=&quot; + barchartTimeISO);
+		//
+		barchartTimeYear=MessageFormat.format(&quot;{0,date,yyyy}&quot;,barchartTimeLong);
+		project.properties[&quot;barchartTimeYear&quot;] = barchartTimeYear;
+		println(&quot;### barchartTimeYear=&quot; + barchartTimeYear);
+		//</source>
+  <trapAssertionErrors default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:2.5:resources (default-resources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <escapeString>${maven.resources.escapeString}</escapeString>
+  <escapeWindowsPaths default-value="true">${maven.resources.escapeWindowsPaths}</escapeWindowsPaths>
+  <includeEmptyDirs default-value="false">${maven.resources.includeEmptyDirs}</includeEmptyDirs>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <overwrite default-value="false">${maven.resources.overwrite}</overwrite>
+  <project default-value="${project}"/>
+  <resources default-value="${project.resources}"/>
+  <session default-value="${session}"/>
+  <supportMultiLineFiltering default-value="false">${maven.resources.supportMultiLineFiltering}</supportMultiLineFiltering>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile (default-compile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <classpathElements default-value="${project.compileClasspathElements}"/>
+  <compileSourceRoots default-value="${project.compileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedSourcesDirectory default-value="${project.build.directory}/generated-sources/annotations"/>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <outputFileName>${project.build.finalName}</outputFileName>
+  <projectArtifact default-value="${project.artifact}"/>
+  <session default-value="${session}"/>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="false">${maven.compiler.showWarnings}</showWarnings>
+  <source default-value="1.5">1.6</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.5">1.6</target>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:2.5:testResources (default-testResources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <escapeString>${maven.resources.escapeString}</escapeString>
+  <escapeWindowsPaths default-value="true">${maven.resources.escapeWindowsPaths}</escapeWindowsPaths>
+  <includeEmptyDirs default-value="false">${maven.resources.includeEmptyDirs}</includeEmptyDirs>
+  <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+  <overwrite default-value="false">${maven.resources.overwrite}</overwrite>
+  <project default-value="${project}"/>
+  <resources>${project.testResources}</resources>
+  <session default-value="${session}"/>
+  <supportMultiLineFiltering default-value="false">${maven.resources.supportMultiLineFiltering}</supportMultiLineFiltering>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile (default-testCompile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <classpathElements default-value="${project.testClasspathElements}"/>
+  <compileSourceRoots default-value="${project.testCompileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedTestSourcesDirectory default-value="${project.build.directory}/generated-sources/test-annotations"/>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <outputFileName>${project.build.finalName}</outputFileName>
+  <session default-value="${session}"/>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="false">${maven.compiler.showWarnings}</showWarnings>
+  <skip>${maven.test.skip}</skip>
+  <source default-value="1.5">1.6</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.5">1.6</target>
+  <testSource>${maven.compiler.testSource}</testSource>
+  <testTarget>${maven.compiler.testTarget}</testTarget>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-surefire-plugin:2.12:test (default-test)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <argLine>${argLine}</argLine>
+  <basedir default-value="${basedir}"/>
+  <childDelegation default-value="false">${childDelegation}</childDelegation>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <debugForkedProcess>${maven.surefire.debug}</debugForkedProcess>
+  <disableXmlReport default-value="false">${disableXmlReport}</disableXmlReport>
+  <enableAssertions default-value="true">${enableAssertions}</enableAssertions>
+  <excludedGroups>${excludedGroups}</excludedGroups>
+  <failIfNoSpecifiedTests>${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
+  <failIfNoTests>${failIfNoTests}</failIfNoTests>
+  <forkMode default-value="once">${forkMode}</forkMode>
+  <forkedProcessTimeoutInSeconds>${surefire.timeout}</forkedProcessTimeoutInSeconds>
+  <groups>${groups}</groups>
+  <junitArtifactName default-value="junit:junit">${junitArtifactName}</junitArtifactName>
+  <jvm>${jvm}</jvm>
+  <localRepository>${localRepository}</localRepository>
+  <objectFactory>${objectFactory}</objectFactory>
+  <parallel>${parallel}</parallel>
+  <parallelMavenExecution default-value="${session.parallel}"/>
+  <perCoreThreadCount default-value="true">${perCoreThreadCount}</perCoreThreadCount>
+  <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
+  <pluginDescriptor default-value="${plugin}"/>
+  <printSummary default-value="true">${surefire.printSummary}</printSummary>
+  <project default-value="${project}"/>
+  <projectArtifactMap>${project.artifactMap}</projectArtifactMap>
+  <redirectTestOutputToFile default-value="false">${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
+  <remoteRepositories>${project.pluginArtifactRepositories}</remoteRepositories>
+  <reportFormat default-value="brief">${surefire.reportFormat}</reportFormat>
+  <reportNameSuffix default-value="">${surefire.reportNameSuffix}</reportNameSuffix>
+  <reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+  <runOrder default-value="filesystem"/>
+  <session>${session}</session>
+  <skip default-value="false">${maven.test.skip}</skip>
+  <skipExec>${maven.test.skip.exec}</skipExec>
+  <skipTests default-value="false">${skipTests}</skipTests>
+  <test>${test}</test>
+  <testClassesDirectory default-value="${project.build.testOutputDirectory}"/>
+  <testFailureIgnore default-value="false">${maven.test.failure.ignore}</testFailureIgnore>
+  <testNGArtifactName default-value="org.testng:testng">${testNGArtifactName}</testNGArtifactName>
+  <testSourceDirectory default-value="${project.build.testSourceDirectory}"/>
+  <threadCount>${threadCount}</threadCount>
+  <trimStackTrace default-value="true">${trimStackTrace}</trimStackTrace>
+  <useFile default-value="true">${surefire.useFile}</useFile>
+  <useManifestOnlyJar default-value="true">${surefire.useManifestOnlyJar}</useManifestOnlyJar>
+  <useSystemClassLoader default-value="true">${surefire.useSystemClassLoader}</useSystemClassLoader>
+  <useUnlimitedThreads default-value="false">${useUnlimitedThreads}</useUnlimitedThreads>
+  <workingDirectory>${basedir}</workingDirectory>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-jar-plugin:2.4:jar (default-jar)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <defaultManifestFile default-value="${project.build.outputDirectory}/META-INF/MANIFEST.MF"/>
+  <finalName default-value="${project.build.finalName}">${jar.finalName}</finalName>
+  <forceCreation default-value="false">${jar.forceCreation}</forceCreation>
+  <outputDirectory default-value="${project.build.directory}"/>
+  <project default-value="${project}"/>
+  <session default-value="${session}"/>
+  <skipIfEmpty default-value="false">${jar.skipIfEmpty}</skipIfEmpty>
+  <useDefaultManifestFile default-value="false">${jar.useDefaultManifestFile}</useDefaultManifestFile>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-install-plugin:2.3.1:install (default-install)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <artifact default-value="${project.artifact}"/>
+  <attachedArtifacts default-value="${project.attachedArtifacts}"/>
+  <createChecksum default-value="false">${createChecksum}</createChecksum>
+  <localRepository>${localRepository}</localRepository>
+  <packaging default-value="${project.packaging}"/>
+  <pomFile default-value="${project.file}"/>
+  <updateReleaseInfo default-value="false">${updateReleaseInfo}</updateReleaseInfo>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <altDeploymentRepository>${altDeploymentRepository}</altDeploymentRepository>
+  <artifact default-value="${project.artifact}"/>
+  <attachedArtifacts default-value="${project.attachedArtifacts}"/>
+  <localRepository default-value="${localRepository}"/>
+  <offline default-value="${settings.offline}"/>
+  <packaging default-value="${project.packaging}"/>
+  <pomFile default-value="${project.file}"/>
+  <project default-value="${project}"/>
+  <retryFailedDeploymentCount default-value="1">${retryFailedDeploymentCount}</retryFailedDeploymentCount>
+  <skip default-value="false">${maven.deploy.skip}</skip>
+  <updateReleaseInfo default-value="false">${updateReleaseInfo}</updateReleaseInfo>
+</configuration>
+[DEBUG] =======================================================================
+[DEBUG] com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT
+[DEBUG]    org.slf4j:slf4j-api:jar:1.6.4:compile
+[DEBUG]    junit:junit:jar:4.10:test
+[DEBUG]       org.hamcrest:hamcrest-core:jar:1.1:test
+[DEBUG]    org.testng:testng:jar:6.4:test
+[DEBUG]       org.beanshell:bsh:jar:2.0b4:test
+[DEBUG]       com.beust:jcommander:jar:1.12:test
+[DEBUG]       org.yaml:snakeyaml:jar:1.6:test
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-clean-plugin:jar:2.4.1:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:2.0.5:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-clean-plugin:2.4.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-clean-plugin:2.4.1
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-clean-plugin:2.4.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-clean-plugin:jar:2.4.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:2.0.5
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-clean-plugin:2.4.1:clean from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-clean-plugin:2.4.1, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-clean-plugin:2.4.1:clean' with basic configurator -->
+[DEBUG]   (f) directory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[DEBUG]   (f) excludeDefaultDirectories = false
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) followSymLinks = false
+[DEBUG]   (f) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   (f) reportDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/site
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) testOutputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG] -- end configuration --
+[INFO] Deleting /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/maven-archiver/pom.properties
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/maven-archiver
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/generated-sources/annotations
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/generated-sources
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/MANIFEST.MF
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart/pom.properties
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart/pom.xml
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/maven/com.barchart.base
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/maven
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/license-osi-bsd.txt
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/com/barchart/test/Dummy.class
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/com/barchart/test
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/com/barchart
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/com
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire5702761724801994003tmp
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefirebooter2573899551708915268.jar
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefirebooter6423777913391781686.jar
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire_05759792809404372507tmp
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire3950533833509717857tmp
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire_17944291787486026851tmp
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[INFO] Deleting file /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.jar
+[INFO] Deleting directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[DEBUG] Skipping non-existing directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG] Skipping non-existing directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG] Skipping non-existing directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/site
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-maven) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-enforcer-plugin:jar:1.0.1:
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.2:test (scope managed from compile) (version managed from 3.8.1)
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile
+[DEBUG]          org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
+[DEBUG]       commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.9:compile
+[DEBUG]       classworlds:classworlds:jar:1.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:1.5.8:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.3:compile
+[DEBUG]    org.apache.maven.enforcer:enforcer-api:jar:1.0.1:compile
+[DEBUG]    org.apache.maven.enforcer:enforcer-rules:jar:1.0.1:compile
+[DEBUG]       org.apache.maven.shared:maven-common-artifact-filters:jar:1.2:compile
+[DEBUG]          org.apache.maven.shared:maven-plugin-testing-harness:jar:1.1:test (scope managed from compile)
+[DEBUG]             org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:test
+[DEBUG]       org.beanshell:bsh:jar:2.0b4:compile
+[DEBUG]       org.apache.maven.shared:maven-dependency-tree:jar:1.2:compile
+[DEBUG]       org.codehaus.plexus:plexus-i18n:jar:1.0-beta-6:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0.1
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-enforcer-plugin:jar:1.0.1
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.9
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.8
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.3
+[DEBUG]   Included: org.apache.maven.enforcer:enforcer-api:jar:1.0.1
+[DEBUG]   Included: org.apache.maven.enforcer:enforcer-rules:jar:1.0.1
+[DEBUG]   Included: org.apache.maven.shared:maven-common-artifact-filters:jar:1.2
+[DEBUG]   Included: org.beanshell:bsh:jar:2.0b4
+[DEBUG]   Included: org.apache.maven.shared:maven-dependency-tree:jar:1.2
+[DEBUG]   Included: org.codehaus.plexus:plexus-i18n:jar:1.0-beta-6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.9
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   Excluded: junit:junit:jar:3.8.2
+[DEBUG]   Excluded: org.apache.maven:maven-core:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-error-diagnostics:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-monitor:jar:2.0.9
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1
+[DEBUG]   Excluded: org.apache.maven.shared:maven-plugin-testing-harness:jar:1.1
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-enforcer-plugin:1.0.1:enforce from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0.1, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-enforcer-plugin:1.0.1:enforce' with basic configurator -->
+[DEBUG]   (s) fail = true
+[DEBUG]   (s) failFast = false
+[DEBUG]   (f) ignoreCache = false
+[DEBUG]   (s) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (s) version = 3.0.4
+[DEBUG]   (f) message = you must have mavenVersion >= 3.0.4
+[DEBUG]   (s) rules = [org.apache.maven.plugins.enforcer.RequireMavenVersion@178a7d9]
+[DEBUG]   (s) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (s) skip = false
+[DEBUG] -- end configuration --
+[DEBUG] Executing rule: org.apache.maven.plugins.enforcer.RequireMavenVersion
+[DEBUG] Rule org.apache.maven.plugins.enforcer.RequireMavenVersion is cacheable.
+[DEBUG] Detected Maven Version: 3.0.4
+[DEBUG] Detected Maven Version: 3.0.4 is allowed in the range 3.0.4.
+[INFO] 
+[INFO] --- groovy-maven-plugin:1.4:execute (provide-custom-properties) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.codehaus.mojo:groovy-maven-plugin:jar:1.4:
+[DEBUG]    org.codehaus.gmaven:gmaven-plugin:jar:1.4:compile
+[DEBUG]       org.codehaus.gmaven.runtime:gmaven-runtime-api:jar:1.4:compile
+[DEBUG]          org.codehaus.gmaven.feature:gmaven-feature-api:jar:1.4:compile
+[DEBUG]       org.codehaus.gmaven.runtime:gmaven-runtime-loader:jar:1.4:compile
+[DEBUG]          org.codehaus.gmaven.feature:gmaven-feature-support:jar:1.4:compile
+[DEBUG]          org.codehaus.plexus:plexus-classworlds:jar:2.4:compile
+[DEBUG]       org.codehaus.gmaven.runtime:gmaven-runtime-support:jar:1.4:compile
+[DEBUG]          org.sonatype.gshell:gshell-io:jar:2.4:compile
+[DEBUG]          org.codehaus.plexus:plexus-utils:jar:3.0:compile
+[DEBUG]          com.thoughtworks.qdox:qdox:jar:1.12:compile
+[DEBUG]       org.apache.maven.shared:file-management:jar:1.2.1:compile
+[DEBUG]          org.apache.maven:maven-plugin-api:jar:2.0.10:compile (version managed from 2.0.6)
+[DEBUG]          org.apache.maven.shared:maven-shared-io:jar:1.1:compile
+[DEBUG]             org.apache.maven:maven-artifact-manager:jar:2.0.2:compile
+[DEBUG]                org.apache.maven:maven-repository-metadata:jar:2.0.2:compile
+[DEBUG]             org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-6:compile
+[DEBUG]          org.codehaus.plexus:plexus-container-default:jar:1.5.5:compile (version managed from 1.0-alpha-9)
+[DEBUG]             org.apache.xbean:xbean-reflect:jar:3.4:compile
+[DEBUG]                log4j:log4j:jar:1.2.12:compile
+[DEBUG]                commons-logging:commons-logging-api:jar:1.1:compile
+[DEBUG]             com.google.collections:google-collections:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0.10:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.10:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-impl:jar:2.0.4.1:compile
+[DEBUG]          org.apache.maven:maven-project:jar:2.0.10:compile (version managed from 2.0.4)
+[DEBUG]             org.apache.maven:maven-settings:jar:2.0.10:compile
+[DEBUG]             org.apache.maven:maven-profile:jar:2.0.10:compile
+[DEBUG]             org.apache.maven:maven-model:jar:2.0.10:compile
+[DEBUG]             org.apache.maven:maven-plugin-registry:jar:2.0.10:compile
+[DEBUG]             org.codehaus.plexus:plexus-interpolation:jar:1.1:compile
+[DEBUG]          commons-validator:commons-validator:jar:1.2.0:compile
+[DEBUG]             commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[DEBUG]             commons-digester:commons-digester:jar:1.6:compile
+[DEBUG]             commons-logging:commons-logging:jar:1.0.4:compile
+[DEBUG]             oro:oro:jar:2.0.8:compile
+[DEBUG]             xml-apis:xml-apis:jar:1.0.b2:compile
+[DEBUG]          org.apache.maven.doxia:doxia-core:jar:1.0-alpha-10:compile
+[DEBUG]             org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10:compile
+[DEBUG]          org.apache.maven.reporting:maven-reporting-api:jar:2.0.4:compile
+[DEBUG]          org.apache.maven.doxia:doxia-site-renderer:jar:1.0-alpha-10:compile
+[DEBUG]             org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7:compile
+[DEBUG]             org.codehaus.plexus:plexus-velocity:jar:1.1.7:compile
+[DEBUG]             org.apache.velocity:velocity:jar:1.5:compile
+[DEBUG]             org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-10:compile
+[DEBUG]             commons-collections:commons-collections:jar:3.2:compile
+[DEBUG]             org.apache.maven.doxia:doxia-module-apt:jar:1.0-alpha-10:compile
+[DEBUG]             org.apache.maven.doxia:doxia-module-fml:jar:1.0-alpha-10:compile
+[DEBUG]             org.apache.maven.doxia:doxia-module-xdoc:jar:1.0-alpha-10:compile
+[DEBUG]             org.apache.maven.doxia:doxia-module-xhtml:jar:1.0-alpha-10:compile
+[DEBUG]       commons-lang:commons-lang:jar:2.6:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:1.5.10:compile
+[DEBUG]       org.sonatype.gossip:gossip:jar:1.2:compile
+[DEBUG] Created new class realm plugin>org.codehaus.mojo:groovy-maven-plugin:1.4
+[DEBUG] Importing foreign packages into class realm plugin>org.codehaus.mojo:groovy-maven-plugin:1.4
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.codehaus.mojo:groovy-maven-plugin:1.4
+[DEBUG]   Included: org.codehaus.mojo:groovy-maven-plugin:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven:gmaven-plugin:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven.runtime:gmaven-runtime-api:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven.feature:gmaven-feature-api:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven.runtime:gmaven-runtime-loader:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven.feature:gmaven-feature-support:jar:1.4
+[DEBUG]   Included: org.codehaus.gmaven.runtime:gmaven-runtime-support:jar:1.4
+[DEBUG]   Included: org.sonatype.gshell:gshell-io:jar:2.4
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0
+[DEBUG]   Included: com.thoughtworks.qdox:qdox:jar:1.12
+[DEBUG]   Included: org.apache.maven.shared:file-management:jar:1.2.1
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-io:jar:1.1
+[DEBUG]   Included: org.apache.xbean:xbean-reflect:jar:3.4
+[DEBUG]   Included: log4j:log4j:jar:1.2.12
+[DEBUG]   Included: commons-logging:commons-logging-api:jar:1.1
+[DEBUG]   Included: com.google.collections:google-collections:jar:1.0
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-impl:jar:2.0.4.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.1
+[DEBUG]   Included: commons-validator:commons-validator:jar:1.2.0
+[DEBUG]   Included: commons-beanutils:commons-beanutils:jar:1.7.0
+[DEBUG]   Included: commons-digester:commons-digester:jar:1.6
+[DEBUG]   Included: commons-logging:commons-logging:jar:1.0.4
+[DEBUG]   Included: oro:oro:jar:2.0.8
+[DEBUG]   Included: xml-apis:xml-apis:jar:1.0.b2
+[DEBUG]   Included: org.apache.maven.doxia:doxia-core:jar:1.0-alpha-10
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.4
+[DEBUG]   Included: org.apache.maven.doxia:doxia-site-renderer:jar:1.0-alpha-10
+[DEBUG]   Included: org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7
+[DEBUG]   Included: org.codehaus.plexus:plexus-velocity:jar:1.1.7
+[DEBUG]   Included: org.apache.velocity:velocity:jar:1.5
+[DEBUG]   Included: org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-10
+[DEBUG]   Included: commons-collections:commons-collections:jar:3.2
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-apt:jar:1.0-alpha-10
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-fml:jar:1.0-alpha-10
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-xdoc:jar:1.0-alpha-10
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-xhtml:jar:1.0-alpha-10
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.6
+[DEBUG]   Included: org.slf4j:slf4j-api:jar:1.5.10
+[DEBUG]   Included: org.sonatype.gossip:gossip:jar:1.2
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-classworlds:jar:2.4
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.2
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.2
+[DEBUG]   Excluded: org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-6
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.5.5
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.10
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.10
+[DEBUG] Configuring mojo org.codehaus.mojo:groovy-maven-plugin:1.4:execute from plugin realm ClassRealm[plugin>org.codehaus.mojo:groovy-maven-plugin:1.4, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.codehaus.mojo:groovy-maven-plugin:1.4:execute' with override configurator -->
+[DEBUG]   (f) artifactRepository =        id: local
+      url: file:///home/user1/.m2/repository/
+   layout: none
+
+[DEBUG]   (f) pluginArtifactMap = {org.codehaus.mojo:groovy-maven-plugin=org.codehaus.mojo:groovy-maven-plugin:maven-plugin:1.4:, org.codehaus.gmaven:gmaven-plugin=org.codehaus.gmaven:gmaven-plugin:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-api=org.codehaus.gmaven.runtime:gmaven-runtime-api:jar:1.4:compile, org.codehaus.gmaven.feature:gmaven-feature-api=org.codehaus.gmaven.feature:gmaven-feature-api:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-loader=org.codehaus.gmaven.runtime:gmaven-runtime-loader:jar:1.4:compile, org.codehaus.gmaven.feature:gmaven-feature-support=org.codehaus.gmaven.feature:gmaven-feature-support:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-support=org.codehaus.gmaven.runtime:gmaven-runtime-support:jar:1.4:compile, org.sonatype.gshell:gshell-io=org.sonatype.gshell:gshell-io:jar:2.4:compile, org.codehaus.plexus:plexus-utils=org.codehaus.plexus:plexus-utils:jar:3.0:compile, com.thoughtworks.qdox:qdox=com.thoughtworks.qdox:qdox:jar:1.12:compile, org.apache.maven.shared:file-management=org.apache.maven.shared:file-management:jar:1.2.1:compile, org.apache.maven.shared:maven-shared-io=org.apache.maven.shared:maven-shared-io:jar:1.1:compile, org.apache.xbean:xbean-reflect=org.apache.xbean:xbean-reflect:jar:3.4:compile, log4j:log4j=log4j:log4j:jar:1.2.12:compile, commons-logging:commons-logging-api=commons-logging:commons-logging-api:jar:1.1:compile, com.google.collections:google-collections=com.google.collections:google-collections:jar:1.0:compile, org.apache.maven.reporting:maven-reporting-impl=org.apache.maven.reporting:maven-reporting-impl:jar:2.0.4.1:compile, org.codehaus.plexus:plexus-interpolation=org.codehaus.plexus:plexus-interpolation:jar:1.1:compile, commons-validator:commons-validator=commons-validator:commons-validator:jar:1.2.0:compile, commons-beanutils:commons-beanutils=commons-beanutils:commons-beanutils:jar:1.7.0:compile, commons-digester:commons-digester=commons-digester:commons-digester:jar:1.6:compile, commons-logging:commons-logging=commons-logging:commons-logging:jar:1.0.4:compile, oro:oro=oro:oro:jar:2.0.8:compile, xml-apis:xml-apis=xml-apis:xml-apis:jar:1.0.b2:compile, org.apache.maven.doxia:doxia-core=org.apache.maven.doxia:doxia-core:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-sink-api=org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10:compile, org.apache.maven.reporting:maven-reporting-api=org.apache.maven.reporting:maven-reporting-api:jar:2.0.4:compile, org.apache.maven.doxia:doxia-site-renderer=org.apache.maven.doxia:doxia-site-renderer:jar:1.0-alpha-10:compile, org.codehaus.plexus:plexus-i18n=org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7:compile, org.codehaus.plexus:plexus-velocity=org.codehaus.plexus:plexus-velocity:jar:1.1.7:compile, org.apache.velocity:velocity=org.apache.velocity:velocity:jar:1.5:compile, org.apache.maven.doxia:doxia-decoration-model=org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-10:compile, commons-collections:commons-collections=commons-collections:commons-collections:jar:3.2:compile, org.apache.maven.doxia:doxia-module-apt=org.apache.maven.doxia:doxia-module-apt:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-fml=org.apache.maven.doxia:doxia-module-fml:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-xdoc=org.apache.maven.doxia:doxia-module-xdoc:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-xhtml=org.apache.maven.doxia:doxia-module-xhtml:jar:1.0-alpha-10:compile, commons-lang:commons-lang=commons-lang:commons-lang:jar:2.6:compile, org.slf4j:slf4j-api=org.slf4j:slf4j-api:jar:1.5.10:compile, org.sonatype.gossip:gossip=org.sonatype.gossip:gossip:jar:1.2:compile}
+[DEBUG]   (f) pluginArtifacts = [org.codehaus.mojo:groovy-maven-plugin:maven-plugin:1.4:, org.codehaus.gmaven:gmaven-plugin:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-api:jar:1.4:compile, org.codehaus.gmaven.feature:gmaven-feature-api:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-loader:jar:1.4:compile, org.codehaus.gmaven.feature:gmaven-feature-support:jar:1.4:compile, org.codehaus.gmaven.runtime:gmaven-runtime-support:jar:1.4:compile, org.sonatype.gshell:gshell-io:jar:2.4:compile, org.codehaus.plexus:plexus-utils:jar:3.0:compile, com.thoughtworks.qdox:qdox:jar:1.12:compile, org.apache.maven.shared:file-management:jar:1.2.1:compile, org.apache.maven.shared:maven-shared-io:jar:1.1:compile, org.apache.xbean:xbean-reflect:jar:3.4:compile, log4j:log4j:jar:1.2.12:compile, commons-logging:commons-logging-api:jar:1.1:compile, com.google.collections:google-collections:jar:1.0:compile, org.apache.maven.reporting:maven-reporting-impl:jar:2.0.4.1:compile, org.codehaus.plexus:plexus-interpolation:jar:1.1:compile, commons-validator:commons-validator:jar:1.2.0:compile, commons-beanutils:commons-beanutils:jar:1.7.0:compile, commons-digester:commons-digester:jar:1.6:compile, commons-logging:commons-logging:jar:1.0.4:compile, oro:oro:jar:2.0.8:compile, xml-apis:xml-apis:jar:1.0.b2:compile, org.apache.maven.doxia:doxia-core:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10:compile, org.apache.maven.reporting:maven-reporting-api:jar:2.0.4:compile, org.apache.maven.doxia:doxia-site-renderer:jar:1.0-alpha-10:compile, org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7:compile, org.codehaus.plexus:plexus-velocity:jar:1.1.7:compile, org.apache.velocity:velocity:jar:1.5:compile, org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-10:compile, commons-collections:commons-collections:jar:3.2:compile, org.apache.maven.doxia:doxia-module-apt:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-fml:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-xdoc:jar:1.0-alpha-10:compile, org.apache.maven.doxia:doxia-module-xhtml:jar:1.0-alpha-10:compile, commons-lang:commons-lang:jar:2.6:compile, org.slf4j:slf4j-api:jar:1.5.10:compile, org.sonatype.gossip:gossip:jar:1.2:compile]
+[DEBUG]   (f) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (f) remoteRepositories = [       id: barchart-nexus-archon
+      url: https://nexus.barchart.com/content/groups/archon
+   layout: default
+snapshots: [enabled => true, update => daily]
+ releases: [enabled => true, update => daily]
+,        id: central
+      url: http://repo.maven.apache.org/maven2
+   layout: default
+snapshots: [enabled => false, update => daily]
+ releases: [enabled => true, update => never]
+]
+[DEBUG]   (f) sanitizeErrors = true
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) settings = org.apache.maven.execution.SettingsAdapter@dca7d0
+[DEBUG]   (f) source = <source>//
+		import java.text.MessageFormat;
+		//
+		barchartTimeLong = System.currentTimeMillis();
+		project.properties["barchartTimeLong"] = barchartTimeLong;
+		println("### barchartTimeLong=" + barchartTimeLong);
+		//
+		barchartTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}",barchartTimeLong);
+		project.properties["barchartTimeFile"] = barchartTimeFile;
+		println("### barchartTimeFile=" + barchartTimeFile);
+		//
+		barchartTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}",barchartTimeLong);
+		project.properties["barchartTimeISO"] = barchartTimeISO;
+		println("### barchartTimeISO=" + barchartTimeISO);
+		//
+		barchartTimeYear=MessageFormat.format("{0,date,yyyy}",barchartTimeLong);
+		project.properties["barchartTimeYear"] = barchartTimeYear;
+		println("### barchartTimeYear=" + barchartTimeYear);
+		//</source>
+
+[DEBUG]   (f) trapAssertionErrors = true
+[DEBUG] -- end configuration --
+[DEBUG] org.codehaus.gmaven.runtime:gmaven-runtime-loader-stub:jar:1.4 (selected for null)
+[DEBUG]   org.codehaus.gmaven.runtime:gmaven-runtime-1.6:jar:1.4:runtime (selected for runtime)
+[DEBUG]     org.slf4j:slf4j-api:jar:1.5.10:runtime (selected for runtime)
+[DEBUG]     org.codehaus.gmaven.feature:gmaven-feature-support:jar:1.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.gmaven.feature:gmaven-feature-api:jar:1.4:runtime (selected for runtime)
+[DEBUG]     org.codehaus.gmaven.runtime:gmaven-runtime-support:jar:1.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.gmaven.runtime:gmaven-runtime-api:jar:1.4:runtime (selected for runtime)
+[DEBUG]       org.sonatype.gshell:gshell-io:jar:2.4:runtime (selected for runtime)
+[DEBUG]         org.sonatype.gossip:gossip:jar:1.3:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:3.0:runtime (selected for runtime)
+[DEBUG]       com.thoughtworks.qdox:qdox:jar:1.12:runtime (selected for runtime)
+[DEBUG]     org.codehaus.groovy:groovy-all:jar:1.6.9:runtime (selected for runtime)
+[DEBUG]       org.apache.ant:ant:jar:1.7.1:runtime (selected for runtime)
+[DEBUG]         org.apache.ant:ant-launcher:jar:1.7.1:runtime (selected for runtime)
+[DEBUG]       org.apache.ant:ant-launcher:jar:1.7.1:runtime (selected for runtime)
+[DEBUG]     jline:jline:jar:0.9.94:runtime (selected for runtime)
+[DEBUG]       junit:junit:jar:3.8.1:runtime (selected for runtime)
+### barchartTimeLong=1333745787964
+### barchartTimeFile=2012-04-06_15-56-27
+### barchartTimeISO=2012-04-06T15:56:27.964-0500
+### barchartTimeYear=2012
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-resources-plugin:jar:2.5:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-api:jar:2.0.6:compile
+[DEBUG]          org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.6:compile
+[DEBUG]       commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.6:compile
+[DEBUG]       org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]       classworlds:classworlds:jar:1.1:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-settings:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-model:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-monitor:jar:2.0.6:compile
+[DEBUG]    org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]       junit:junit:jar:3.8.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:2.0.5:compile
+[DEBUG]    org.apache.maven.shared:maven-filtering:jar:1.0:compile
+[DEBUG]       org.sonatype.plexus:plexus-build-api:jar:0.0.4:compile
+[DEBUG]    org.codehaus.plexus:plexus-interpolation:jar:1.13:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-resources-plugin:2.5
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-resources-plugin:2.5
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-resources-plugin:2.5
+[DEBUG]   Included: org.apache.maven.plugins:maven-resources-plugin:jar:2.5
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:2.0.5
+[DEBUG]   Included: org.apache.maven.shared:maven-filtering:jar:1.0
+[DEBUG]   Included: org.sonatype.plexus:plexus-build-api:jar:0.0.4
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.13
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-core:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-error-diagnostics:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.6
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-resources-plugin:2.5:resources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:2.5, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[debug] execute contextualize
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-resources-plugin:2.5:resources' with basic configurator -->
+[DEBUG]   (f) buildFilters = []
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) escapeWindowsPaths = true
+[DEBUG]   (s) includeEmptyDirs = false
+[DEBUG]   (s) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   (s) overwrite = false
+[DEBUG]   (f) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (s) resources = [Resource {targetPath: null, filtering: false, FileSet {directory: /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/license, PatternSet [includes: {}, excludes: {}]}}]
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) supportMultiLineFiltering = false
+[DEBUG]   (f) useBuildFilters = true
+[DEBUG]   (s) useDefaultDelimiters = true
+[DEBUG] -- end configuration --
+[DEBUG] properties used {java.vendor=Sun Microsystems Inc., env.SESSION_MANAGER=local/wks002:@/tmp/.ICE-unix/2278,unix/wks002:/tmp/.ICE-unix/2278, env.LIBOVERLAY_SCROLLBAR=0, sun.java.launcher=SUN_STANDARD, sun.management.compiler=HotSpot Tiered Compilers, os.name=Linux, sun.boot.class.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/resources.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/rt.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/sunrsasign.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/jsse.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/jce.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/charsets.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/opt/oracle/java32/jdk1.6.0_31/jre/classes, env.QT_GRAPHICSSYSTEM=raster, env.PWD=/work/git/barchart-archon/barchart-archon-test-dist-barchart, env.XDG_SESSION_COOKIE=c7ab27f643d18d29ece577b800000003-1333712827.344216-877778930, barchartTimeYear=2012, releaseArguments=--define resume=false, env.LANG=en_US.UTF-8, java.vm.specification.vendor=Sun Microsystems Inc., java.runtime.version=1.6.0_31-b04, env.DEFAULTS_PATH=/usr/share/gconf/kde-plasma.default.path, project.build.sourceEncoding=UTF-8, env.DISPLAY=:0, gpg.keyname=2E117339, barchartScalaVersion=2.9.1, user.name=user1, maven.build.version=Apache Maven 3.0.4 (r1232337; 2012-01-17 02:44:56-0600), env.USER=user1, env.SHELL=/bin/bash, env.MOZILLA_FIVE_HOME=/usr/lib/xulrunner-1.9.2.17, env.KDE_MULTIHEAD=false, env.DESKTOP_SESSION=kde-plasma, env.XDG_DATA_DIRS=/usr/share/kde-plasma:/usr/local/share/:/usr/share/, env.NLSPATH=/usr/dt/lib/nls/msg/%L/%N.cat, env.PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games, env.R_HOME=/usr/lib/R, user.language=en, barchartJavaVersion=1.6, env.GS_LIB=/home/user1/.fonts, sun.boot.library.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386, classworlds.conf=/opt/apache/apache-maven-3.0.4/bin/m2.conf, env.QT_PLUGIN_PATH=/home/user1/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/, amazonReleaseRepo=maven.aws.barchart.com, env.KDE_SESSION_UID=1001, java.version=1.6.0_31, env.KDE_FULL_SESSION=true, user.timezone=America/Chicago, env.DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-FO0wSwh9PJ,guid=92f16ea5f2bd03366f12bfbd0000004a, sun.arch.data.model=32, env.SSH_AGENT_PID=2103, java.endorsed.dirs=/opt/oracle/java32/jdk1.6.0_31/jre/lib/endorsed, barchartSnapshotsURL=https://nexus.barchart.com/content/repositories/snapshots, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, env.SHLVL=0, file.separator=/, java.specification.name=Java Platform API Specification, env.XCURSOR_THEME=default, gpg.passphrase=d3af5a1b-5be4-89bf-efef-880c28907dd8, java.class.version=50.0, env.KDE_SESSION_VERSION=4, barchartTimeLong=1333745787964, user.country=US, java.home=/opt/oracle/java32/jdk1.6.0_31/jre, java.vm.info=mixed mode, env.LOGNAME=user1, os.version=3.0.0-17-generic-pae, sonatypeReleaseURL=https://oss.sonatype.org/content/repositories/releases, project.reporting.outputEncoding=UTF-8, path.separator=:, java.vm.version=20.6-b01, env.DM_CONTROL=/var/run/xdmctl, env.JAVA_HOME=/opt/oracle/java32/jdk1.6.0_31, java.awt.printerjob=sun.print.PSPrinterJob, env.WINDOWPATH=7, sun.io.unicode.encoding=UnicodeLittle, amazonActiveRepo=activate-via-profile, user.home=/home/user1, barchartArchonURL=https://nexus.barchart.com/content/groups/archon, env.OLDPWD=/work/git/barchart-archon/barchart-archon-test-dist-barchart, sonatypeSnapshotsURL=https://oss.sonatype.org/content/repositories/snapshots, java.specification.vendor=Sun Microsystems Inc., java.library.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386/server:/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386:/opt/oracle/java32/jdk1.6.0_31/jre/../lib/i386:/usr/lib/jvm/java-7-oracle/jre/lib/i386/client:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib, java.vendor.url=http://java.sun.com/, java.vm.vendor=Sun Microsystems Inc., maven.home=/opt/apache/apache-maven-3.0.4, java.runtime.name=Java(TM) SE Runtime Environment, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher clean deploy --update-snapshots --debug, java.class.path=/opt/apache/apache-maven-3.0.4/boot/plexus-classworlds-2.4.jar, maven.version=3.0.4, env.UBUNTU_MENUPROXY=libappmenu.so, env.XFILESEARCHPATH=/usr/dt/app-defaults/%L/Dt, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.0, env.XDM_MANAGED=method=classic, sun.cpu.endian=little, env.GTK_RC_FILES=/etc/gtk/gtkrc:/home/user1/.gtkrc:/home/user1/.kde/share/config/gtkrc, sun.os.patch.level=unknown, env.HOME=/home/user1, env.ANT_HOME=/opt/genuitec/Common/plugins/org.apache.ant_1.8.2.v20120109-1030, barchartTimeFile=2012-04-06_15-56-27, java.io.tmpdir=/tmp, env.LD_LIBRARY_PATH=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386/server:/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386:/opt/oracle/java32/jdk1.6.0_31/jre/../lib/i386:/usr/lib/jvm/java-7-oracle/jre/lib/i386/client:/usr/lib/jvm/java-7-oracle/jre/lib/i386:, sonatypeStagingURL=https://oss.sonatype.org/service/local/staging/deploy/maven2/, java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi, env.SSH_AUTH_SOCK=/tmp/ssh-gKliHyqb2056/agent.2056, amazonStagingRepo=maven.aws-dev.barchart.com, os.arch=i386, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, barchartMavenVersion=3.0.4, java.ext.dirs=/opt/oracle/java32/jdk1.6.0_31/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/work/git/barchart-archon/barchart-archon-test-dist-barchart, env.MANDATORY_PATH=/usr/share/gconf/kde-plasma.mandatory.path, env.GTK_MODULES=canberra-gtk-module:canberra-gtk-module, line.separator=
+, java.vm.name=Java HotSpot(TM) Server VM, env.GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/user1/.gtkrc-2.0:/home/user1/.gtkrc-2.0-kde4:/home/user1/.kde/share/config/gtkrc-2.0, env.JAVA_KEYS=   -Dgpg.keyname=2E117339   -Dgpg.passphrase=d3af5a1b-5be4-89bf-efef-880c28907dd8    , sonatypeArchonURL=https://oss.sonatype.org/content/groups/public, file.encoding=UTF-8, java.specification.version=1.6, env.XDG_CONFIG_DIRS=/etc/xdg/xdg-kde-plasma:/etc/xdg, barchartTimeISO=2012-04-06T15:56:27.964-0500, barchartReleaseURL=https://nexus.barchart.com/content/repositories/releases}
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] resource with targetPath null
+directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/license
+excludes []
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 1 resource
+[DEBUG] file license-osi-bsd.txt has a filtered file extension
+[DEBUG] copy /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/license/license-osi-bsd.txt to /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/license-osi-bsd.txt
+[DEBUG] no use filter components
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-compiler-plugin:jar:2.3.2:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-project:jar:2.0.6:compile
+[DEBUG]          org.apache.maven:maven-plugin-registry:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-toolchain:jar:1.0:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:2.0.5:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-api:jar:1.8.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-manager:jar:1.8.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-javac:jar:1.8.1:runtime
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:2.3.2
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:2.3.2
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:2.3.2
+[DEBUG]   Included: org.apache.maven.plugins:maven-compiler-plugin:jar:2.3.2
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:2.0.5
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-api:jar:1.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-manager:jar:1.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-javac:jar:1.8.1
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-core:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-error-diagnostics:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-toolchain:jar:1.0
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:2.3.2, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile' with basic configurator -->
+[DEBUG]   (f) basedir = /work/git/barchart-archon/barchart-archon-test-dist-barchart
+[DEBUG]   (f) buildDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[DEBUG]   (f) classpathElements = [/work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes, /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar]
+[DEBUG]   (f) compileSourceRoots = [/work/git/barchart-archon/barchart-archon-test-dist-barchart/src/main/java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedSourcesDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/generated-sources/annotations
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   (f) outputFileName = barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT
+[DEBUG]   (f) projectArtifact = com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) source = 1.6
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 1.6
+[DEBUG]   (f) verbose = false
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Source directories: [/work/git/barchart-archon/barchart-archon-test-dist-barchart/src/main/java]
+[DEBUG] Classpath: [/work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+ /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar]
+[DEBUG] Output directory: /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG] Classpath:
+[DEBUG]  /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]  /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar
+[DEBUG] Source roots:
+[DEBUG]  /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/main/java
+[DEBUG] Command line options:
+[DEBUG] -d /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes -classpath /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes:/home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar: -sourcepath /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/main/java: /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/main/java/com/barchart/test/Dummy.java -s /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/generated-sources/annotations -g -nowarn -target 1.6 -source 1.6 -encoding UTF-8
+[INFO] Compiling 1 source file to /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ barchart-archon-test-dist-barchart ---
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-resources-plugin:2.5:testResources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:2.5, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[debug] execute contextualize
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-resources-plugin:2.5:testResources' with basic configurator -->
+[DEBUG]   (f) buildFilters = []
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) escapeWindowsPaths = true
+[DEBUG]   (s) includeEmptyDirs = false
+[DEBUG]   (s) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG]   (s) overwrite = false
+[DEBUG]   (f) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (s) resources = [Resource {targetPath: null, filtering: false, FileSet {directory: /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/test/resources, PatternSet [includes: {}, excludes: {}]}}]
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) supportMultiLineFiltering = false
+[DEBUG]   (f) useBuildFilters = true
+[DEBUG]   (s) useDefaultDelimiters = true
+[DEBUG] -- end configuration --
+[DEBUG] properties used {java.vendor=Sun Microsystems Inc., env.SESSION_MANAGER=local/wks002:@/tmp/.ICE-unix/2278,unix/wks002:/tmp/.ICE-unix/2278, env.LIBOVERLAY_SCROLLBAR=0, sun.java.launcher=SUN_STANDARD, sun.management.compiler=HotSpot Tiered Compilers, os.name=Linux, sun.boot.class.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/resources.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/rt.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/sunrsasign.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/jsse.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/jce.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/charsets.jar:/opt/oracle/java32/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/opt/oracle/java32/jdk1.6.0_31/jre/classes, env.QT_GRAPHICSSYSTEM=raster, env.PWD=/work/git/barchart-archon/barchart-archon-test-dist-barchart, env.XDG_SESSION_COOKIE=c7ab27f643d18d29ece577b800000003-1333712827.344216-877778930, barchartTimeYear=2012, releaseArguments=--define resume=false, env.LANG=en_US.UTF-8, java.vm.specification.vendor=Sun Microsystems Inc., java.runtime.version=1.6.0_31-b04, env.DEFAULTS_PATH=/usr/share/gconf/kde-plasma.default.path, project.build.sourceEncoding=UTF-8, env.DISPLAY=:0, gpg.keyname=2E117339, barchartScalaVersion=2.9.1, user.name=user1, maven.build.version=Apache Maven 3.0.4 (r1232337; 2012-01-17 02:44:56-0600), env.USER=user1, env.SHELL=/bin/bash, env.MOZILLA_FIVE_HOME=/usr/lib/xulrunner-1.9.2.17, env.KDE_MULTIHEAD=false, env.DESKTOP_SESSION=kde-plasma, env.XDG_DATA_DIRS=/usr/share/kde-plasma:/usr/local/share/:/usr/share/, env.NLSPATH=/usr/dt/lib/nls/msg/%L/%N.cat, env.PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games, env.R_HOME=/usr/lib/R, user.language=en, barchartJavaVersion=1.6, env.GS_LIB=/home/user1/.fonts, sun.boot.library.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386, classworlds.conf=/opt/apache/apache-maven-3.0.4/bin/m2.conf, env.QT_PLUGIN_PATH=/home/user1/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/, amazonReleaseRepo=maven.aws.barchart.com, env.KDE_SESSION_UID=1001, java.version=1.6.0_31, env.KDE_FULL_SESSION=true, user.timezone=America/Chicago, env.DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-FO0wSwh9PJ,guid=92f16ea5f2bd03366f12bfbd0000004a, sun.arch.data.model=32, env.SSH_AGENT_PID=2103, java.endorsed.dirs=/opt/oracle/java32/jdk1.6.0_31/jre/lib/endorsed, barchartSnapshotsURL=https://nexus.barchart.com/content/repositories/snapshots, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, env.SHLVL=0, file.separator=/, java.specification.name=Java Platform API Specification, env.XCURSOR_THEME=default, gpg.passphrase=d3af5a1b-5be4-89bf-efef-880c28907dd8, java.class.version=50.0, env.KDE_SESSION_VERSION=4, barchartTimeLong=1333745787964, user.country=US, java.home=/opt/oracle/java32/jdk1.6.0_31/jre, java.vm.info=mixed mode, env.LOGNAME=user1, os.version=3.0.0-17-generic-pae, sonatypeReleaseURL=https://oss.sonatype.org/content/repositories/releases, project.reporting.outputEncoding=UTF-8, path.separator=:, java.vm.version=20.6-b01, env.DM_CONTROL=/var/run/xdmctl, env.JAVA_HOME=/opt/oracle/java32/jdk1.6.0_31, java.awt.printerjob=sun.print.PSPrinterJob, env.WINDOWPATH=7, sun.io.unicode.encoding=UnicodeLittle, amazonActiveRepo=activate-via-profile, user.home=/home/user1, barchartArchonURL=https://nexus.barchart.com/content/groups/archon, env.OLDPWD=/work/git/barchart-archon/barchart-archon-test-dist-barchart, sonatypeSnapshotsURL=https://oss.sonatype.org/content/repositories/snapshots, java.specification.vendor=Sun Microsystems Inc., java.library.path=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386/server:/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386:/opt/oracle/java32/jdk1.6.0_31/jre/../lib/i386:/usr/lib/jvm/java-7-oracle/jre/lib/i386/client:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib, java.vendor.url=http://java.sun.com/, java.vm.vendor=Sun Microsystems Inc., maven.home=/opt/apache/apache-maven-3.0.4, java.runtime.name=Java(TM) SE Runtime Environment, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher clean deploy --update-snapshots --debug, java.class.path=/opt/apache/apache-maven-3.0.4/boot/plexus-classworlds-2.4.jar, maven.version=3.0.4, env.UBUNTU_MENUPROXY=libappmenu.so, env.XFILESEARCHPATH=/usr/dt/app-defaults/%L/Dt, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.0, env.XDM_MANAGED=method=classic, sun.cpu.endian=little, env.GTK_RC_FILES=/etc/gtk/gtkrc:/home/user1/.gtkrc:/home/user1/.kde/share/config/gtkrc, sun.os.patch.level=unknown, env.HOME=/home/user1, env.ANT_HOME=/opt/genuitec/Common/plugins/org.apache.ant_1.8.2.v20120109-1030, barchartTimeFile=2012-04-06_15-56-27, java.io.tmpdir=/tmp, env.LD_LIBRARY_PATH=/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386/server:/opt/oracle/java32/jdk1.6.0_31/jre/lib/i386:/opt/oracle/java32/jdk1.6.0_31/jre/../lib/i386:/usr/lib/jvm/java-7-oracle/jre/lib/i386/client:/usr/lib/jvm/java-7-oracle/jre/lib/i386:, sonatypeStagingURL=https://oss.sonatype.org/service/local/staging/deploy/maven2/, java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi, env.SSH_AUTH_SOCK=/tmp/ssh-gKliHyqb2056/agent.2056, amazonStagingRepo=maven.aws-dev.barchart.com, os.arch=i386, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, barchartMavenVersion=3.0.4, java.ext.dirs=/opt/oracle/java32/jdk1.6.0_31/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/work/git/barchart-archon/barchart-archon-test-dist-barchart, env.MANDATORY_PATH=/usr/share/gconf/kde-plasma.mandatory.path, env.GTK_MODULES=canberra-gtk-module:canberra-gtk-module, line.separator=
+, java.vm.name=Java HotSpot(TM) Server VM, env.GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/user1/.gtkrc-2.0:/home/user1/.gtkrc-2.0-kde4:/home/user1/.kde/share/config/gtkrc-2.0, env.JAVA_KEYS=   -Dgpg.keyname=2E117339   -Dgpg.passphrase=d3af5a1b-5be4-89bf-efef-880c28907dd8    , sonatypeArchonURL=https://oss.sonatype.org/content/groups/public, file.encoding=UTF-8, java.specification.version=1.6, env.XDG_CONFIG_DIRS=/etc/xdg/xdg-kde-plasma:/etc/xdg, barchartTimeISO=2012-04-06T15:56:27.964-0500, barchartReleaseURL=https://nexus.barchart.com/content/repositories/releases}
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] resource with targetPath null
+directory /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/test/resources
+excludes []
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 0 resource
+[DEBUG] no use filter components
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ barchart-archon-test-dist-barchart ---
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:2.3.2, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile' with basic configurator -->
+[DEBUG]   (f) basedir = /work/git/barchart-archon/barchart-archon-test-dist-barchart
+[DEBUG]   (f) buildDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[DEBUG]   (f) classpathElements = [/work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes, /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes, /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar, /home/user1/.m2/repository/junit/junit/4.10/junit-4.10.jar, /home/user1/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar, /home/user1/.m2/repository/org/testng/testng/6.4/testng-6.4.jar, /home/user1/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar, /home/user1/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar, /home/user1/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar]
+[DEBUG]   (f) compileSourceRoots = [/work/git/barchart-archon/barchart-archon-test-dist-barchart/src/test/java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedTestSourcesDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/generated-sources/test-annotations
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG]   (f) outputFileName = barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) source = 1.6
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 1.6
+[DEBUG]   (f) verbose = false
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Source directories: [/work/git/barchart-archon/barchart-archon-test-dist-barchart/src/test/java]
+[DEBUG] Classpath: [/work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+ /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+ /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar
+ /home/user1/.m2/repository/junit/junit/4.10/junit-4.10.jar
+ /home/user1/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+ /home/user1/.m2/repository/org/testng/testng/6.4/testng-6.4.jar
+ /home/user1/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar
+ /home/user1/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar
+ /home/user1/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar]
+[DEBUG] Output directory: /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12:test (default-test) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-surefire-plugin:jar:2.12:
+[DEBUG]    org.apache.maven.surefire:surefire-junit4:jar:2.12:runtime
+[DEBUG]       org.apache.maven.surefire:surefire-api:jar:2.12:compile
+[DEBUG]    org.apache.maven.surefire:surefire-testng:jar:2.12:runtime
+[DEBUG]       org.apache.maven.surefire:surefire-testng-utils:jar:2.12:runtime
+[DEBUG]          org.apache.maven.surefire:surefire-grouper:jar:2.12:runtime
+[DEBUG]       org.testng:testng:jar:jdk15:5.7:runtime
+[DEBUG]          junit:junit:jar:3.8.1:test (scope managed from compile)
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
+[DEBUG]    org.apache.maven.surefire:surefire-booter:jar:2.12:compile
+[DEBUG]    org.apache.maven.surefire:maven-surefire-common:jar:2.12:compile
+[DEBUG]       org.apache.maven.shared:maven-common-artifact-filters:jar:1.3:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.0:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.9:compile
+[DEBUG]       classworlds:classworlds:jar:1.1:compile
+[DEBUG]    org.apache.maven:maven-toolchain:jar:2.0.9:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.12
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.12
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.12
+[DEBUG]   Included: org.apache.maven.plugins:maven-surefire-plugin:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:surefire-junit4:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:surefire-api:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:surefire-testng:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:surefire-testng-utils:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:surefire-grouper:jar:2.12
+[DEBUG]   Included: org.testng:testng:jar:jdk15:5.7
+[DEBUG]   Included: org.apache.maven.surefire:surefire-booter:jar:2.12
+[DEBUG]   Included: org.apache.maven.surefire:maven-surefire-common:jar:2.12
+[DEBUG]   Included: org.apache.maven.shared:maven-common-artifact-filters:jar:1.3
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.9
+[DEBUG]   Excluded: junit:junit:jar:3.8.1
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.9
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   Excluded: org.apache.maven:maven-core:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-error-diagnostics:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.9
+[DEBUG]   Excluded: org.apache.maven:maven-monitor:jar:2.0.9
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1
+[DEBUG]   Excluded: org.apache.maven:maven-toolchain:jar:2.0.9
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-surefire-plugin:2.12:test from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-surefire-plugin:2.12, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-surefire-plugin:2.12:test' with basic configurator -->
+[DEBUG]   (s) basedir = /work/git/barchart-archon/barchart-archon-test-dist-barchart
+[DEBUG]   (s) childDelegation = false
+[DEBUG]   (s) classesDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   (s) disableXmlReport = false
+[DEBUG]   (s) enableAssertions = true
+[DEBUG]   (s) forkMode = once
+[DEBUG]   (s) junitArtifactName = junit:junit
+[DEBUG]   (s) localRepository =        id: local
+      url: file:///home/user1/.m2/repository/
+   layout: none
+
+[DEBUG]   (f) parallelMavenExecution = false
+[DEBUG]   (s) perCoreThreadCount = true
+[DEBUG]   (s) pluginArtifactMap = {org.apache.maven.plugins:maven-surefire-plugin=org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:2.12:, org.apache.maven.surefire:surefire-junit4=org.apache.maven.surefire:surefire-junit4:jar:2.12:runtime, org.apache.maven.surefire:surefire-api=org.apache.maven.surefire:surefire-api:jar:2.12:compile, org.apache.maven.surefire:surefire-testng=org.apache.maven.surefire:surefire-testng:jar:2.12:runtime, org.apache.maven.surefire:surefire-testng-utils=org.apache.maven.surefire:surefire-testng-utils:jar:2.12:runtime, org.apache.maven.surefire:surefire-grouper=org.apache.maven.surefire:surefire-grouper:jar:2.12:runtime, org.testng:testng=org.testng:testng:jar:jdk15:5.7:runtime, org.apache.maven.surefire:surefire-booter=org.apache.maven.surefire:surefire-booter:jar:2.12:compile, org.apache.maven.surefire:maven-surefire-common=org.apache.maven.surefire:maven-surefire-common:jar:2.12:compile, org.apache.maven.shared:maven-common-artifact-filters=org.apache.maven.shared:maven-common-artifact-filters:jar:1.3:compile, org.codehaus.plexus:plexus-utils=org.codehaus.plexus:plexus-utils:jar:3.0:compile, org.apache.maven.reporting:maven-reporting-api=org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile}
+[DEBUG]   (f) pluginDescriptor = Component Descriptor: role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.HelpMojo', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.12:help'
+role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.SurefirePlugin', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.12:test'
+---
+[DEBUG]   (s) printSummary = true
+[DEBUG]   (s) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (s) projectArtifactMap = {org.slf4j:slf4j-api=org.slf4j:slf4j-api:jar:1.6.4:compile, junit:junit=junit:junit:jar:4.10:test, org.hamcrest:hamcrest-core=org.hamcrest:hamcrest-core:jar:1.1:test, org.testng:testng=org.testng:testng:jar:6.4:test, org.beanshell:bsh=org.beanshell:bsh:jar:2.0b4:test, com.beust:jcommander=com.beust:jcommander:jar:1.12:test, org.yaml:snakeyaml=org.yaml:snakeyaml:jar:1.6:test}
+[DEBUG]   (s) redirectTestOutputToFile = false
+[DEBUG]   (s) remoteRepositories = [       id: barchart-nexus-archon
+      url: https://nexus.barchart.com/content/groups/archon
+   layout: default
+snapshots: [enabled => true, update => daily]
+ releases: [enabled => true, update => daily]
+,        id: central
+      url: http://repo.maven.apache.org/maven2
+   layout: default
+snapshots: [enabled => false, update => daily]
+ releases: [enabled => true, update => never]
+]
+[DEBUG]   (s) reportFormat = brief
+[DEBUG]   (s) reportsDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire-reports
+[DEBUG]   (s) runOrder = filesystem
+[DEBUG]   (s) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (s) skip = false
+[DEBUG]   (s) skipTests = false
+[DEBUG]   (s) testClassesDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG]   (s) testFailureIgnore = false
+[DEBUG]   (s) testNGArtifactName = org.testng:testng
+[DEBUG]   (s) testSourceDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/src/test/java
+[DEBUG]   (s) trimStackTrace = true
+[DEBUG]   (s) useFile = true
+[DEBUG]   (s) useManifestOnlyJar = true
+[DEBUG]   (s) useSystemClassLoader = true
+[DEBUG]   (s) useUnlimitedThreads = false
+[DEBUG]   (s) workingDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart
+[DEBUG] -- end configuration --
+[INFO] Surefire report directory: /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire-reports
+[INFO] Using configured provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] Using configured provider org.apache.maven.surefire.testng.TestNGProvider
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.12:compile (selected for compile)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.12:compile (selected for compile)
+[DEBUG] Adding to surefire booter test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-booter/2.12/surefire-booter-2.12.jar Scope: compile
+[DEBUG] Adding to surefire booter test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar Scope: compile
+[DEBUG] Setting system property [user.dir]=[/work/git/barchart-archon/barchart-archon-test-dist-barchart]
+[DEBUG] Setting system property [localRepository]=[/home/user1/.m2/repository]
+[DEBUG] Setting system property [basedir]=[/work/git/barchart-archon/barchart-archon-test-dist-barchart]
+[DEBUG] Using JVM: /opt/oracle/java32/jdk1.6.0_31/jre/bin/java
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG]   org.apache.maven.surefire:surefire-junit4:jar:2.12:test (selected for test)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.12:test (selected for test)
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-junit4/2.12/surefire-junit4-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar Scope: test
+[DEBUG] test classpath classpath:
+[DEBUG]   /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG]   /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar
+[DEBUG]   /home/user1/.m2/repository/junit/junit/4.10/junit-4.10.jar
+[DEBUG]   /home/user1/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+[DEBUG]   /home/user1/.m2/repository/org/testng/testng/6.4/testng-6.4.jar
+[DEBUG]   /home/user1/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar
+[DEBUG]   /home/user1/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng-utils/2.12/surefire-testng-utils-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-grouper/2.12/surefire-grouper-2.12.jar
+[DEBUG] provider classpath classpath:
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-junit4/2.12/surefire-junit4-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Forking command line: /bin/sh -c cd /work/git/barchart-archon/barchart-archon-test-dist-barchart && /opt/oracle/java32/jdk1.6.0_31/jre/bin/java -jar /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefirebooter8636990738807834257.jar /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire1085236409286978906tmp /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire_08448932674145481162tmp
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.12:compile (selected for compile)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.12:compile (selected for compile)
+[DEBUG] Adding to surefire booter test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-booter/2.12/surefire-booter-2.12.jar Scope: compile
+[DEBUG] Adding to surefire booter test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar Scope: compile
+[DEBUG] Setting system property [user.dir]=[/work/git/barchart-archon/barchart-archon-test-dist-barchart]
+[DEBUG] Setting system property [localRepository]=[/home/user1/.m2/repository]
+[DEBUG] Setting system property [basedir]=[/work/git/barchart-archon/barchart-archon-test-dist-barchart]
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG]   org.apache.maven.surefire:surefire-testng:jar:2.12:test (selected for test)
+[DEBUG]     org.apache.maven:maven-artifact:jar:2.0:test (selected for test)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:test (selected for test)
+[DEBUG]     org.apache.maven.surefire:surefire-testng-utils:jar:2.12:test (selected for test)
+[DEBUG]       org.apache.maven.surefire:surefire-grouper:jar:2.12:test (selected for test)
+[DEBUG]       org.testng:testng:jar:jdk15:5.7:test (selected for test)
+[DEBUG]         junit:junit:jar:3.8.1:test (selected for test)
+[DEBUG]       org.apache.maven.surefire:surefire-api:jar:2.12:test (selected for test)
+[DEBUG]     org.apache.maven.surefire:maven-surefire-common:jar:2.12:test (selected for test)
+[DEBUG]       org.apache.maven:maven-plugin-api:jar:2.0.9:test (selected for test)
+[DEBUG]       org.apache.maven.surefire:surefire-booter:jar:2.12:test (selected for test)
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]       org.apache.maven:maven-project:jar:2.0.9:test (selected for test)
+[DEBUG]         org.apache.maven:maven-settings:jar:2.0.9:test (selected for test)
+[DEBUG]           org.apache.maven:maven-model:jar:2.0.9:test (selected for test)
+[DEBUG]             org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]           org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:test (selected for test)
+[DEBUG]             classworlds:classworlds:jar:1.1-alpha-2:test (selected for test)
+[DEBUG]         org.apache.maven:maven-profile:jar:2.0.9:test (selected for test)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.apache.maven:maven-model:jar:2.0.9:test (selected for test)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.apache.maven:maven-artifact-manager:jar:2.0.9:test (selected for test)
+[DEBUG]           org.apache.maven:maven-repository-metadata:jar:2.0.9:test (selected for test)
+[DEBUG]             org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]           org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]           org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:test (selected for test)
+[DEBUG]         org.apache.maven:maven-plugin-registry:jar:2.0.9:test (selected for test)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]         org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:test (selected for test)
+[DEBUG]           classworlds:classworlds:jar:1.1-alpha-2:test (selected for test)
+[DEBUG]       org.apache.maven:maven-core:jar:2.0.9:test (selected for test)
+[DEBUG]         org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:test (selected for test)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:test (selected for test)
+[DEBUG]         org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]         org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:test (selected for test)
+[DEBUG]         org.apache.maven:maven-repository-metadata:jar:2.0.9:test (selected for test)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         org.apache.maven:maven-error-diagnostics:jar:2.0.9:test (selected for test)
+[DEBUG]         org.apache.maven:maven-plugin-descriptor:jar:2.0.9:test (selected for test)
+[DEBUG]           org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]         org.apache.maven:maven-monitor:jar:2.0.9:test (selected for test)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.5.1:test (removed - nearer found: 1.0.4)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:test (removed - nearer found: 1.1)
+[DEBUG]         classworlds:classworlds:jar:1.1:test (selected for test)
+[DEBUG]       org.apache.maven:maven-toolchain:jar:2.0.9:test (selected for test)
+[DEBUG]         org.apache.maven:maven-artifact:jar:2.0.9:test (removed - nearer found: 2.0)
+[DEBUG]       org.apache.maven.shared:maven-common-artifact-filters:jar:1.3:test (selected for test)
+[DEBUG]         org.apache.maven:maven-artifact:jar:2.0.8:test (removed - nearer found: 2.0)
+[DEBUG]         org.apache.maven:maven-model:jar:2.0.8:test (removed - nearer found: 2.0.9)
+[DEBUG]         org.apache.maven:maven-project:jar:2.0.8:test (removed - nearer found: 2.0.9)
+[DEBUG]         org.apache.maven:maven-plugin-api:jar:2.0.8:test (removed - nearer found: 2.0.9)
+[DEBUG]         org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9:test (removed - nearer found: 1.0-alpha-9-stable-1)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.4.9:test (removed - nearer found: 1.0.4)
+[DEBUG]     org.testng:testng:jar:jdk15:5.7:test (selected for test)
+[DEBUG]       junit:junit:jar:3.8.1:test (selected for test)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.12:test (selected for test)
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng/2.12/surefire-testng-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-artifact/2.0/maven-artifact-2.0.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng-utils/2.12/surefire-testng-utils-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-grouper/2.12/surefire-grouper-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/maven-surefire-common/2.12/maven-surefire-common-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/surefire/surefire-booter/2.12/surefire-booter-2.12.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/classworlds/classworlds/1.1/classworlds-1.1.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/reporting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/maven-toolchain/2.0.9/maven-toolchain-2.0.9.jar Scope: test
+[DEBUG] Adding to surefire test classpath: /home/user1/.m2/repository/org/apache/maven/shared/maven-common-artifact-filters/1.3/maven-common-artifact-filters-1.3.jar Scope: test
+[DEBUG] test classpath classpath:
+[DEBUG]   /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/test-classes
+[DEBUG]   /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   /home/user1/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar
+[DEBUG]   /home/user1/.m2/repository/junit/junit/4.10/junit-4.10.jar
+[DEBUG]   /home/user1/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+[DEBUG]   /home/user1/.m2/repository/org/testng/testng/6.4/testng-6.4.jar
+[DEBUG]   /home/user1/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar
+[DEBUG]   /home/user1/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng-utils/2.12/surefire-testng-utils-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-grouper/2.12/surefire-grouper-2.12.jar
+[DEBUG] provider classpath classpath:
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng/2.12/surefire-testng-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-artifact/2.0/maven-artifact-2.0.jar
+[DEBUG]   /home/user1/.m2/repository/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-testng-utils/2.12/surefire-testng-utils-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-grouper/2.12/surefire-grouper-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-api/2.12/surefire-api-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/maven-surefire-common/2.12/maven-surefire-common-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/surefire/surefire-booter/2.12/surefire-booter-2.12.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar
+[DEBUG]   /home/user1/.m2/repository/classworlds/classworlds/1.1/classworlds-1.1.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/reporting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/maven-toolchain/2.0.9/maven-toolchain-2.0.9.jar
+[DEBUG]   /home/user1/.m2/repository/org/apache/maven/shared/maven-common-artifact-filters/1.3/maven-common-artifact-filters-1.3.jar
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Forking command line: /bin/sh -c cd /work/git/barchart-archon/barchart-archon-test-dist-barchart && /opt/oracle/java32/jdk1.6.0_31/jre/bin/java -jar /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefirebooter2079832302247025387.jar /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire9140339134747523184tmp /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/surefire/surefire_12062184965714811759tmp
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-jar-plugin:jar:2.4:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.6:compile
+[DEBUG]          org.apache.maven:maven-repository-metadata:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.6:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.1:compile
+[DEBUG]          classworlds:classworlds:jar:1.1-alpha-2:compile
+[DEBUG]    org.apache.maven:maven-model:jar:2.0.6:runtime
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-archiver:jar:2.5:compile
+[DEBUG]       org.apache.maven:maven-core:jar:2.0.6:compile
+[DEBUG]          org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6:compile
+[DEBUG]          org.apache.maven.reporting:maven-reporting-api:jar:2.0.6:compile
+[DEBUG]             org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7:compile
+[DEBUG]          org.apache.maven:maven-error-diagnostics:jar:2.0.6:compile
+[DEBUG]          commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]          org.apache.maven:maven-plugin-descriptor:jar:2.0.6:compile
+[DEBUG]          org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]          org.apache.maven:maven-monitor:jar:2.0.6:compile
+[DEBUG]       org.codehaus.plexus:plexus-interpolation:jar:1.15:compile
+[DEBUG]    org.codehaus.plexus:plexus-archiver:jar:2.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-io:jar:2.0.2:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.0:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-jar-plugin:2.4
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-jar-plugin:2.4
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-jar-plugin:2.4
+[DEBUG]   Included: org.apache.maven.plugins:maven-jar-plugin:jar:2.4
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: org.apache.maven:maven-archiver:jar:2.5
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-7
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.15
+[DEBUG]   Included: org.codehaus.plexus:plexus-archiver:jar:2.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-io:jar:2.0.2
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1-alpha-2
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-core:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-error-diagnostics:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-descriptor:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-jar-plugin:2.4:jar from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-jar-plugin:2.4, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-jar-plugin:2.4:jar' with basic configurator -->
+[DEBUG]   (f) classesDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes
+[DEBUG]   (f) defaultManifestFile = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/classes/META-INF/MANIFEST.MF
+[DEBUG]   (f) finalName = barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT
+[DEBUG]   (f) forceCreation = false
+[DEBUG]   (f) outputDirectory = /work/git/barchart-archon/barchart-archon-test-dist-barchart/target
+[DEBUG]   (f) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@176de14
+[DEBUG]   (f) skipIfEmpty = false
+[DEBUG]   (f) useDefaultManifestFile = false
+[DEBUG] -- end configuration --
+[DEBUG] isUp2date: false (Destination /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.jar not found.)
+[INFO] Building jar: /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.jar
+[DEBUG] adding directory META-INF/
+[DEBUG] adding entry META-INF/MANIFEST.MF
+[DEBUG] adding directory com/
+[DEBUG] adding directory com/barchart/
+[DEBUG] adding directory com/barchart/test/
+[DEBUG] adding entry com/barchart/test/Dummy.class
+[DEBUG] adding entry license-osi-bsd.txt
+[DEBUG] adding directory META-INF/maven/
+[DEBUG] adding directory META-INF/maven/com.barchart.base/
+[DEBUG] adding directory META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart/
+[DEBUG] adding entry META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG] adding entry META-INF/maven/com.barchart.base/barchart-archon-test-dist-barchart/pom.properties
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-install-plugin:jar:2.3.1:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.6:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.1:compile
+[DEBUG]          classworlds:classworlds:jar:1.1-alpha-2:compile
+[DEBUG]    org.apache.maven:maven-model:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-artifact-manager:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.6:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:2.0.5:compile
+[DEBUG]    org.codehaus.plexus:plexus-digest:jar:1.0:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-install-plugin:2.3.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-install-plugin:2.3.1
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-install-plugin:2.3.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-install-plugin:jar:2.3.1
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:2.0.5
+[DEBUG]   Included: org.codehaus.plexus:plexus-digest:jar:1.0
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1-alpha-2
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-install-plugin:2.3.1:install from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-install-plugin:2.3.1, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-install-plugin:2.3.1:install' with basic configurator -->
+[DEBUG]   (f) artifact = com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT
+[DEBUG]   (f) attachedArtifacts = []
+[DEBUG]   (f) createChecksum = false
+[DEBUG]   (f) localRepository =        id: local
+      url: file:///home/user1/.m2/repository/
+   layout: none
+
+[DEBUG]   (f) packaging = jar
+[DEBUG]   (f) pomFile = /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (f) updateReleaseInfo = false
+[DEBUG] -- end configuration --
+[INFO] Installing /work/git/barchart-archon/barchart-archon-test-dist-barchart/target/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.jar to /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.jar
+[DEBUG] Writing resolution tracking file /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/_maven.repositories
+[INFO] Installing /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml to /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-SNAPSHOT.pom
+[DEBUG] Writing resolution tracking file /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/_maven.repositories
+[DEBUG] Installing com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT/maven-metadata.xml to /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/maven-metadata-local.xml
+[DEBUG] Installing com.barchart.base:barchart-archon-test-dist-barchart/maven-metadata.xml to /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/maven-metadata-local.xml
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ barchart-archon-test-dist-barchart ---
+[DEBUG] org.apache.maven.plugins:maven-deploy-plugin:jar:2.7:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.6:compile
+[DEBUG]          org.apache.maven:maven-repository-metadata:jar:2.0.6:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.6:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.1:compile
+[DEBUG]          classworlds:classworlds:jar:1.1-alpha-2:compile
+[DEBUG]    org.apache.maven:maven-model:jar:2.0.6:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.6:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:1.5.6:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-deploy-plugin:2.7
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-deploy-plugin:2.7
+[DEBUG]   Imported:  < project>com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-deploy-plugin:2.7
+[DEBUG]   Included: org.apache.maven.plugins:maven-deploy-plugin:jar:2.7
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   Excluded: org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   Excluded: classworlds:classworlds:jar:1.1-alpha-2
+[DEBUG]   Excluded: org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   Excluded: org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-deploy-plugin:2.7, parent: sun.misc.Launcher$AppClassLoader@182f0db]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy' with basic configurator -->
+[DEBUG]   (f) artifact = com.barchart.base:barchart-archon-test-dist-barchart:jar:2.1.1-SNAPSHOT
+[DEBUG]   (f) attachedArtifacts = []
+[DEBUG]   (s) localRepository =        id: local
+      url: file:///home/user1/.m2/repository/
+   layout: none
+
+[DEBUG]   (f) offline = false
+[DEBUG]   (f) packaging = jar
+[DEBUG]   (f) pomFile = /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (f) project = MavenProject: com.barchart.base:barchart-archon-test-dist-barchart:2.1.1-SNAPSHOT @ /work/git/barchart-archon/barchart-archon-test-dist-barchart/pom.xml
+[DEBUG]   (f) retryFailedDeploymentCount = 1
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) updateReleaseInfo = false
+[DEBUG] -- end configuration --
+[DEBUG] Using connector WagonRepositoryConnector with priority 0 for https://nexus.barchart.com/content/repositories/snapshots as Andrei.Pozolotin
+Downloading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/maven-metadata.xml
+801/801 B               Downloaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/maven-metadata.xml (801 B at 1.4 KB/sec)
+[DEBUG] Writing resolution tracking file /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/resolver-status.properties
+Uploading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-20120406.205630-3.jar
+2/3 KB      3/3 KB            Uploaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-20120406.205630-3.jar (3 KB at 9.5 KB/sec)
+Uploading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-20120406.205630-3.pom
+2/2 KB            Uploaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/barchart-archon-test-dist-barchart-2.1.1-20120406.205630-3.pom (2 KB at 4.9 KB/sec)
+Downloading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/maven-metadata.xml
+411/411 B               Downloaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/maven-metadata.xml (411 B at 3.1 KB/sec)
+[DEBUG] Writing resolution tracking file /home/user1/.m2/repository/com/barchart/base/barchart-archon-test-dist-barchart/resolver-status.properties
+Uploading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/maven-metadata.xml
+801/801 B               Uploaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/2.1.1-SNAPSHOT/maven-metadata.xml (801 B at 3.3 KB/sec)
+Uploading: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/maven-metadata.xml
+411/411 B               Uploaded: https://nexus.barchart.com/content/repositories/snapshots/com/barchart/base/barchart-archon-test-dist-barchart/maven-metadata.xml (411 B at 1.4 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.051s
+[INFO] Finished at: Fri Apr 06 15:56:31 CDT 2012
+[INFO] Final Memory: 17M/149M
+[INFO] ------------------------------------------------------------------------

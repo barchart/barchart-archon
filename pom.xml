@@ -11,8 +11,12 @@
 
 	<url>http://www.barchart.com/</url>
 	<name>${project.artifactId}</name>
-	<description>${project.artifactId}</description>
 	<inceptionYear>2011</inceptionYear>
+	<description>
+<![CDATA[
+${project.artifactId}
+]]>
+	</description>
 
 	<organization>
 		<name>Barchart, Inc.</name>
@@ -1850,6 +1854,38 @@
 						</executions>
 					</plugin>
 
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- ================================ -->
+
+		<!-- Generate readme.md from pom.xml description for each module. -->
+		<!-- mvn validate -P create-readme -->
+		<profile>
+			<id>create-readme</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>groovy-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>create-readme</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<source>
+				<![CDATA[
+				new File("$project.basedir/readme.md").write("$project.description")
+				]]>
+									</source>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>

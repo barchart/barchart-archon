@@ -11,7 +11,7 @@
 
 	<echo message="basedir : ${basedir}" />
 
-	<property name="tag" value="barchart-archon-2.1.1" />
+	<input message="DELETE TAG:" addproperty="tag" />
 
 	<target name="git">
 		<exec executable="git">

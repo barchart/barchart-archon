@@ -6,7 +6,7 @@
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.5.1-SNAPSHOT</version>
+	<version>2.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -716,22 +716,22 @@ ${project.artifactId}
 		// Date/Time in milliseconds UTC.
 		def projectTimeLong = System.currentTimeMillis()
 		project.properties["projectTimeLong"] = projectTimeLong
-		println("### projectTimeLong=" + projectTimeLong)
+		// println("### projectTimeLong=" + projectTimeLong)
 		
 		// Date/Time in file-system-safe path element. 
 		def projectTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}", projectTimeLong)
 		project.properties["projectTimeFile"] = projectTimeFile
-		println("### projectTimeFile=" + projectTimeFile)
+		// println("### projectTimeFile=" + projectTimeFile)
 		
 		// Date/Time in standard ISO format.
 		def projectTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}", projectTimeLong)
 		project.properties["projectTimeISO"] = projectTimeISO
-		println("### projectTimeISO=" + projectTimeISO)
+		// println("### projectTimeISO=" + projectTimeISO)
 		
 		// Date/Time year field only.
 		def projectTimeYear=MessageFormat.format("{0,date,yyyy}", projectTimeLong)
 		project.properties["projectTimeYear"] = projectTimeYear
-		println("### projectTimeYear=" + projectTimeYear)
+		// println("### projectTimeYear=" + projectTimeYear)
 		]]>
 							</source>
 						</configuration>
@@ -1859,7 +1859,7 @@ ${project.artifactId}
 						<artifactId>groovy-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>create-readme</id>
+								<id>create-readme-from-description</id>
 								<phase>validate</phase>
 								<goals>
 									<goal>execute</goal>

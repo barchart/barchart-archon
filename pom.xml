@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -74,6 +75,9 @@ ${project.artifactId}
 		<projectJavaVersion>1.6</projectJavaVersion>
 		<projectScalaVersion>2.9.2</projectScalaVersion>
 		<projectMavenVersion>3.0.4</projectMavenVersion>
+
+		<!-- Testing plugins family version. -->
+		<projectTestingVersion>2.14</projectTestingVersion>
 
 		<!-- Barchart private repository at Amazon. -->
 		<amazonActiveRepo>activate-via-profile</amazonActiveRepo>
@@ -434,20 +438,34 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.13</version>
+					<version>${projectTestingVersion}</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.surefire</groupId>
 							<artifactId>surefire-junit4</artifactId>
-							<version>2.13</version>
+							<version>${projectTestingVersion}</version>
 						</dependency>
 						<!-- Do not use. -->
 						<!-- <dependency> -->
 						<!-- <groupId>org.apache.maven.surefire</groupId> -->
 						<!-- <artifactId>surefire-testng</artifactId> -->
-						<!-- <version>2.13</version> -->
+						<!-- <version>${projectTestingVersion}</version> -->
 						<!-- </dependency> -->
 					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${projectTestingVersion}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>integration-test</goal>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
@@ -594,7 +612,7 @@ ${project.artifactId}
 					<!-- Do not use 2.4 -->
 					<version>2.3.2</version>
 					<configuration>
-					
+
 						<!-- Clone only once. -->
 						<localCheckout>true</localCheckout>
 

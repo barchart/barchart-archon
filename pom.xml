@@ -1,12 +1,13 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.4.2</version>
+	<version>2.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -57,7 +58,7 @@ ${project.artifactId}
 		<url>https://github.com/barchart/barchart-archon</url>
 		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-		<tag>barchart-archon-2.4.2</tag>
+		<tag>master</tag>
 	</scm>
 
 	<prerequisites>
@@ -98,7 +99,7 @@ ${project.artifactId}
 
 		<!-- Release customization. See maven-release-plugin. -->
 		<releaseProfiles />
-		<releaseArguments>-Dresume=false</releaseArguments>
+		<!-- <releaseArguments>-Dresume=false</releaseArguments> -->
 		<releasePrepareGoals>clean verify</releasePrepareGoals>
 		<releasePerformGoals>deploy</releasePerformGoals>
 
@@ -140,24 +141,24 @@ ${project.artifactId}
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>2.1</version>
+				<version>2.2</version>
 			</dependency>
 
 			<!-- Logging library. -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.7.2</version>
+				<version>1.7.4</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
-				<version>1.0.9</version>
+				<version>1.0.10</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.0.9</version>
+				<version>1.0.10</version>
 			</dependency>
 
 			<!-- TEST -->
@@ -257,7 +258,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.6</version>
+					<version>2.7</version>
 				</plugin>
 
 				<plugin>
@@ -305,7 +306,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>properties-maven-plugin</artifactId>
-					<version>1.5.3</version>
+					<version>2.0.1</version>
 				</plugin>
 
 				<plugin>
@@ -484,7 +485,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>net.alchim31.maven</groupId>
 					<artifactId>scala-maven-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>3.1.3</version>
 					<configuration>
 						<scalaVersion>${projectScalaVersion}</scalaVersion>
 						<jvmArgs>
@@ -594,27 +595,30 @@ ${project.artifactId}
 					<!-- Do not use 2.4 -->
 					<version>2.3.2</version>
 					<configuration>
+					
+						<!-- Clone only once. -->
+						<localCheckout>true</localCheckout>
 
-						<!-- invocataion: release:prepare -->
+						<!-- Invocataion: release:prepare -->
 						<preparationGoals>${releasePrepareGoals}</preparationGoals>
 
-						<!-- invocataion: release:perform -->
+						<!-- Invocataion: release:perform -->
 						<useReleaseProfile>true</useReleaseProfile>
 						<goals>${releasePerformGoals}</goals>
 						<releaseProfiles>${releaseProfiles}</releaseProfiles>
 
-						<!-- invocation arguments for both release:prepare and release:perform -->
-						<arguments>${releaseArguments}</arguments>
+						<!-- Invocation arguments for both release:prepare and release:perform -->
+						<!-- <arguments>${releaseArguments}</arguments> -->
 
 					</configuration>
 				</plugin>
 
 				<!-- Generate OSGI DS component descriptors. -->
-				<!-- M2E integration is provided by "CarrotGarden SCR" Eclipe plug-in. -->
+				<!-- M2E integration is provided by the plugin. Requires M2E v 1.1+ -->
 				<plugin>
 					<groupId>com.carrotgarden.maven</groupId>
 					<artifactId>carrot-maven-scr-plugin</artifactId>
-					<version>2.0.1</version>
+					<version>3.0.0</version>
 					<configuration>
 
 						<!-- DS component descriptors location. See maven-bundle-plugin. -->
@@ -625,36 +629,21 @@ ${project.artifactId}
 							<packaging>bundle</packaging>
 						</properPackaging>
 
-						<!-- Remove these interfaces form DS component services. -->
+						<!-- Remove system interfaces form DS component services. -->
 						<excludedServices>
 							<service>scala.ScalaObject</service>
-							<service>java.lang.Runnable</service>
+							<service>java.lang.Cloneable</service>
 							<service>java.io.Serializable</service>
 						</excludedServices>
 
 						<!-- Eclipse maven console settings. -->
-						<eclipseSettings>
-							<logBuildTimes>true</logBuildTimes>
-							<logExcludedServices>true</logExcludedServices>
-							<logInvocationDetails>true</logInvocationDetails>
-							<logErrorTraces>true</logErrorTraces>
-							<logComponentDescriptors>true</logComponentDescriptors>
-						</eclipseSettings>
+						<enableDebugLogging>false</enableDebugLogging>
+						<enableInfoLogging>true</enableInfoLogging>
+						<enableErrorLogging>true</enableErrorLogging>
 
 					</configuration>
 					<executions>
-						<!-- Remove DS component descriptors during "clean". -->
 						<execution>
-							<id>clean</id>
-							<phase>clean</phase>
-							<goals>
-								<goal>clean</goal>
-							</goals>
-						</execution>
-						<!-- Generate DS component descriptors after "compile". -->
-						<execution>
-							<id>generate</id>
-							<phase>process-classes</phase>
 							<goals>
 								<goal>generate</goal>
 							</goals>

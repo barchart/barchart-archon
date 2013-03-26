@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -426,6 +427,15 @@ ${project.artifactId}
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>2.2.1</version>
+					<executions>
+						<!-- Disable default execution from parent super pom.xml. -->
+						<!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->
+						<execution>
+							<!-- Override default execution. -->
+							<id>attach-sources</id>
+							<phase>invalid</phase>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
@@ -774,6 +784,7 @@ ${project.artifactId}
 			</activation>
 			<build>
 				<plugins>
+				
 					<!-- Release must contain sources. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -782,12 +793,14 @@ ${project.artifactId}
 							<execution>
 								<!-- Override default execution id. -->
 								<id>attach-sources</id>
+								<phase>package</phase>
 								<goals>
 									<goal>jar-no-fork</goal>
 								</goals>
 							</execution>
 						</executions>
 					</plugin>
+					
 					<!-- Release must contain javadoc. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -796,12 +809,14 @@ ${project.artifactId}
 							<execution>
 								<!-- Override default execution id. -->
 								<id>attach-javadocs</id>
+								<phase>package</phase>
 								<goals>
 									<goal>jar</goal>
 								</goals>
 							</execution>
 						</executions>
 					</plugin>
+					
 					<!-- Release must be signed. -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -816,6 +831,7 @@ ${project.artifactId}
 							</execution>
 						</executions>
 					</plugin>
+					
 				</plugins>
 			</build>
 		</profile>

@@ -428,7 +428,7 @@ ${project.artifactId}
 					<artifactId>maven-source-plugin</artifactId>
 					<version>2.2.1</version>
 					<executions>
-						<!-- Disable default execution from parent super pom.xml. -->
+						<!-- Override default execution from parent super pom.xml. -->
 						<!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->
 						<execution>
 							<!-- Disable default execution. -->

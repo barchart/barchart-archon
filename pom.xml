@@ -791,8 +791,8 @@ ${project.artifactId}
 						<artifactId>maven-source-plugin</artifactId>
 						<executions>
 							<execution>
-								<!-- Override default execution id. -->
-								<id>attach-sources</id>
+								<!-- Provide custom execution id. -->
+								<id>attach-sources-no-fork</id>
 								<phase>package</phase>
 								<goals>
 									<goal>jar-no-fork</goal>

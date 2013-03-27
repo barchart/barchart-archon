@@ -654,7 +654,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>com.carrotgarden.maven</groupId>
 					<artifactId>carrot-maven-scr-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>3.0.2</version>
 					<configuration>
 
 						<!-- DS component descriptors location. See maven-bundle-plugin. -->

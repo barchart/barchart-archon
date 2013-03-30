@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -1462,11 +1463,12 @@ ${project.artifactId}
 				</file>
 			</activation>
 			<properties>
-				<projectFelixVersion>4.2.0</projectFelixVersion>
-				<projectOsgiVersion>4.3.1</projectOsgiVersion>
-				<projectPaxExamVersion>3.0.0</projectPaxExamVersion>
+				<projectFelixVersion>4.2.1</projectFelixVersion>
+				<projectFelixSecurityVersion>2.2.0</projectFelixSecurityVersion>
+				<projectPaxExamVersion>3.0.1</projectPaxExamVersion>
 				<projectPaxUrlVersion>1.5.2</projectPaxUrlVersion>
-				<projectPaxWebVersion>3.0.0.M2</projectPaxWebVersion>
+				<projectPaxWebVersion>3.0.0.M3</projectPaxWebVersion>
+				<projectPaxLoggingVersion>1.7.0</projectPaxLoggingVersion>
 			</properties>
 			<dependencies>
 
@@ -1477,19 +1479,11 @@ ${project.artifactId}
 					<version>${projectFelixVersion}</version>
 					<scope>test</scope>
 				</dependency>
-
-				<!-- OSGI specification. -->
 				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.core</artifactId>
-					<version>${projectOsgiVersion}</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.compendium</artifactId>
-					<scope>provided</scope>
-					<version>${projectOsgiVersion}</version>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.framework</artifactId>
+					<version>${projectFelixSecurityVersion}</version>
+					<scope>test</scope>
 				</dependency>
 
 				<!-- Config admin runtime. -->
@@ -1590,6 +1584,18 @@ ${project.artifactId}
 					<version>${projectPaxUrlVersion}</version>
 					<scope>test</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-link</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-dir</artifactId>
+					<version>${projectPaxUrlVersion}</version>
+					<scope>test</scope>
+				</dependency>
 
 				<!-- Web container development. -->
 				<dependency>
@@ -1684,6 +1690,20 @@ ${project.artifactId}
 					<groupId>org.apache.servicemix.bundles</groupId>
 					<artifactId>org.apache.servicemix.bundles.javax.mail</artifactId>
 					<version>1.4.1_5</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Logging framework. -->
+				<dependency>
+					<groupId>org.ops4j.pax.logging</groupId>
+					<artifactId>pax-logging-api</artifactId>
+					<version>${projectPaxLoggingVersion}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.ops4j.pax.logging</groupId>
+					<artifactId>pax-logging-service</artifactId>
+					<version>${projectPaxLoggingVersion}</version>
 					<scope>test</scope>
 				</dependency>
 

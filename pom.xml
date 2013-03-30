@@ -1533,6 +1533,7 @@ ${project.artifactId}
 					<groupId>org.ops4j.pax.exam</groupId>
 					<artifactId>pax-exam-container-forked</artifactId>
 					<version>${projectPaxExamVersion}</version>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.ops4j.pax.exam</groupId>
@@ -1602,21 +1603,25 @@ ${project.artifactId}
 					<groupId>org.ops4j.pax.web</groupId>
 					<artifactId>pax-web-api</artifactId>
 					<version>${projectPaxWebVersion}</version>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.ops4j.pax.web</groupId>
 					<artifactId>pax-web-spi</artifactId>
 					<version>${projectPaxWebVersion}</version>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.ops4j.pax.web</groupId>
 					<artifactId>pax-web-runtime</artifactId>
 					<version>${projectPaxWebVersion}</version>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.ops4j.pax.web</groupId>
 					<artifactId>pax-web-jetty</artifactId>
 					<version>${projectPaxWebVersion}</version>
+					<scope>test</scope>
 				</dependency>
 
 				<!-- Web container API. -->

@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -111,6 +112,11 @@ ${project.artifactId}
 
 		<!-- OSGI bundle DS component descriptors location in the jar. -->
 		<bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
+
+		<!-- Semantic version policy. -->
+		<bundleConsumerPolicy>$&lt;range;[==,+)&gt;</bundleConsumerPolicy>
+		<bundleProviderPolicy>$&lt;range;[==,=+)&gt;</bundleProviderPolicy>
+		<bundleBaselineVersion>0.0.0</bundleBaselineVersion>
 
 	</properties>
 
@@ -697,10 +703,33 @@ ${project.artifactId}
 					<extensions>true</extensions>
 					<configuration>
 						<instructions>
+
 							<!-- DS component descriptors location. See carrot-maven-scr-plugin. -->
 							<Service-Component>${bundleServiceComponent}/*.xml</Service-Component>
+
+							<!-- Semantic version policy. -->
+							<_consumer-policy>${bundleConsumerPolicy}</_consumer-policy>
+							<_provider-policy>${bundleProviderPolicy}</_provider-policy>
+
 						</instructions>
 					</configuration>
+				</plugin>
+
+				<!-- Semantic version check. -->
+				<plugin>
+					<groupId>org.apache.aries.versioning</groupId>
+					<artifactId>org.apache.aries.versioning.plugin</artifactId>
+					<version>0.1.0</version>
+					<configuration>
+						<oldArtifact>${project.groupId}:${project.artifactId}:${bundleBaselineVersion}</oldArtifact>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>version-check</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 			</plugins>

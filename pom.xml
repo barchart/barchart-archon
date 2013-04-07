@@ -112,10 +112,14 @@ ${project.artifactId}
 		<!-- OSGI bundle DS component descriptors location in the jar. -->
 		<bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
 
-		<!-- Semantic version policy. -->
+		<!-- Semantic version import policy for consumer. Bind to MAJOR. -->
 		<bundleConsumerPolicy>$&lt;range;[==,+)&gt;</bundleConsumerPolicy>
+
+		<!-- Semantic version import policy for provider. Bind to MAJOR.MINOR. -->
 		<bundleProviderPolicy>$&lt;range;[==,=+)&gt;</bundleProviderPolicy>
-		<bundleBaselineVersion>0.0.0</bundleBaselineVersion>
+		
+		<!-- Semantic version check. Use latest release by default. -->
+		<bundleBaselineVersion>RELEASE</bundleBaselineVersion>
 
 	</properties>
 

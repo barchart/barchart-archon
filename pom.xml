@@ -1,6 +1,7 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
 	rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -117,7 +118,7 @@ ${project.artifactId}
 
 		<!-- Semantic version import policy for provider. Bind to MAJOR.MINOR. -->
 		<bundleProviderPolicy>$&lt;range;[==,=+)&gt;</bundleProviderPolicy>
-		
+
 		<!-- Semantic version check. Use latest release by default. -->
 		<bundleBaselineVersion>RELEASE</bundleBaselineVersion>
 
@@ -769,6 +770,12 @@ ${project.artifactId}
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
+
+			<!-- Semantic version check against baseline. -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.aries.versioning</groupId> -->
+			<!-- <artifactId>org.apache.aries.versioning.plugin</artifactId> -->
+			<!-- </plugin> -->
 
 			<!-- Provide custom project properties. -->
 			<plugin>

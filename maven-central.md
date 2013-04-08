@@ -9,5 +9,4 @@
 -->
 ### maven build marker
 when this file is present in project root folder, 
-project artifacts will be published to the barchart private repository
-
+project artifacts will be published to the maven central

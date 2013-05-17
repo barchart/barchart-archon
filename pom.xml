@@ -121,6 +121,7 @@ ${project.artifactId}
 
 		<!-- Semantic version check. Use latest release by default. -->
 		<bundleBaselineVersion>RELEASE</bundleBaselineVersion>
+		<bundleBaselineExtension>jar</bundleBaselineExtension>
 
 	</properties>
 
@@ -729,7 +730,7 @@ ${project.artifactId}
 					<artifactId>org.apache.aries.versioning.plugin</artifactId>
 					<version>0.1.0</version>
 					<configuration>
-						<oldArtifact>${project.groupId}:${project.artifactId}:${bundleBaselineVersion}</oldArtifact>
+						<oldArtifact>${project.groupId}:${project.artifactId}:${bundleBaselineExtension}:${bundleBaselineVersion}</oldArtifact>
 					</configuration>
 					<executions>
 						<execution>

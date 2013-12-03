@@ -658,6 +658,9 @@ ${project.artifactId}
 							<packaging>bundle</packaging>
 						</properPackaging>
 
+						<!-- do not generate OSGI-INF/service-component/null.xml -->
+						<isIncludeEmptyDescriptor>false</isIncludeEmptyDescriptor>
+						
 						<!-- Remove system interfaces form DS component services. -->
 						<excludedServices>
 							<service>scala.ScalaObject</service>

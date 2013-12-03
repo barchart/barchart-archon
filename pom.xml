@@ -2325,6 +2325,48 @@ ${project.artifactId}
 			</build>
 		</profile>
 
+		<!-- Baseline "provided" dependencies included in OSGI deployments -->
+		<profile>
+			<id>container-dependencies</id>
+			<activation>
+				<property>
+					<name>includeContainerDependencies</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<dependencies>
+				<!-- Provided by OSGI framework at runtime. -->
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.core</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.compendium</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<!-- Used at build time, not used at runtime. -->
+				<dependency>
+					<groupId>com.barchart.util</groupId>
+					<artifactId>barchart-util-anno</artifactId>
+					<version>[2,3-SNAPSHOT)</version>
+					<scope>provided</scope>
+					<optional>true</optional>
+				</dependency>
+			</dependencies>
+		</profile>
+
 	</profiles>
 
 	<reporting>

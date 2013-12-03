@@ -2367,6 +2367,32 @@ ${project.artifactId}
 			</dependencies>
 		</profile>
 
+		<!-- Export tests as a JAR for other projects to use -->
+		<profile>
+			<id>export-tests</id>
+			<activation>
+				<property>
+					<name>exportTests</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>test-jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 	<reporting>

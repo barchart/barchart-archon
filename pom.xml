@@ -76,6 +76,10 @@ ${project.artifactId}
 		<projectScalaVersion>2.10.2</projectScalaVersion>
 		<projectMavenVersion>3.0.4</projectMavenVersion>
 
+		<!-- Default dependency versions -->
+		<projectNettyVersion>4.0.0.CR3</projectNettyVersion>
+		<projectOSGIVersion>4.3.1</projectOSGIVersion>
+
 		<!-- Testing plugins family version. -->
 		<projectTestingVersion>2.14</projectTestingVersion>
 
@@ -125,84 +129,342 @@ ${project.artifactId}
 
 	</properties>
 
-	<!-- Ensure default versions for popular libraries. -->
+	<!--
+	Ensure default versions for popular libraries. In general only third-party
+	libraries should go here, although common Barchart libraries may be added if
+	they are very low entropy.
+	-->
+
 	<dependencyManagement>
+
 		<dependencies>
 
-			<!-- MAIN -->
+			<!-- Scala Runtime -->
 
-			<!-- Scala runtime. -->
 			<dependency>
 				<groupId>org.scala-lang</groupId>
 				<artifactId>scala-library</artifactId>
 				<version>${projectScalaVersion}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.scala-lang</groupId>
 				<artifactId>scala-reflect</artifactId>
 				<version>${projectScalaVersion}</version>
 			</dependency>
 
-			<!-- OSGI specification. -->
+			<!-- OSGI Specification -->
+
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
-				<version>4.3.1</version>
+				<version>${projectOSGIVersion}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.compendium</artifactId>
-				<version>4.3.1</version>
+				<version>${projectOSGIVersion}</version>
 			</dependency>
 
-			<!-- Date and Time library. -->
+			<!-- OSGI Component Utilities -->
+
+			<dependency>
+				<groupId>com.barchart.osgi</groupId>
+				<artifactId>barchart-osgi-factory-ca</artifactId>
+				<version>[1.4,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.osgi</groupId>
+				<artifactId>barchart-osgi-conf</artifactId>
+				<version>[1.2,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.osgi</groupId>
+				<artifactId>barchart-osgi-event</artifactId>
+				<version>[1.2,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.conf</groupId>
+				<artifactId>barchart-conf-util</artifactId>
+				<version>[1.3,2-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Barchart Wrapped Bundles -->
+
+			<dependency>
+				<groupId>com.barchart.wrap</groupId>
+				<artifactId>barchart-wrap-apache-http-all</artifactId>
+				<version>[4.2.3-SNAPSHOT,4.3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.wrap</groupId>
+				<artifactId>barchart-wrap-aws-java-sdk</artifactId>
+				<version>[1.4.1-SNAPSHOT,1.5-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.wrap</groupId>
+				<artifactId>barchart-wrap-hazelcast-all</artifactId>
+				<version>[2.5.0-SNAPSHOT,2.6.0-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.wrap</groupId>
+				<artifactId>barchart-wrap-elasticsearch-all</artifactId>
+				<version>[0.20.6-build003,0.20.7-build001-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.wrap</groupId>
+				<artifactId>barchart-wrap-astyanax</artifactId>
+				<version>[1.56.42-build003,1.56.43-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Networking / Protocols -->
+
+			<dependency>
+				<groupId>com.barchart.netty</groupId>
+				<artifactId>barchart-netty-core</artifactId>
+				<version>[2,3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-common</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-buffer</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-handler</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-codec</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport-sctp</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport-udt</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>[2.5.0,2.6.0-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- HTTP -->
+
+			<dependency>
+				<groupId>com.barchart.osgi</groupId>
+				<artifactId>barchart-osgi-http</artifactId>
+				<version>[2,3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.http</groupId>
+				<artifactId>barchart-http-server</artifactId>
+				<version>[2,3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.http</groupId>
+				<artifactId>barchart-http-handlers</artifactId>
+				<version>[2,3-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Jakarta Commons -->
+
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>[3,4-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>[2.6,3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>[2.4,3-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>[1.1,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>[1.6,2-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Parsers -->
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>[2.1,2.2-rc1)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>[2.1,2.2-rc1)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.typesafe</groupId>
+				<artifactId>config</artifactId>
+				<version>[1,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
+				<version>[1.1_4,2.0-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Utilities -->
+
+			<dependency>
+				<groupId>com.netflix.rxjava</groupId>
+				<artifactId>rxjava-core</artifactId>
+				<version>[0.14,0.15-SNAPSHOT)</version>
+			</dependency>
+
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>2.2</version>
+				<version>[2.1,3-SNAPSHOT)</version>
 			</dependency>
 
-			<!-- Logging library. -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>[14.0.1,15.0-rc1)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.eaio.uuid</groupId>
+				<artifactId>uuid</artifactId>
+				<version>3.2</version>
+			</dependency>
+
+			<!-- Monitoring / Metrics -->
+
+			<dependency>
+				<groupId>com.yammer.metrics</groupId>
+				<artifactId>metrics-core</artifactId>
+				<version>[2.2.0,3.0.0-BETA1)</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- Data Storage -->
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>[5.1.10,5.2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.store</groupId>
+				<artifactId>store-api</artifactId>
+				<version>[3.0,4.0-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.store</groupId>
+				<artifactId>store-util</artifactId>
+				<version>[2.0,3.0-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.store</groupId>
+				<artifactId>store-heap</artifactId>
+				<version>[3.0,4.0-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.store</groupId>
+				<artifactId>store-cassandra</artifactId>
+				<version>[4.0,5.0-SNAPSHOT)</version>
+			</dependency>
+
+			<!-- Logging -->
+
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.7.4</version>
+				<version>1.7.5</version>
 			</dependency>
+
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
-				<version>1.0.10</version>
+				<version>1.0.13</version>
 			</dependency>
+
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.0.10</version>
+				<version>1.0.13</version>
 			</dependency>
 
-			<!-- TEST -->
+			<!-- Test Frameworks -->
 
-			<!-- Default test framework. -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
 			</dependency>
 
-			<!-- Do not use. -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.testng</groupId> -->
-			<!-- <artifactId>testng</artifactId> -->
-			<!-- <version>6.7</version> -->
-			<!-- </dependency> -->
+			<dependency>
+				<groupId>com.barchart.util</groupId>
+				<artifactId>barchart-util-test</artifactId>
+				<version>[3,4-SNAPSHOT)</version>
+			</dependency>
 
-			<!-- Java mock object library. -->
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
-				<version>3.1</version>
+				<version>3.2</version>
 			</dependency>
 
-			<!-- Java mock object library. -->
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
@@ -210,6 +472,7 @@ ${project.artifactId}
 			</dependency>
 
 		</dependencies>
+
 	</dependencyManagement>
 
 	<!-- Libraries included in all projects. -->
@@ -221,13 +484,6 @@ ${project.artifactId}
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Do not use. -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.testng</groupId> -->
-		<!-- <artifactId>testng</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-
 	</dependencies>
 
 	<build>
@@ -238,7 +494,7 @@ ${project.artifactId}
 			<extension>
 				<groupId>org.kuali.maven.wagons</groupId>
 				<artifactId>maven-s3-wagon</artifactId>
-				<version>1.1.19</version>
+				<version>1.1.22</version>
 			</extension>
 
 			<!-- Enable generic HTTP/HTTPS transport. -->
@@ -483,12 +739,6 @@ ${project.artifactId}
 							<artifactId>surefire-junit4</artifactId>
 							<version>${projectTestingVersion}</version>
 						</dependency>
-						<!-- Do not use. -->
-						<!-- <dependency> -->
-						<!-- <groupId>org.apache.maven.surefire</groupId> -->
-						<!-- <artifactId>surefire-testng</artifactId> -->
-						<!-- <version>${projectTestingVersion}</version> -->
-						<!-- </dependency> -->
 					</dependencies>
 				</plugin>
 
@@ -710,9 +960,10 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.aries.versioning</groupId>
 					<artifactId>org.apache.aries.versioning.plugin</artifactId>
-					<version>0.1.0</version>
+					<version>0.1.0-build001</version>
 					<configuration>
 						<oldArtifact>${project.groupId}:${project.artifactId}:${bundleBaselineExtension}:${bundleBaselineVersion}</oldArtifact>
+						<bundleOverridesPackage>true</bundleOverridesPackage>
 					</configuration>
 					<executions>
 						<execution>

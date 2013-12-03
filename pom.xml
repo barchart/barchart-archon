@@ -85,6 +85,7 @@ ${project.artifactId}
 
 		<!-- Feature descriptor target location -->
 		<featureFile>${project.artifactId}-${project.version}.xml</featureFile>
+		<featureSnapshots>override_in_child_project</featureSnapshots>
 
 		<!-- Barchart private repository at Amazon. -->
 		<amazonActiveRepo>activate-via-profile</amazonActiveRepo>
@@ -986,6 +987,10 @@ ${project.artifactId}
 						<installMode>auto</installMode>
 						<startLevel>90</startLevel>
 						<outputFile>target/feature/${featureFile}</outputFile>
+						<resolverSettings>
+							<enableRangeSnapshot>false</enableRangeSnapshot>
+							<enableRangeSnapshotRegex>${featureSnapshots}</enableRangeSnapshotRegex>
+						</resolverSettings>
 					</configuration>
 					<executions>
 						<execution>
@@ -2259,12 +2264,8 @@ ${project.artifactId}
 		<profile>
 			<id>semantic-versioning</id>
 			<activation>
-				<property>
-					<name>enableSemanticVersioning</name>
-					<value>true</value>
-				</property>
 				<file>
-					<missing>disable-semantic-version.md</missing>
+					<exists>semantic-versioning.md</exists>
 				</file>
 			</activation>
 			<build>
@@ -2281,12 +2282,8 @@ ${project.artifactId}
 		<profile>
 			<id>feature-descriptor</id>
 			<activation>
-				<property>
-					<name>enableFeatureGeneration</name>
-					<value>true</value>
-				</property>
 				<file>
-					<missing>enable-snapshots.md</missing>
+					<exists>generate-features.md</exists>
 				</file>
 			</activation>
 			<build>
@@ -2294,32 +2291,6 @@ ${project.artifactId}
 					<plugin>
 						<groupId>org.apache.karaf.tooling</groupId>
 						<artifactId>karaf-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>feature-descriptor-snapshots</id>
-			<activation>
-				<property>
-					<name>enableFeatureGeneration</name>
-					<value>true</value>
-				</property>
-				<file>
-					<exists>enable-snapshots.md</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.karaf.tooling</groupId>
-						<artifactId>karaf-maven-plugin</artifactId>
-						<configuration>
-							<resolverSettings>
-								<enableRangeSnapshot>false</enableRangeSnapshot>
-								<enableRangeSnapshotRegex>${featureSnapshots}</enableRangeSnapshotRegex>
-							</resolverSettings>
-						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -2329,10 +2300,9 @@ ${project.artifactId}
 		<profile>
 			<id>container-dependencies</id>
 			<activation>
-				<property>
-					<name>includeContainerDependencies</name>
-					<value>true</value>
-				</property>
+				<file>
+					<exists>provide-container.md</exists>
+				</file>
 			</activation>
 			<dependencies>
 				<!-- Provided by OSGI framework at runtime. -->
@@ -2371,10 +2341,9 @@ ${project.artifactId}
 		<profile>
 			<id>export-tests</id>
 			<activation>
-				<property>
-					<name>exportTests</name>
-					<value>true</value>
-				</property>
+				<file>
+					<exists>export-tests.md</exists>
+				</file>
 			</activation>
 			<build>
 				<plugins>

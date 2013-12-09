@@ -219,7 +219,7 @@ ${project.artifactId}
 			<dependency>
 				<groupId>com.barchart.wrap</groupId>
 				<artifactId>barchart-wrap-elasticsearch-all</artifactId>
-				<version>[0.20.6-build003,0.20.7-build001-SNAPSHOT)</version>
+				<version>[0.90.7-build001,1.0.0-build001-SNAPSHOT)</version>
 			</dependency>
 
 			<dependency>

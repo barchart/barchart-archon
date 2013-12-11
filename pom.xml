@@ -258,6 +258,16 @@ ${project.artifactId}
 			</dependency>
 			<dependency>
 				<groupId>io.netty</groupId>
+				<artifactId>netty-codec-http</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-codec-socks</artifactId>
+				<version>${projectNettyVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
 				<artifactId>netty-transport</artifactId>
 				<version>${projectNettyVersion}</version>
 			</dependency>

@@ -418,6 +418,18 @@ ${project.artifactId}
 				</exclusions>
 			</dependency>
 
+			<dependency>
+				<groupId>com.yammer.metrics</groupId>
+				<artifactId>metrics-core-wrapped</artifactId>
+				<version>[2.2.0,3.0.0-BETA1)</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
 			<!-- Data Storage -->
 
 			<dependency>

@@ -419,7 +419,7 @@ ${project.artifactId}
 			</dependency>
 
 			<dependency>
-				<groupId>com.yammer.metrics</groupId>
+				<groupId>com.yammer.metric</groupId>
 				<artifactId>metrics-core-wrapped</artifactId>
 				<version>[2.2.0,3.0.0-BETA1)</version>
 				<exclusions>

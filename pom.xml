@@ -299,18 +299,6 @@ ${project.artifactId}
 			<dependency>
 				<groupId>com.barchart.osgi</groupId>
 				<artifactId>barchart-osgi-http</artifactId>
-				<version>[3-SNAPSHOT,4-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.http</groupId>
-				<artifactId>barchart-http-server</artifactId>
-				<version>[4-SNAPSHOT,5-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.http</groupId>
-				<artifactId>barchart-http-handlers</artifactId>
 				<version>[4-SNAPSHOT,5-SNAPSHOT)</version>
 			</dependency>
 

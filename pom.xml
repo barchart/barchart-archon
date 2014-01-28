@@ -355,15 +355,9 @@ ${project.artifactId}
 			</dependency>
 
 			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
-				<version>[1.1_4,2.0-SNAPSHOT)</version>
-				<exclusions>
-					<exclusion>
-						<groupId>jdom</groupId>
-						<artifactId>jdom</artifactId>
-					</exclusion>
-				</exclusions>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>1.1.3</version>
 			</dependency>
 
 			<!-- Utilities -->

@@ -1016,7 +1016,7 @@ ${project.artifactId}
 						<outputFile>target/feature/${featureFile}</outputFile>
 						<resolverSettings>
 							<enableRangeSnapshot>false</enableRangeSnapshot>
-							<enableRangeSnapshotRegex>${featureSnapshots}</enableRangeSnapshotRegex>
+							<enableRangeSnapshotRegex>_use_generate-features-snapshot.md_</enableRangeSnapshotRegex>
 						</resolverSettings>
 					</configuration>
 					<executions>
@@ -2318,6 +2318,30 @@ ${project.artifactId}
 					<plugin>
 						<groupId>org.apache.karaf.tooling</groupId>
 						<artifactId>karaf-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Feature descriptor snapshot generation -->
+		<profile>
+			<id>feature-descriptor-snapshot</id>
+			<activation>
+				<file>
+					<exists>generate-features-snapshot.md</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.karaf.tooling</groupId>
+						<artifactId>karaf-maven-plugin</artifactId>
+						<configuration>
+							<resolverSettings>
+								<enableRangeSnapshot>false</enableRangeSnapshot>
+								<enableRangeSnapshotRegex>${featureSnapshots}</enableRangeSnapshotRegex>
+							</resolverSettings>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>

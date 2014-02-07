@@ -1009,7 +1009,7 @@ ${project.artifactId}
 					<!-- Barchart custom plugin. -->
 					<groupId>org.apache.karaf.tooling</groupId>
 					<artifactId>karaf-maven-plugin</artifactId>
-					<version>3.0.0-build006</version>
+					<version>3.0.0-patch2</version>
 					<configuration>
 						<installMode>auto</installMode>
 						<startLevel>90</startLevel>

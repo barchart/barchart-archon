@@ -2347,6 +2347,36 @@ ${project.artifactId}
 			</build>
 		</profile>
 
+		<!-- Karaf archive packaging -->
+		<profile>
+			<id>package-kar</id>
+			<activation>
+				<file>
+					<exists>package-kar.md</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.karaf.tooling</groupId>
+						<artifactId>karaf-maven-plugin</artifactId>
+						<configuration>
+							<featuresFile>target/feature/${featureFile}</featuresFile>
+							<classifier>kar</classifier>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>features-generate-semantic</goal>
+									<goal>features-create-kar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<!-- Baseline "provided" dependencies included in OSGI deployments -->
 		<profile>
 			<id>container-dependencies</id>

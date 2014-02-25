@@ -2362,7 +2362,7 @@ ${project.artifactId}
 						<artifactId>karaf-maven-plugin</artifactId>
 						<configuration>
 							<featuresFile>target/feature/${featureFile}</featuresFile>
-							<classifier>kar</classifier>
+							<classifier>distro</classifier>
 						</configuration>
 						<executions>
 							<execution>

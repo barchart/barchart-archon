@@ -2475,7 +2475,7 @@ ${project.artifactId}
 				<!-- Test application configuration -->
 				<karafAppGroup>com.barchart.karaf</karafAppGroup>
 				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
-				<karafAppVersion>1.5.1</karafAppVersion>
+				<karafAppVersion>1.5.4</karafAppVersion>
 				<karafAppClassifier>tanuki-distro</karafAppClassifier>
 				<distroSource>target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
 				<distroTarget>target/service</distroTarget>
@@ -2583,13 +2583,13 @@ ${project.artifactId}
 								<configuration>
 									<target>
 										<unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
-										<chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
 										<loadproperties srcFile="${distroTarget}/distribution.properties" />
 										<symlink link="${appTarget}" resource="service/${archive-folder}" />
 										<copy todir="${appTarget}/conf">
 											<fileset dir="${appAssemblyDirectory}" />
 										</copy>
 										<replace file="${appTarget}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
+										<chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
 									</target>
 								</configuration>
 							</execution>

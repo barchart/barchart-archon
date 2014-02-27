@@ -2584,7 +2584,7 @@ ${project.artifactId}
 									<target>
 										<unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
 										<loadproperties srcFile="${distroTarget}/distribution.properties" />
-										<symlink link="${appTarget}" resource="service/${archive-folder}" />
+										<symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />
 										<copy todir="${appTarget}/conf">
 											<fileset dir="${appAssemblyDirectory}" />
 										</copy>

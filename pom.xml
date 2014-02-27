@@ -2536,7 +2536,7 @@ ${project.artifactId}
 									<goal>upload-single</goal>
 								</goals>
 								<configuration>
-									<serverId>platform-application-deployer</serverId>
+									<serverId>barchart-application-deployer</serverId>
 									<url>${amazonBucket}/config</url>
 									<fromFile>target/${appIdentity}-${project.version}.zip</fromFile>
 									<toFile>${appIdentity}.zip</toFile>

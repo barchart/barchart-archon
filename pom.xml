@@ -6,7 +6,7 @@
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.6.13-SNAPSHOT</version>
+	<version>2.6.13</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -57,7 +57,7 @@ ${project.artifactId}
 		<url>https://github.com/barchart/barchart-archon</url>
 		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-		<tag>master</tag>
+		<tag>barchart-archon-2.6.13</tag>
 	</scm>
 
 	<prerequisites>
@@ -2584,9 +2584,7 @@ ${project.artifactId}
 									<target>
 										<unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
 										<loadproperties srcFile="${distroTarget}/distribution.properties" />
-										<replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh"
-											token="RUN_AS_USER=&quot;karaf&quot;"
-											value="RUN_AS_USER=&quot;${user.name}&quot;" />
+										<replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
 										<delete dir="${distroTarget}/${archive-folder}/conf" />
 										<symlink link="${distroTarget}/${archive-folder}/conf" resource="../../../${appAssemblyDirectory}" overwrite="true" />
 										<symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />

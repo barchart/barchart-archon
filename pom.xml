@@ -2475,7 +2475,7 @@ ${project.artifactId}
 				<!-- Test application configuration -->
 				<karafAppGroup>com.barchart.karaf</karafAppGroup>
 				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
-				<karafAppVersion>1.5.4</karafAppVersion>
+				<karafAppVersion>1.5.8</karafAppVersion>
 				<karafAppClassifier>tanuki-distro</karafAppClassifier>
 				<distroSource>target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
 				<distroTarget>target/service</distroTarget>

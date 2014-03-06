@@ -174,6 +174,12 @@ ${project.artifactId}
 
 			<dependency>
 				<groupId>com.barchart.osgi</groupId>
+				<artifactId>barchart-osgi-component</artifactId>
+				<version>[1.0,1.1-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.osgi</groupId>
 				<artifactId>barchart-osgi-factory-ca</artifactId>
 				<version>[1.4,2-SNAPSHOT)</version>
 			</dependency>
@@ -2475,7 +2481,7 @@ ${project.artifactId}
 				<!-- Test application configuration -->
 				<karafAppGroup>com.barchart.karaf</karafAppGroup>
 				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
-				<karafAppVersion>1.5.11</karafAppVersion>
+				<karafAppVersion>1.5.13</karafAppVersion>
 				<karafAppClassifier>tanuki-distro</karafAppClassifier>
 				<distroSource>target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
 				<distroTarget>target/service</distroTarget>

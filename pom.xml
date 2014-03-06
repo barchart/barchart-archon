@@ -2475,17 +2475,17 @@ ${project.artifactId}
 				<amazonReleaseBucket>s3://barchart-applications</amazonReleaseBucket>
 				<amazonDevBucket>s3://barchart-applications-staging</amazonDevBucket>
 				<amazonBucket>${amazonDevBucket}</amazonBucket>
-				<appAssemblyDirectory>target/config</appAssemblyDirectory>
-				<appConfDirectory>conf</appConfDirectory>
+				<appAssemblyDirectory>${basedir}/target/config</appAssemblyDirectory>
+				<appConfDirectory>${basedir}/conf</appConfDirectory>
 				<releaseProfiles>karaf-app-release</releaseProfiles>
 				<!-- Test application configuration -->
 				<karafAppGroup>com.barchart.karaf</karafAppGroup>
 				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
 				<karafAppVersion>1.5.13</karafAppVersion>
 				<karafAppClassifier>tanuki-distro</karafAppClassifier>
-				<distroSource>target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
-				<distroTarget>target/service</distroTarget>
-				<appTarget>target/app</appTarget>
+				<distroSource>${basedir}/target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
+				<distroTarget>${basedir}/target/service</distroTarget>
+				<appTarget>${basedir}/target/app</appTarget>
 			</properties>
 			<build>
 				<plugins>

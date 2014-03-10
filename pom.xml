@@ -2565,7 +2565,7 @@ ${project.artifactId}
 										<loadproperties srcFile="${distroTarget}/distribution.properties" />
 										<replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
 										<delete dir="${distroTarget}/${archive-folder}/conf" />
-										<symlink link="${distroTarget}/${archive-folder}/conf" resource="../../../${appAssemblyDirectory}" overwrite="true" />
+										<symlink link="${distroTarget}/${archive-folder}/conf" resource="${appAssemblyDirectory}" overwrite="true" />
 										<symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />
 										<chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
 									</target>

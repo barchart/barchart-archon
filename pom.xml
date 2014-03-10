@@ -84,6 +84,7 @@ ${project.artifactId}
 
 		<!-- Feature descriptor target location -->
 		<featureFile>${project.artifactId}-${project.version}.xml</featureFile>
+		<featureTarget>target/feature/${featureFile}</featureTarget>
 		<featureSnapshots>override_in_child_project</featureSnapshots>
 
 		<!-- Barchart private repository at Amazon. -->
@@ -1015,11 +1016,13 @@ ${project.artifactId}
 					<!-- Barchart custom plugin. -->
 					<groupId>org.apache.karaf.tooling</groupId>
 					<artifactId>karaf-maven-plugin</artifactId>
-					<version>3.0.0-patch3</version>
+					<version>3.0.0-patch5</version>
+					<extensions>true</extensions>
 					<configuration>
 						<installMode>auto</installMode>
 						<startLevel>90</startLevel>
-						<outputFile>target/feature/${featureFile}</outputFile>
+						<outputFile>${featureTarget}</outputFile>
+						<featuresFile>${featureTarget}</featuresFile>
 						<resolverSettings>
 							<enableRangeSnapshot>false</enableRangeSnapshot>
 							<enableRangeSnapshotRegex>_use_generate-features-snapshot.md_</enableRangeSnapshotRegex>
@@ -2348,36 +2351,6 @@ ${project.artifactId}
 								<enableRangeSnapshotRegex>${featureSnapshots}</enableRangeSnapshotRegex>
 							</resolverSettings>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- Karaf archive packaging -->
-		<profile>
-			<id>package-kar</id>
-			<activation>
-				<file>
-					<exists>package-kar.md</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.karaf.tooling</groupId>
-						<artifactId>karaf-maven-plugin</artifactId>
-						<configuration>
-							<featuresFile>target/feature/${featureFile}</featuresFile>
-							<classifier>distro</classifier>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>features-generate-semantic</goal>
-									<goal>features-create-kar</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>

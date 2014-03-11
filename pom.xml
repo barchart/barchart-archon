@@ -845,6 +845,20 @@ ${project.artifactId}
 									</action>
 								</pluginExecution>
 								<pluginExecution>
+									<!-- Do not run enforcer in Eclipse. -->
+									<pluginExecutionFilter>
+										<groupId>org.apache.karaf.tooling</groupId>
+										<artifactId>karaf-maven-plugin</artifactId>
+										<versionRange>[0,)</versionRange>
+										<goals>
+											<goal>features-generate-semantic</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
 									<!-- Do not run groovy in Eclipse. -->
 									<pluginExecutionFilter>
 										<groupId>org.codehaus.mojo</groupId>

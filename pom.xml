@@ -378,7 +378,7 @@ ${project.artifactId}
 			<dependency>
 				<groupId>com.netflix.rxjava</groupId>
 				<artifactId>rxjava-core</artifactId>
-				<version>[0.17,0.18-SNAPSHOT)</version>
+				<version>[0.18,0.19-SNAPSHOT)</version>
 			</dependency>
 
 			<dependency>

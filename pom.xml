@@ -913,6 +913,13 @@ ${project.artifactId}
 					<artifactId>maven-release-plugin</artifactId>
 					<!-- Do not use 2.4 -->
 					<version>2.3.2</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-gitexe</artifactId>
+							<version>1.9</version>
+						</dependency>
+					</dependencies>
 					<configuration>
 
 						<!-- Clone only once. -->

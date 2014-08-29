@@ -89,8 +89,8 @@ ${project.artifactId}
 
 		<!-- Barchart private repository at Amazon. -->
 		<amazonActiveRepo>activate-via-profile</amazonActiveRepo>
-		<amazonReleaseRepo>maven.aws.barchart.com</amazonReleaseRepo>
-		<amazonStagingRepo>maven.aws-dev.barchart.com</amazonStagingRepo>
+		<amazonReleaseRepo>maven.aws.barchart.com/release</amazonReleaseRepo>
+		<amazonStagingRepo>maven.aws.barchart.com/snapshot</amazonStagingRepo>
 
 		<!-- Barchart private repository in Office. -->
 		<barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
@@ -1216,11 +1216,11 @@ ${project.artifactId}
 			</activation>
 			<distributionManagement>
 				<repository>
-					<id>com.barchart.maven.s3.release</id>
+					<id>barchart-s3-release</id>
 					<url>s3://${amazonReleaseRepo}</url>
 				</repository>
 				<snapshotRepository>
-					<id>com.barchart.maven.s3.staging</id>
+					<id>barchart-s3-snapshot</id>
 					<url>s3://${amazonStagingRepo}</url>
 				</snapshotRepository>
 			</distributionManagement>
@@ -1234,14 +1234,11 @@ ${project.artifactId}
 					<exists>maven-amazon.md</exists>
 				</file>
 			</activation>
-			<properties>
-				<amazonBucketHost>s3.amazonaws.com</amazonBucketHost>
-			</properties>
 			<repositories>
 				<repository>
-					<id>com.barchart.maven.http.release</id>
+					<id>barchart-s3-release</id>
 					<name>Barchart Amazon Releases</name>
-					<url>https://${amazonBucketHost}/${amazonReleaseRepo}</url>
+					<url>s3://${amazonReleaseRepo}</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -1250,9 +1247,9 @@ ${project.artifactId}
 					</snapshots>
 				</repository>
 				<repository>
-					<id>com.barchart.maven.http.staging</id>
+					<id>barchart-s3-snapshot</id>
 					<name>Barchart Amazon Snapshots</name>
-					<url>https://${amazonBucketHost}/${amazonStagingRepo}</url>
+					<url>s3://${amazonStagingRepo}</url>
 					<releases>
 						<enabled>false</enabled>
 					</releases>

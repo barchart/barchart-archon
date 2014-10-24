@@ -197,6 +197,26 @@ ${project.artifactId}
 				<version>[1.2,2-SNAPSHOT)</version>
 			</dependency>
 
+			<!-- Dependency Management -->
+			
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>6.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>3.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-multibindings</artifactId>
+				<version>3.0</version>
+			</dependency>
+
 			<!-- Barchart Wrapped Bundles -->
 
 			<dependency>
@@ -392,7 +412,7 @@ ${project.artifactId}
 				<artifactId>guava</artifactId>
 				<version>[14.0.1,15.0-rc1)</version>
 			</dependency>
-
+			
 			<!-- Monitoring / Metrics -->
 
 			<dependency>

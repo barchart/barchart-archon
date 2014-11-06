@@ -2507,9 +2507,9 @@ ${project.artifactId}
 								</goals>
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
-									<url>${amazonBucket}/config</url>
-									<fromFile>target/${appIdentity}-${project.version}.zip</fromFile>
-									<toFile>${appIdentity}.jar</toFile>
+									<url>${amazonBucket}/apps</url>
+									<fromFile>target/${project.artifactId}-${project.version}.jar</fromFile>
+									<toFile>${project.groupId}.${project.artifactId}.jar</toFile>
 								</configuration>
 							</execution>
 						</executions>

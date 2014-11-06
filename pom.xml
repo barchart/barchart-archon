@@ -2470,6 +2470,17 @@ ${project.artifactId}
 				<releaseProfiles>guice-app-release</releaseProfiles>
 			</properties>
 			<build>
+
+				<!-- Include java source for debugging from installed package -->
+			   <resources>
+					<resource>
+						<directory>src/main/java</directory>
+						<includes>
+							<include>**/*.java</include>
+						</includes>
+					</resource>
+				</resources>
+
 				<plugins>
 
 					<!-- Bundle all dependencies in a single JAR, including config resources -->

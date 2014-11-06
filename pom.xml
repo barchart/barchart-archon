@@ -2464,23 +2464,13 @@ ${project.artifactId}
 			</activation>
 			<properties>
 				<!-- Deployment properties -->
-				<amazonReleaseBucket>s3://barchart-applications</amazonReleaseBucket>
-				<amazonDevBucket>s3://barchart-applications-staging</amazonDevBucket>
+				<amazonReleaseBucket>s3://barchart-applications/apps</amazonReleaseBucket>
+				<amazonDevBucket>s3://barchart-applications-staging/apps</amazonDevBucket>
 				<amazonBucket>${amazonDevBucket}</amazonBucket>
+				<archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
 				<releaseProfiles>guice-app-release</releaseProfiles>
 			</properties>
 			<build>
-
-				<!-- Include java source for debugging from installed package -->
-			   <resources>
-					<resource>
-						<directory>src/main/java</directory>
-						<includes>
-							<include>**/*.java</include>
-						</includes>
-					</resource>
-				</resources>
-
 				<plugins>
 
 					<!-- Bundle all dependencies in a single JAR, including config resources -->
@@ -2495,6 +2485,7 @@ ${project.artifactId}
 									<goal>shade</goal>
 								</goals>
 								<configuration>
+									<createSourcesJar>true</createSourcesJar>
 									<transformers>
 										<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 											<mainClass>${mainClass}</mainClass>
@@ -2511,16 +2502,29 @@ ${project.artifactId}
 						<artifactId>wagon-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>conf-upload</id>
+								<id>app-upload</id>
 								<phase>deploy</phase>
 								<goals>
 									<goal>upload-single</goal>
 								</goals>
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
-									<url>${amazonBucket}/apps</url>
+									<url>${amazonBucket}</url>
 									<fromFile>${project.artifactId}-${project.version}.jar</fromFile>
-									<toFile>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}.jar</toFile>
+									<toFile>${archiveTemplate}.jar</toFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>source-upload</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload-single</goal>
+								</goals>
+								<configuration>
+									<serverId>barchart-application-deployer</serverId>
+									<url>${amazonBucket}</url>
+									<fromFile>${project.artifactId}-${project.version}-sources.jar</fromFile>
+									<toFile>${archiveTemplate}-sources.jar</toFile>
 								</configuration>
 							</execution>
 						</executions>

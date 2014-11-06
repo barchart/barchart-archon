@@ -117,6 +117,7 @@ ${project.artifactId}
 		<!-- Maven site customization. See maven site profiles. -->
 		<maven.site.skip>true</maven.site.skip>
 		<maven.site.deploy.skip>true</maven.site.deploy.skip>
+		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSSZ</maven.build.timestamp.format>
 
 		<!-- OSGI bundle DS component descriptors location in the jar. -->
 		<bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
@@ -2488,7 +2489,14 @@ ${project.artifactId}
 									<createSourcesJar>true</createSourcesJar>
 									<transformers>
 										<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-											<mainClass>${mainClass}</mainClass>
+											<manifestEntries>
+												<Main-Class>${mainClass}</Main-Class>
+												<Build-Date>${maven.build.timestamp}</Build-Date>
+												<Implementation-Vendor>Barchart</Implementation-Vendor>
+												<Implementation-Title>${project.name}</Implementation-Title>
+												<Implementation-Version>${project.version}</Implementation-Version>
+												<Maven-Artifact>${project.groupId}:${project.artifactId}:${project.version}</Maven-Artifact>
+											</manifestEntries>
 										</transformer>
 									</transformers>
 								</configuration>

@@ -410,7 +410,7 @@ ${project.artifactId}
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>[14.0.1,15.0-rc1)</version>
+				<version>[18.0,19.0-rc1)</version>
 			</dependency>
 			
 			<!-- Monitoring / Metrics -->
@@ -2508,7 +2508,7 @@ ${project.artifactId}
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
 									<url>${amazonBucket}/apps</url>
-									<fromFile>target/${project.artifactId}-${project.version}.jar</fromFile>
+									<fromFile>${project.artifactId}-${project.version}.jar</fromFile>
 									<toFile>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}.jar</toFile>
 								</configuration>
 							</execution>

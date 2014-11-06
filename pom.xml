@@ -2464,9 +2464,9 @@ ${project.artifactId}
 			</activation>
 			<properties>
 				<!-- Deployment properties -->
-				<amazonReleaseBucket>s3://barchart-applications/apps</amazonReleaseBucket>
-				<amazonDevBucket>s3://barchart-applications-staging/apps</amazonDevBucket>
-				<amazonBucket>${amazonDevBucket}</amazonBucket>
+				<releaseRepo>s3://barchart-applications/apps</releaseRepo>
+				<devRepo>s3://barchart-applications-staging/apps</devRepo>
+				<activeRepo>${devRepo}</activeRepo>
 				<archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
 				<releaseProfiles>guice-app-release</releaseProfiles>
 			</properties>
@@ -2509,7 +2509,7 @@ ${project.artifactId}
 								</goals>
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
-									<url>${amazonBucket}</url>
+									<url>${activeRepo}</url>
 									<fromFile>${project.artifactId}-${project.version}.jar</fromFile>
 									<toFile>${archiveTemplate}.jar</toFile>
 								</configuration>
@@ -2522,7 +2522,7 @@ ${project.artifactId}
 								</goals>
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
-									<url>${amazonBucket}</url>
+									<url>${activeRepo}</url>
 									<fromFile>${project.artifactId}-${project.version}-sources.jar</fromFile>
 									<toFile>${archiveTemplate}-sources.jar</toFile>
 								</configuration>
@@ -2547,7 +2547,7 @@ ${project.artifactId}
 		<profile>
 			<id>guice-app-release</id>
 			<properties>
-				<amazonBucket>${amazonReleaseBucket}</amazonBucket>
+				<activeRepo>${releaseRepo}</activeRepo>
 			</properties>
 		</profile>
 

@@ -2509,10 +2509,19 @@ ${project.artifactId}
 									<serverId>barchart-application-deployer</serverId>
 									<url>${amazonBucket}/apps</url>
 									<fromFile>target/${project.artifactId}-${project.version}.jar</fromFile>
-									<toFile>${project.groupId}.${project.artifactId}.jar</toFile>
+									<toFile>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}.jar</toFile>
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+
+					<!-- Skip deploy to Nexus for JAR, still gets tagged in SCM for reproducible builds -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
 					</plugin>
 
 				</plugins>

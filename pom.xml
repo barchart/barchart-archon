@@ -82,6 +82,9 @@ ${project.artifactId}
 		<!-- Testing plugins family version. -->
 		<projectTestingVersion>2.14</projectTestingVersion>
 
+		<!-- JAR packager properties -->
+		<mainClass>MainClassNotSpecified</mainClass>
+		
 		<!-- Feature descriptor target location -->
 		<featureFile>${project.artifactId}-${project.version}.xml</featureFile>
 		<featureTarget>target/feature/${featureFile}</featureTarget>
@@ -2454,7 +2457,42 @@ ${project.artifactId}
 			</build>
 		</profile>
 
-		<!-- Export tests as a JAR for other projects to use -->
+		<!-- Guice application JAR builder -->
+		<profile>
+			<id>guice-app</id>
+			<activation>
+				<file>
+					<exists>guice-app.md</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+								<configuration>
+									<transformers>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+											<mainClass>com.barchart.helloworldapp.App</mainClass>
+										</transformer>
+									</transformers>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<!-- Karaf app builder (.KAR) -->
 		<profile>
 			<id>karaf-app</id>
 			<activation>

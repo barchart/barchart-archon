@@ -201,12 +201,6 @@ ${project.artifactId}
 			<!-- Dependency Management -->
 			
 			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>6.0</version>
-			</dependency>
-			
-			<dependency>
 				<groupId>com.google.inject</groupId>
 				<artifactId>guice</artifactId>
 				<version>3.0</version>
@@ -394,6 +388,12 @@ ${project.artifactId}
 				<groupId>com.barchart.util</groupId>
 				<artifactId>barchart-util-value</artifactId>
 				<version>[1,2-SNAPSHOT)</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.barchart.util</groupId>
+				<artifactId>barchart-util-guice</artifactId>
+				<version>[1-SNAPSHOT,2-SNAPSHOT)</version>
 			</dependency>
 
 			<dependency>
@@ -2455,14 +2455,51 @@ ${project.artifactId}
 			</build>
 		</profile>
 
+		<!-- Guice component dependency management -->
+		<profile>
+
+			<id>guice-component</id>
+
+			<activation>
+				<file>
+					<exists>guice-component.md</exists>
+				</file>
+			</activation>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>com.barchart.util</groupId>
+					<artifactId>barchart-util-guice</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+					<scope>test</scope>
+				</dependency>
+
+			</dependencies>
+
+		</profile>
+		
 		<!-- Guice application JAR builder -->
 		<profile>
+
 			<id>guice-app</id>
+
 			<activation>
 				<file>
 					<exists>guice-app.md</exists>
 				</file>
 			</activation>
+
 			<properties>
 				<!-- Deployment properties -->
 				<releaseRepo>s3://barchart-applications/apps</releaseRepo>
@@ -2471,7 +2508,28 @@ ${project.artifactId}
 				<archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
 				<releaseProfiles>guice-app-release</releaseProfiles>
 			</properties>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>com.barchart.util</groupId>
+					<artifactId>barchart-util-guice</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</dependency>
+
+			</dependencies>
+
 			<build>
+
 				<plugins>
 
 					<!-- Bundle all dependencies in a single JAR, including config resources -->
@@ -2548,15 +2606,20 @@ ${project.artifactId}
 					</plugin>
 
 				</plugins>
+
 			</build>
+
 		</profile>
 		
 		<!-- Helper profile for guice-app -->
 		<profile>
+
 			<id>guice-app-release</id>
+
 			<properties>
 				<activeRepo>${releaseRepo}</activeRepo>
 			</properties>
+
 		</profile>
 
 		<!-- Karaf app builder (.KAR) -->

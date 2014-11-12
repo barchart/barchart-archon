@@ -2471,6 +2471,7 @@ ${project.artifactId}
 				<dependency>
 					<groupId>com.barchart.util</groupId>
 					<artifactId>barchart-util-guice</artifactId>
+					<scope>provided</scope>
 				</dependency>
 
 				<dependency>

@@ -2545,7 +2545,8 @@ ${project.artifactId}
 									<transformers>
 										<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 											<manifestEntries>
-												<Main-Class>${mainClass}</Main-Class>
+												<Main-Class>com.barchart.util.guice.GuiceMain</Main-Class>
+												<Guice-App-Main-Class>${mainClass}</Guice-App-Main-Class>
 												<Build-Date>${maven.build.timestamp}</Build-Date>
 												<Implementation-Vendor>Barchart</Implementation-Vendor>
 												<Implementation-Title>${project.name}</Implementation-Title>

@@ -914,7 +914,20 @@ ${project.artifactId}
 										<execute />
 									</action>
 								</pluginExecution>
-							</pluginExecutions>
+	                            <pluginExecution>
+	                                <pluginExecutionFilter>
+	                                    <groupId>org.reflections</groupId>
+	                                    <artifactId>reflections-maven</artifactId>
+	                                    <versionRange>[0,)</versionRange>
+	                                    <goals>
+	                                        <goal>reflections</goal>
+	                                    </goals>
+	                                </pluginExecutionFilter>
+	                                <action>
+	                                    <execute />
+	                                </action>
+	                            </pluginExecution>
+	                        </pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
@@ -1071,6 +1084,20 @@ ${project.artifactId}
 					</configuration>
 				</plugin>
 
+				<plugin>
+					<groupId>org.reflections</groupId>
+					<artifactId>reflections-maven</artifactId>
+					<version>0.9.9-RC2</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>reflections</goal>
+							</goals>
+							<phase>process-classes</phase>
+						</execution>
+					</executions>
+				</plugin>
+			
 			</plugins>
 
 		</pluginManagement>
@@ -2024,6 +2051,19 @@ ${project.artifactId}
 
 			</dependencies>
 
+			<!--
+				All or none, since the presence of any cache disables runtime scanning.
+				Only use for guice-app at the moment.
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.reflections</groupId>
+						<artifactId>reflections-maven</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+			-->
+
 		</profile>
 		
 		<!-- Guice application JAR builder -->
@@ -2142,7 +2182,12 @@ ${project.artifactId}
 							<skip>true</skip>
 						</configuration>
 					</plugin>
-
+		
+					<plugin>
+						<groupId>org.reflections</groupId>
+						<artifactId>reflections-maven</artifactId>
+					</plugin>
+			
 				</plugins>
 
 			</build>

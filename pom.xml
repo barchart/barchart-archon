@@ -2194,6 +2194,30 @@ ${project.artifactId}
 					</plugin>
 					-->
 
+					<!-- Run wiring test -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<!-- Unpack Karaf distribution and copy configuration -->
+							<execution>
+								<id>wiring-test</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<java jar="target/${project.artifactId}-${project.version}.jar"
+												fork="true" failonerror="true">
+											<arg value="test"/>
+										</java>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
 					<!-- Deploy to S3 bucket -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>

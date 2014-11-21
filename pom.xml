@@ -2207,6 +2207,7 @@ ${project.artifactId}
 									<goal>run</goal>
 								</goals>
 								<configuration>
+									<skip>${skipTests}</skip>
 									<target>
 										<java jar="target/${project.artifactId}-${project.version}.jar"
 												fork="true" failonerror="true">

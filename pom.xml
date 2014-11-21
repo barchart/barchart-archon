@@ -2211,6 +2211,7 @@ ${project.artifactId}
 									<target>
 										<java jar="target/${project.artifactId}-${project.version}.jar" fork="true" failonerror="true">
 											<arg value="test" />
+											<arg value="${basedir}/src/test/resources/META-INF/conf" />
 										</java>
 									</target>
 								</configuration>

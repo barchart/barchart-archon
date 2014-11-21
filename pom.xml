@@ -382,6 +382,12 @@ ${project.artifactId}
 				<version>1.1.3</version>
 			</dependency>
 
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>[1.6.1,1.7-SNAPSHOT)</version>
+			</dependency>
+
 			<!-- Utilities -->
 
 			<dependency>
@@ -2103,13 +2109,60 @@ ${project.artifactId}
 					<artifactId>logback-classic</artifactId>
 				</dependency>
 
+				<dependency>
+					<groupId>dom4j</groupId>
+					<artifactId>dom4j</artifactId>
+				</dependency>
+
 			</dependencies>
 
 			<build>
 
 				<plugins>
 
+					<!-- Unpack dependency sources for JAR -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack-dependencies</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>unpack-dependencies</goal>
+								</goals>
+								<configuration>
+									<includeScope>runtime</includeScope>
+									<!--
+									<excludeTransitive>true</excludeTransitive>
+									-->
+									<excludes>META-INF/MANIFEST.MF</excludes>
+									<outputDirectory>target/classes</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<configuration>
+							<archive>
+								<manifestEntries>
+									<Main-Class>com.barchart.util.guice.GuiceMain</Main-Class>
+									<Guice-App-Main-Class>${mainClass}</Guice-App-Main-Class>
+									<Build-Date>${maven.build.timestamp}</Build-Date>
+									<Implementation-Vendor>Barchart</Implementation-Vendor>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Maven-Artifact>${project.groupId}:${project.artifactId}:${project.version}</Maven-Artifact>
+								</manifestEntries>
+							</archive>
+						</configuration>
+					</plugin>
+
 					<!-- Bundle all dependencies in a single JAR, including config resources -->
+					<!--
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-shade-plugin</artifactId>
@@ -2139,6 +2192,7 @@ ${project.artifactId}
 							</execution>
 						</executions>
 					</plugin>
+					-->
 
 					<!-- Deploy to S3 bucket -->
 					<plugin>

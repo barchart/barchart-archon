@@ -2259,33 +2259,11 @@ ${project.artifactId}
 								<configuration>
 									<serverId>barchart-application-deployer</serverId>
 									<url>${activeRepo}</url>
-									<fromFile>${project.artifactId}-${project.version}.jar</fromFile>
+									<fromFile>target/${project.artifactId}-${project.version}.jar</fromFile>
 									<toFile>${archiveTemplate}.jar</toFile>
 								</configuration>
 							</execution>
-							<execution>
-								<id>source-upload</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>upload-single</goal>
-								</goals>
-								<configuration>
-									<serverId>barchart-application-deployer</serverId>
-									<url>${activeRepo}</url>
-									<fromFile>${project.artifactId}-${project.version}-sources.jar</fromFile>
-									<toFile>${archiveTemplate}-sources.jar</toFile>
-								</configuration>
-							</execution>
 						</executions>
-					</plugin>
-
-					<!-- Skip deploy to Nexus for JAR, still gets tagged in SCM for reproducible builds -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
 					</plugin>
 		
 					<plugin>

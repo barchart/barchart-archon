@@ -2162,7 +2162,7 @@ ${project.artifactId}
 									<!--
 									<excludeTransitive>true</excludeTransitive>
 									-->
-									<excludes>META-INF/MANIFEST.MF</excludes>
+									<excludes>META-INF/MANIFEST.MF,META-INF/*.SF,META-INF/*.DSA</excludes>
 									<outputDirectory>target/classes</outputDirectory>
 								</configuration>
 							</execution>

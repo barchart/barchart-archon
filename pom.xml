@@ -6,7 +6,7 @@
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.6.47-SNAPSHOT</version>
+	<version>2.6.48-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>

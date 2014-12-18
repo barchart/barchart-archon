@@ -2236,7 +2236,8 @@ ${project.artifactId}
 									<skip>${skipTests}</skip>
 									<target>
 										<java jar="target/${project.artifactId}-${project.version}.jar" fork="true" failonerror="true">
-											<arg value="test" />
+											<arg value="--test" />
+											<arg value="--conf" />
 											<arg value="${basedir}/src/test/resources/META-INF/conf" />
 										</java>
 									</target>

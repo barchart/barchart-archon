@@ -6,7 +6,7 @@
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>2.6.49-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -61,7 +61,7 @@ ${project.artifactId}
 	</scm>
 
 	<prerequisites>
-		<maven>3.0.4</maven>
+		<maven>3.2.5</maven>
 	</prerequisites>
 
 	<properties>
@@ -80,7 +80,7 @@ ${project.artifactId}
 		<projectOSGIVersion>4.3.1</projectOSGIVersion>
 
 		<!-- Testing plugins family version. -->
-		<projectTestingVersion>2.14</projectTestingVersion>
+		<projectTestingVersion>2.18.1</projectTestingVersion>
 
 		<!-- Feature descriptor target location -->
 		<featureFile>${project.artifactId}-${project.version}.xml</featureFile>
@@ -572,7 +572,7 @@ ${project.artifactId}
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-http</artifactId>
-				<version>2.4</version>
+				<version>2.8</version>
 			</extension>
 
 		</extensions>
@@ -591,7 +591,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-invoker-plugin</artifactId>
-					<version>1.8</version>
+					<version>1.9</version>
 				</plugin>
 
 				<plugin>
@@ -603,13 +603,13 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.7</version>
+					<version>2.9</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.2.1</version>
+					<version>1.3.2</version>
 				</plugin>
 
 				<plugin>
@@ -621,31 +621,31 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jxr-plugin</artifactId>
-					<version>2.3</version>
+					<version>2.5</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-plugin-plugin</artifactId>
-					<version>3.2</version>
+					<version>3.4</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>2.6</version>
+					<version>2.7</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0-beta-4</version>
+					<version>1.0</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0.3</version>
+					<version>1.0.5</version>
 				</plugin>
 
 				<plugin>
@@ -663,13 +663,13 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.4</version>
+					<version>1.5</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.7</version>
+					<version>1.9.1</version>
 				</plugin>
 
 				<plugin>
@@ -681,61 +681,61 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-scm-plugin</artifactId>
-					<version>1.8.1</version>
+					<version>1.9.2</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.7</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.6</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>2.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.5</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.8</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.6.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.5.2</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.0</version>
+					<version>2.1</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>3.2</version>
 					<configuration>
 						<source>${projectJavaVersion}</source>
 						<target>${projectJavaVersion}</target>
@@ -752,7 +752,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9</version>
+					<version>2.10.1</version>
 					<configuration>
 						<quiet>true</quiet>
 						<show>protected</show>
@@ -768,7 +768,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<version>2.4</version>
 					<executions>
 						<!-- Override default execution from parent super pom.xml. -->
 						<!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->
@@ -830,7 +830,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.7</version>
+					<version>2.8.2</version>
 				</plugin>
 
 				<plugin>
@@ -968,7 +968,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.2</version>
+					<version>1.3.1</version>
 					<executions>
 						<execution>
 							<id>enforce-maven</id>
@@ -996,7 +996,7 @@ ${project.artifactId}
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<!-- Do not use 2.4 -->
-					<version>2.3.2</version>
+					<version>2.5.1</version>
 					<configuration>
 
 						<!-- Clone only once. -->
@@ -1063,7 +1063,7 @@ ${project.artifactId}
 				<plugin>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>maven-bundle-plugin</artifactId>
-					<version>2.4.0</version>
+					<version>2.5.3</version>
 					<!-- Enable "bundle" packaging and lifecycle. -->
 					<extensions>true</extensions>
 					<configuration>
@@ -2462,13 +2462,13 @@ ${project.artifactId}
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.6</version>
+				<version>2.7</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
+				<version>2.5</version>
 			</plugin>
 
 
@@ -2476,7 +2476,7 @@ ${project.artifactId}
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9</version>
+				<version>2.10.1</version>
 				<configuration>
 					<quiet>true</quiet>
 					<show>protected</show>

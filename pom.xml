@@ -1667,6 +1667,37 @@ ${project.artifactId}
 
 		</profile>
 
+		<!-- TEMPORARY support for OSGI components required by unmigrated projects -->
+		<profile>
+			<id>container-dependencies</id>
+			<activation>
+				<file>
+					<exists>provide-container.md</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<!-- Provided by OSGI framework at runtime. -->
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.core</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.compendium</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<!-- Used at build time, not used at runtime. -->
+				<dependency>
+					<groupId>com.barchart.util</groupId>
+					<artifactId>barchart-util-anno</artifactId>
+					<version>[2,3-SNAPSHOT)</version>
+					<scope>provided</scope>
+					<optional>true</optional>
+				</dependency>
+			</dependencies>
+		</profile>
+
 	</profiles>
 
 	<reporting>

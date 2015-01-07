@@ -92,12 +92,8 @@ ${project.artifactId}
 		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases</barchartReleaseURL>
 		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots</barchartSnapshotsURL>
 
-		<!-- Barchart public repository at Sonatype. -->
-		<sonatypeNexusURL>https://oss.sonatype.org</sonatypeNexusURL>
-		<sonatypeArchonURL>${sonatypeNexusURL}/content/groups/public</sonatypeArchonURL>
-		<sonatypeReleaseURL>${sonatypeNexusURL}/content/repositories/releases</sonatypeReleaseURL>
-		<sonatypeSnapshotsURL>${sonatypeNexusURL}/content/repositories/snapshots</sonatypeSnapshotsURL>
-		<sonatypeStagingURL>${sonatypeNexusURL}/service/local/staging/deploy/maven2</sonatypeStagingURL>
+		<!-- Public repository at Sonatype. -->
+		<sonatypeArchonURL>https://oss.sonatype.org/content/groups/public</sonatypeArchonURL>
 
 		<!-- Manifest user name customization. -->
 		<barchartBuildUser>${user.name}</barchartBuildUser>
@@ -576,12 +572,6 @@ ${project.artifactId}
 		<pluginManagement>
 
 			<plugins>
-
-				<plugin>
-					<groupId>com.carrotgarden.maven</groupId>
-					<artifactId>carrot-maven-staging-plugin</artifactId>
-					<version>1.1.0</version>
-				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -1363,55 +1353,6 @@ ${project.artifactId}
 					</snapshots>
 				</pluginRepository>
 			</pluginRepositories>
-		</profile>
-
-		<!-- Sonatype staging repository for Maven Central releases -->
-		<profile>
-			<id>sonatype-staging</id>
-			<properties>
-				<staging-wagon-phase>site</staging-wagon-phase>
-				<staging-close-phase>none</staging-close-phase>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.carrotgarden.maven</groupId>
-						<artifactId>carrot-maven-staging-plugin</artifactId>
-						<configuration>
-							<wagonPlugin>
-								<groupId>org.codehaus.mojo</groupId>
-								<artifactId>wagon-maven-plugin</artifactId>
-								<version>1.0</version>
-							</wagonPlugin>
-							<nexusPlugin>
-								<groupId>org.sonatype.plugins</groupId>
-								<artifactId>nexus-maven-plugin</artifactId>
-								<version>2.1</version>
-							</nexusPlugin>
-							<sourceServerId>barchart-nexus-archon</sourceServerId>
-							<sourceServerURL>${barchartArchonURL}</sourceServerURL>
-							<targetServerId>sonatype-nexus-staging</targetServerId>
-							<targetServerURL>${sonatypeStagingURL}</targetServerURL>
-						</configuration>
-						<executions>
-							<execution>
-								<id>staging-wagon</id>
-								<phase>${staging-wagon-phase}</phase>
-								<goals>
-									<goal>sonatype-staging-wagon</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>staging-close</id>
-								<phase>${staging-close-phase}</phase>
-								<goals>
-									<goal>sonatype-staging-close</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<!-- === TEST INTEGRATIONS === -->

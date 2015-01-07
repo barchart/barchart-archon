@@ -60,10 +60,6 @@ ${project.artifactId}
 		<tag>master</tag>
 	</scm>
 
-	<prerequisites>
-		<maven>3.2.5</maven>
-	</prerequisites>
-
 	<properties>
 
 		<!-- Always use UTF-8 file encoding. -->
@@ -73,7 +69,7 @@ ${project.artifactId}
 		<!-- Barchart required versions. -->
 		<projectJavaVersion>1.6</projectJavaVersion>
 		<projectScalaVersion>2.10.2</projectScalaVersion>
-		<projectMavenVersion>3.2.5</projectMavenVersion>
+		<projectMavenVersion>3.0.4</projectMavenVersion>
 
 		<!-- Default dependency versions -->
 		<projectNettyVersion>4.0.14.Final</projectNettyVersion>

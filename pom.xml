@@ -1038,7 +1038,7 @@ ${project.artifactId}
 					<!-- Barchart custom plugin for feature generation -->
 					<groupId>org.apache.karaf.tooling</groupId>
 					<artifactId>karaf-maven-plugin</artifactId>
-					<version>3.0.0-patch6</version>
+					<version>3.0.0-patch7</version>
 					<!-- Enable "kar" packaging and lifecycle. -->
 					<extensions>true</extensions>
 					<configuration>

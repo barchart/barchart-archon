@@ -917,6 +917,19 @@ ${project.artifactId}
 	                                    <ignore />
 	                                </action>
 	                            </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.github.igor-petruk.protobuf</groupId>
+                                        <artifactId>protobuf-maven-plugin</artifactId>
+                                        <versionRange>[0,)</versionRange>
+                                        <goals>
+                                            <goal>run</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
 	                        </pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -971,6 +984,12 @@ ${project.artifactId}
 						<!-- <arguments>${releaseArguments}</arguments> -->
 
 					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>com.github.igor-petruk.protobuf</groupId>
+					<artifactId>protobuf-maven-plugin</artifactId>
+					<version>0.6.5</version>
 				</plugin>
 
 				<!-- Generate OSGI DS component descriptors. -->
@@ -1608,6 +1627,133 @@ ${project.artifactId}
 
 		</profile>
 
+		<!-- Protobuf message builder projects -->
+		<profile>
+
+			<id>protobuf</id>
+
+			<activation>
+				<file>
+					<exists>protobuf.md</exists>
+				</file>
+			</activation>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>com.google.protobuf</groupId>
+					<artifactId>protobuf-java</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+			</dependencies>
+
+			<build>
+
+				<plugins>
+
+					<plugin>
+						<groupId>com.github.igor-petruk.protobuf</groupId>
+						<artifactId>protobuf-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>protocol-sources</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<!-- Disable, produces build loop. -->
+									<addSources>none</addSources>
+									<ignoreVersions>false</ignoreVersions>
+									<inputDirectories>
+										<entry>src/main/resources/protobuf</entry>
+									</inputDirectories>
+									<outputDirectory>target/main/protobuf</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>protocol-test-sources</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<!-- Disable, produces build loop. -->
+									<addSources>none</addSources>
+									<ignoreVersions>false</ignoreVersions>
+									<inputDirectories>
+										<entry>src/test/resources/protobuf</entry>
+									</inputDirectories>
+									<outputDirectory>target/test/protobuf</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>protocol-sources</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>target/main/protobuf</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>protocol-test-sources</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>target/test/protobuf</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Include test source. -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>test-jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Include test archive. -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>test-jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+
+			</build>
+
+		</profile>
+		
 		<!-- TEMPORARY support for OSGI components required by unmigrated projects -->
 		<profile>
 			<id>container-dependencies</id>

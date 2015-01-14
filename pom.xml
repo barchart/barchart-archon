@@ -1560,25 +1560,25 @@ ${project.artifactId}
 
 					<!-- Run wiring test -->
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
 						<executions>
-							<!-- Unpack Karaf distribution and copy configuration -->
 							<execution>
 								<id>wiring-test</id>
 								<phase>integration-test</phase>
 								<goals>
-									<goal>run</goal>
+									<goal>exec</goal>
 								</goals>
 								<configuration>
 									<skip>${skipTests}</skip>
-									<target>
-										<java jar="target/${project.artifactId}-${project.version}.jar" fork="true" failonerror="true">
-											<arg value="--test" />
-											<arg value="--conf" />
-											<arg value="${basedir}/src/test/resources/META-INF/conf" />
-										</java>
-									</target>
+									<executable>java</executable>
+									<arguments>
+										<argument>-jar</argument>
+										<argument>target/${project.artifactId}-${project.version}.jar</argument>
+										<argument>--test</argument>
+										<argument>--conf</argument>
+										<argument>${basedir}/src/test/resources/META-INF/conf</argument>
+									</arguments>
 								</configuration>
 							</execution>
 						</executions>

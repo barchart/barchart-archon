@@ -1524,7 +1524,7 @@ ${project.artifactId}
 						<executions>
 							<execution>
 								<id>unpack-dependencies</id>
-								<phase>process-sources</phase>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>unpack-dependencies</goal>
 								</goals>

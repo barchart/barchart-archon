@@ -864,20 +864,6 @@ ${project.artifactId}
 										<ignore />
 									</action>
 								</pluginExecution>
-								<pluginExecution>
-									<!-- Do not run groovy in Eclipse. -->
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>groovy-maven-plugin</artifactId>
-										<versionRange>[0,)</versionRange>
-										<goals>
-											<goal>execute</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
 	                            <pluginExecution>
 	                                <pluginExecutionFilter>
 	                                    <groupId>org.reflections</groupId>
@@ -1127,48 +1113,6 @@ ${project.artifactId}
 						<goals>
 							<goal>jar-no-fork</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Provide custom project properties. -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>groovy-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>provide-custom-properties</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<source>
-		<![CDATA[
-		import java.text.MessageFormat
-		
-		// Date/Time in milliseconds UTC.
-		def projectTimeLong = System.currentTimeMillis()
-		project.properties["projectTimeLong"] = projectTimeLong
-		// println("### projectTimeLong=" + projectTimeLong)
-		
-		// Date/Time in file-system-safe path element. 
-		def projectTimeFile = MessageFormat.format("{0,date,yyyy-MM-dd_HH-mm-ss}", projectTimeLong)
-		project.properties["projectTimeFile"] = projectTimeFile
-		// println("### projectTimeFile=" + projectTimeFile)
-		
-		// Date/Time in standard ISO format.
-		def projectTimeISO=MessageFormat.format("{0,date,yyyy-MM-dd'T'HH:mm:ss.SSSZ}", projectTimeLong)
-		project.properties["projectTimeISO"] = projectTimeISO
-		// println("### projectTimeISO=" + projectTimeISO)
-		
-		// Date/Time year field only.
-		def projectTimeYear=MessageFormat.format("{0,date,yyyy}", projectTimeLong)
-		project.properties["projectTimeYear"] = projectTimeYear
-		// println("### projectTimeYear=" + projectTimeYear)
-		]]>
-							</source>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

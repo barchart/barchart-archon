@@ -1729,6 +1729,170 @@ ${project.artifactId}
 			</dependencies>
 		</profile>
 
+		<!-- Karaf app builder (.KAR) -->
+		<profile>
+			<id>karaf-app</id>
+			<activation>
+				<file>
+					<exists>karaf-app.md</exists>
+				</file>
+			</activation>
+			<properties>
+				<!-- Deployment properties -->
+				<amazonReleaseBucket>s3://barchart-applications</amazonReleaseBucket>
+				<amazonDevBucket>s3://barchart-applications-staging</amazonDevBucket>
+				<amazonBucket>${amazonDevBucket}</amazonBucket>
+				<appAssemblyDirectory>${basedir}/target/config</appAssemblyDirectory>
+				<appConfDirectory>${basedir}/conf</appConfDirectory>
+				<releaseProfiles>karaf-app-release</releaseProfiles>
+				<!-- Test application configuration -->
+				<karafAppGroup>com.barchart.karaf</karafAppGroup>
+				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
+				<karafAppVersion>1.5.14</karafAppVersion>
+				<karafAppClassifier>tanuki-distro</karafAppClassifier>
+				<distroSource>${basedir}/target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
+				<distroTarget>${basedir}/target/service</distroTarget>
+				<appTarget>${basedir}/target/app</appTarget>
+			</properties>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<!-- Copy dependency artifiacts to assembly directory -->
+							<execution>
+								<id>copy-kar</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<includeScope>runtime</includeScope>
+									<excludeTransitive>true</excludeTransitive>
+									<outputDirectory>${appAssemblyDirectory}</outputDirectory>
+								</configuration>
+							</execution>
+							<!-- Copy the Karaf distribution base app -->
+							<execution>
+								<id>download-distro</id>
+								<phase>test</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${karafAppGroup}</groupId>
+											<artifactId>${karafAppArtifact}</artifactId>
+											<version>${karafAppVersion}</version>
+											<classifier>${karafAppClassifier}</classifier>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>target</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Deploy to S3 bucket -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>conf-upload</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload-single</goal>
+								</goals>
+								<configuration>
+									<serverId>barchart-application-deployer</serverId>
+									<url>${amazonBucket}/config</url>
+									<fromFile>target/${appIdentity}-${project.version}.zip</fromFile>
+									<toFile>${appIdentity}.zip</toFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Skip deploy to Nexus for app deployment config, it will still tag in SCM -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+
+					<!-- Unpack karaf distribution -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<!-- Unpack Karaf distribution and copy configuration -->
+							<execution>
+								<id>copy-conf</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy todir="${appAssemblyDirectory}">
+											<fileset dir="${appConfDirectory}" />
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-app</id>
+								<phase>test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
+										<loadproperties srcFile="${distroTarget}/distribution.properties" />
+										<replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
+										<delete dir="${distroTarget}/${archive-folder}/conf" />
+										<symlink link="${distroTarget}/${archive-folder}/conf" resource="${appAssemblyDirectory}" overwrite="true" />
+										<symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />
+										<chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
+									</target>
+								</configuration>
+							</execution>
+							<!-- Zip up config for deployment -->
+							<execution>
+								<id>zip-conf</id>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<zip destfile="target/${appIdentity}-${project.version}.zip" basedir="${appAssemblyDirectory}" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Helper profile for karaf-app -->
+		<profile>
+			<id>karaf-app-release</id>
+			<properties>
+				<amazonBucket>${amazonReleaseBucket}</amazonBucket>
+			</properties>
+		</profile>
+
 	</profiles>
 
 	<reporting>

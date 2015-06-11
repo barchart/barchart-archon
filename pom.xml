@@ -1892,6 +1892,41 @@ ${project.artifactId}
 				<amazonBucket>${amazonReleaseBucket}</amazonBucket>
 			</properties>
 		</profile>
+		
+        <!--  Create docker assembly for pipelined docker builds on Jenkins -->
+        <profile>
+            <id>docker-assembly</id>
+            <activation>
+                <file>
+                    <exists>src/main/assembly/docker-assembly.xml</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <finalName>${project.groupId}:${project.artifactId}:${project.version}</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/assembly/docker-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+		
 
 	</profiles>
 

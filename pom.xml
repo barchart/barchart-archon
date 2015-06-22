@@ -981,9 +981,9 @@ ${project.artifactId}
 				<!-- Generate OSGI DS component descriptors. -->
 				<!-- M2E integration is provided by the plugin. Requires M2E v 1.1+ -->
 				<plugin>
-					<groupId>com.carrotgarden.maven</groupId>
+					<groupId>com.barchart</groupId>
 					<artifactId>carrot-maven-scr-plugin</artifactId>
-					<version>3.0.3</version>
+					<version>4.0.2</version>
 					<configuration>
 
 						<!-- DS component descriptors location. See maven-bundle-plugin. -->

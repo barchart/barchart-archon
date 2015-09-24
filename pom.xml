@@ -122,6 +122,9 @@ ${project.artifactId}
 		<bundleBaselineVersion>RELEASE</bundleBaselineVersion>
 		<bundleBaselineExtension>jar</bundleBaselineExtension>
 
+
+<additionalparam>-Xdoclint:none</additionalparam>
+
 	</properties>
 
 	<!--
@@ -735,6 +738,10 @@ ${project.artifactId}
 						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></header>
 						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></footer>
 						<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
+
+
+
+
 					</configuration>
 				</plugin>
 
@@ -1165,11 +1172,9 @@ ${project.artifactId}
 								<goals>
 									<goal>jar</goal>
 								</goals>
-					            <configuration>
-					                <additionalparam>-Xdoclint:none</additionalparam>
-					            </configuration>								
 							</execution>
 						</executions>
+
 					</plugin>
 
 					<!-- Release must be signed. -->

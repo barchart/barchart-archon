@@ -320,7 +320,7 @@ ${project.artifactId}
 			<dependency>
 				<groupId>commons-net</groupId>
 				<artifactId>commons-net</artifactId>
-				<version>[3,4-SNAPSHOT)</version>
+				<version>3.4</version>
 			</dependency>
 
 			<dependency>

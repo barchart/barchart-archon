@@ -1158,22 +1158,6 @@ ${project.artifactId}
 						</executions>
 					</plugin>
 
-					<!-- Release must contain javadoc. -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<!-- Override default execution id. -->
-								<id>attach-javadocs</id>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-
-					</plugin>
 
 					<!-- Release must be signed. -->
 					<plugin>

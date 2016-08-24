@@ -396,7 +396,7 @@ ${project.artifactId}
 			<dependency>
 				<groupId>com.barchart.util</groupId>
 				<artifactId>barchart-util-guice</artifactId>
-				<version>[1-SNAPSHOT,2-SNAPSHOT)</version>
+				<version>1.0.16</version>
 			</dependency>
 
 			<dependency>

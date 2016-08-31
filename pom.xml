@@ -1452,6 +1452,25 @@ ${project.artifactId}
 
 				<plugins>
 
+	 				<plugin>
+		                <groupId>pl.project13.maven</groupId>
+		                <artifactId>git-commit-id-plugin</artifactId>
+		                <version>2.2.1</version>
+		                <executions>
+		                    <execution>
+		                        <id>get-the-git-infos</id>
+		                        <goals>
+		                            <goal>revision</goal>
+		                        </goals>
+		                        <configuration>
+						    		<generateGitPropertiesFile>true</generateGitPropertiesFile>
+								    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+								</configuration>
+		                    </execution>
+		                </executions>
+		
+	                </plugin>
+
 					<!-- Unpack dependency sources for JAR -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>

@@ -1512,32 +1512,6 @@ ${project.artifactId}
 						</configuration>
 					</plugin>
 
-					<!-- Run wiring test -->
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>wiring-test</id>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<configuration>
-									<skip>${skipTests}</skip>
-									<executable>java</executable>
-									<arguments>
-										<argument>-jar</argument>
-										<argument>target/${project.artifactId}-${project.version}.jar</argument>
-										<argument>--test</argument>
-										<argument>--conf</argument>
-										<argument>${basedir}/src/test/resources/META-INF/conf</argument>
-									</arguments>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
 					<!-- Deploy to S3 bucket -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>

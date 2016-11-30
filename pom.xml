@@ -6,7 +6,7 @@ erights reserved. Licensed under the OSI BSD License. http://www.opensource.org/
 
 	<groupId>com.barchart.base</groupId>
 	<artifactId>barchart-archon</artifactId>
-	<version>3.0.27-SNAPSHOT</version>
+	<version>3.0.27</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.barchart.com/</url>
@@ -57,7 +57,7 @@ ${project.artifactId}
 		<url>https://github.com/barchart/barchart-archon</url>
 		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-		<tag>master</tag>
+		<tag>barchart-archon-3.0.27</tag>
 	</scm>
 
 	<properties>

@@ -1500,27 +1500,6 @@ ${project.artifactId}
 						</configuration>
 					</plugin>
 
-					<!-- Deploy to S3 bucket -->
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>wagon-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>app-upload</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>upload-single</goal>
-								</goals>
-								<configuration>
-									<serverId>barchart-application-deployer</serverId>
-									<url>${activeRepo}</url>
-									<fromFile>target/${project.artifactId}-${project.version}.jar</fromFile>
-									<toFile>${archiveTemplate}.jar</toFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-		
 					<plugin>
 						<groupId>org.reflections</groupId>
 						<artifactId>reflections-maven</artifactId>
@@ -1940,7 +1919,7 @@ ${project.artifactId}
 						</executions>
 						<configuration>
 							<imageName>barchart/${project.name}:${project.version}</imageName>
-							<dockerDirectory>target/docker-stage</dockerDirectory>
+							<dockerDirectory>${project.build.directory}/docker-stage</dockerDirectory>
 							<resources>
 								<resource>
 									<targetPath>/</targetPath>

@@ -1,1978 +1,2075 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
-erights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  erights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.barchart.base</groupId>
-	<artifactId>barchart-archon</artifactId>
-	<version>3.0.30-SNAPSHOT</version>
-	<packaging>pom</packaging>
+  <groupId>com.barchart.base</groupId>
+  <artifactId>barchart-archon</artifactId>
+  <version>3.0.30-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-	<url>http://www.barchart.com/</url>
-	<name>${project.artifactId}</name>
-	<inceptionYear>2011</inceptionYear>
-	<description>
+  <url>http://www.barchart.com/</url>
+  <name>${project.artifactId}</name>
+  <inceptionYear>2011</inceptionYear>
+  <description>
 <![CDATA[
 ${project.artifactId}
 ]]>
 	</description>
 
-	<organization>
-		<name>Barchart, Inc.</name>
-		<url>http://www.barchart.com/</url>
-	</organization>
-
-	<licenses>
-		<license>
-			<name>The BSD License</name>
-			<url>http://www.opensource.org/licenses/bsd-license.php</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<developers>
-
-		<developer>
-			<id>barchart</id>
-			<name>Barchart, Inc.</name>
-			<email>http://www.barchart.com/</email>
-			<roles>
-				<role>developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
-	<mailingLists>
-		<mailingList>
-			<name>barchart</name>
-			<post>tag : barchart</post>
-			<subscribe>http://stackoverflow.com/users/login</subscribe>
-			<archive>http://stackoverflow.com/tags/barchart</archive>
-		</mailingList>
-	</mailingLists>
-
-	<scm>
-		<url>https://github.com/barchart/barchart-archon</url>
-		<connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-		<tag>master</tag>
-	</scm>
-
-	<properties>
-
-		<!-- Always use UTF-8 file encoding. -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<!-- Barchart required versions. -->
-		<projectJavaVersion>1.6</projectJavaVersion>
-		<projectScalaVersion>2.10.2</projectScalaVersion>
-		<projectMavenVersion>3.0.4</projectMavenVersion>
-
-		<!-- Default dependency versions -->
-		<projectNettyVersion>4.0.14.Final</projectNettyVersion>
-		<projectOSGIVersion>4.3.1</projectOSGIVersion>
-
-		<!-- Testing plugins family version. -->
-		<projectTestingVersion>2.18.1</projectTestingVersion>
-
-		<!-- Feature descriptor target location -->
-		<featureFile>${project.artifactId}-${project.version}.xml</featureFile>
-		<featureTarget>target/feature/${featureFile}</featureTarget>
-
-		<!-- Barchart private repository at Amazon. -->
-		<amazonReleaseRepo>maven.aws.barchart.com/release</amazonReleaseRepo>
-		<amazonStagingRepo>maven.aws.barchart.com/snapshot</amazonStagingRepo>
-
-		<!-- Barchart private repository in Office. -->
-		<barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
-		<barchartArchonURL>${barchartNexusURL}/content/groups/archon</barchartArchonURL>
-		<barchartReleaseURL>${barchartNexusURL}/content/repositories/releases</barchartReleaseURL>
-		<barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots</barchartSnapshotsURL>
-
-		<!-- Public repository at Sonatype. -->
-		<sonatypeArchonURL>https://oss.sonatype.org/content/groups/public</sonatypeArchonURL>
-
-		<!-- Manifest user name customization. -->
-		<barchartBuildUser>${user.name}</barchartBuildUser>
-
-		<!-- Release customization. See maven-release-plugin. -->
-		<releaseProfiles />
-		<!-- <releaseArguments>-Dresume=false</releaseArguments> -->
-		<releasePrepareGoals>clean verify</releasePrepareGoals>
-		<releasePerformGoals>deploy</releasePerformGoals>
-
-		<!-- Maven site customization. See maven site profiles. -->
-		<maven.site.skip>true</maven.site.skip>
-		<maven.site.deploy.skip>true</maven.site.deploy.skip>
-		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSSZ</maven.build.timestamp.format>
-
-		<!-- OSGI bundle DS component descriptors location in the jar. -->
-		<bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
-
-		<!-- Semantic version import policy for consumer. Bind to MAJOR. -->
-		<bundleConsumerPolicy>$&lt;range;[==,+)&gt;</bundleConsumerPolicy>
-
-		<!-- Semantic version import policy for provider. Bind to MAJOR.MINOR. -->
-		<bundleProviderPolicy>$&lt;range;[==,=+)&gt;</bundleProviderPolicy>
-
-		<!-- Semantic version check. Use latest release by default. -->
-		<bundleBaselineVersion>RELEASE</bundleBaselineVersion>
-		<bundleBaselineExtension>jar</bundleBaselineExtension>
-
-	</properties>
-
-	<!--
-	Ensure default versions for popular libraries. In general only third-party
-	libraries should go here, although common Barchart libraries may be added if
-	they are low entropy.
-	-->
-
-	<dependencyManagement>
-
-		<dependencies>
-
-			<!-- Scala Runtime -->
-
-			<dependency>
-				<groupId>org.scala-lang</groupId>
-				<artifactId>scala-library</artifactId>
-				<version>${projectScalaVersion}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.scala-lang</groupId>
-				<artifactId>scala-reflect</artifactId>
-				<version>${projectScalaVersion}</version>
-			</dependency>
-
-			<!-- OSGI Specification -->
-
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.core</artifactId>
-				<version>${projectOSGIVersion}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.compendium</artifactId>
-				<version>${projectOSGIVersion}</version>
-			</dependency>
-
-			<!-- OSGI Component Utilities -->
-
-			<dependency>
-				<groupId>com.barchart.osgi</groupId>
-				<artifactId>barchart-osgi-component</artifactId>
-				<version>[1.0,1.1-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.osgi</groupId>
-				<artifactId>barchart-osgi-factory-ca</artifactId>
-				<version>[1.4,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.osgi</groupId>
-				<artifactId>barchart-osgi-conf</artifactId>
-				<version>[1.2,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.osgi</groupId>
-				<artifactId>barchart-osgi-event</artifactId>
-				<version>[1.2,2-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Dependency Management -->
-			
-			<dependency>
-				<groupId>com.google.inject</groupId>
-				<artifactId>guice</artifactId>
-				<version>4.0</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.google.inject.extensions</groupId>
-				<artifactId>guice-multibindings</artifactId>
-				<version>4.0</version>
-			</dependency>
-
-			<!-- Barchart Wrapped Bundles -->
-			<!-- TODO not really necessary with non-OSGi apps, replace with normal dependencies -->
-
-			<dependency>
-				<groupId>com.barchart.wrap</groupId>
-				<artifactId>barchart-wrap-apache-http-all</artifactId>
-				<version>[4.2.3-SNAPSHOT,4.3-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.wrap</groupId>
-				<artifactId>barchart-wrap-aws-java-sdk</artifactId>
-				<version>[1.4.1-SNAPSHOT,1.5-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.wrap</groupId>
-				<artifactId>barchart-wrap-hazelcast-all</artifactId>
-				<version>[2.5.0-SNAPSHOT,2.6.0-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.wrap</groupId>
-				<artifactId>barchart-wrap-elasticsearch-all</artifactId>
-				<version>[0.90.7-build001,1.0.0-build001-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.wrap</groupId>
-				<artifactId>barchart-wrap-astyanax</artifactId>
-				<version>[1.56.42-build003,1.56.43-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Networking / Protocols -->
-
-			<dependency>
-				<groupId>com.barchart.netty</groupId>
-				<artifactId>barchart-netty-server</artifactId>
-				<version>[1-SNAPSHOT,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.netty</groupId>
-				<artifactId>barchart-netty-core</artifactId>
-				<version>[3-SNAPSHOT,4-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-common</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-buffer</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-handler</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-codec</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-codec-http</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-codec-socks</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-transport</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-transport-sctp</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-transport-udt</artifactId>
-				<version>${projectNettyVersion}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.google.protobuf</groupId>
-				<artifactId>protobuf-java</artifactId>
-				<version>2.6.1</version>
-			</dependency>
-
-			<!-- HTTP -->
-
-			<dependency>
-				<groupId>com.barchart.osgi</groupId>
-				<artifactId>barchart-osgi-http</artifactId>
-				<version>[4-SNAPSHOT,5-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.netty</groupId>
-				<artifactId>barchart-netty-http-guice</artifactId>
-				<version>[1-SNAPSHOT,2-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Jakarta Commons -->
-
-			<dependency>
-				<groupId>commons-net</groupId>
-				<artifactId>commons-net</artifactId>
-				<version>3.4</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>[2.6,3-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>[2.4,3-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>[1.1,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<version>[1.6,2-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Parsers -->
-
-			<dependency>
-				<groupId>com.typesafe</groupId>
-				<artifactId>config</artifactId>
-				<version>[1,1.1-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
-				<version>1.1.3</version>
-			</dependency>
-
-			<dependency>
-				<groupId>dom4j</groupId>
-				<artifactId>dom4j</artifactId>
-				<version>[1.6.1,1.7-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Utilities -->
-
-			<dependency>
-				<groupId>com.barchart.util</groupId>
-				<artifactId>barchart-util-common</artifactId>
-				<version>[1,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.util</groupId>
-				<artifactId>barchart-util-value</artifactId>
-				<version>[1,2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.util</groupId>
-				<artifactId>barchart-util-guice</artifactId>
-				<version>1.0.16</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.netflix.rxjava</groupId>
-				<artifactId>rxjava-core</artifactId>
-				<version>[0.18,0.19-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time</artifactId>
-				<version>[2.9.2,)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-				<version>[18.0,19.0-rc1)</version>
-			</dependency>
-			
-			<!-- Monitoring / Metrics -->
-
-			<dependency>
-				<groupId>com.yammer.metrics</groupId>
-				<artifactId>metrics-core</artifactId>
-				<version>[2.2.0,3.0.0-BETA1)</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.slf4j</groupId>
-						<artifactId>slf4j-api</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
-			<dependency>
-				<groupId>com.yammer.metric</groupId>
-				<artifactId>metrics-core-wrapped</artifactId>
-				<version>[2.2.0,3.0.0-BETA1)</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.slf4j</groupId>
-						<artifactId>slf4j-api</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
-			<!-- Data Storage -->
-
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>[5.1.10,5.2-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.store</groupId>
-				<artifactId>store-api</artifactId>
-				<version>[4.0,5.0-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.store</groupId>
-				<artifactId>store-util</artifactId>
-				<version>[3.0,4.0-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.store</groupId>
-				<artifactId>store-heap</artifactId>
-				<version>[4.0,5.0-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.store</groupId>
-				<artifactId>store-cassandra</artifactId>
-				<version>[5.0,6.0-SNAPSHOT)</version>
-			</dependency>
-
-			<!-- Logging -->
-
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.21</version>
-			</dependency>
-
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>[1.1.7,)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>[1.1.7,)</version>
-			</dependency>
-
-			<!-- Test Frameworks -->
-
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.barchart.util</groupId>
-				<artifactId>barchart-util-test</artifactId>
-				<version>[4,5-SNAPSHOT)</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.easymock</groupId>
-				<artifactId>easymock</artifactId>
-				<version>3.2</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<version>1.10.19</version>
-				<scope>test</scope>
-			</dependency>
-
-		</dependencies>
-
-	</dependencyManagement>
-
-	<!-- Libraries included in all projects. -->
-	<dependencies>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
-
-	<build>
-
-		<extensions>
-
-			<!-- Enable Amazon S3 bucket transport. -->
-			<extension>
-				<groupId>org.kuali.maven.wagons</groupId>
-				<artifactId>maven-s3-wagon</artifactId>
-				<version>1.2.1</version>
-			</extension>
-
-			<!-- Enable generic HTTP/HTTPS transport. -->
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-http</artifactId>
-				<version>2.8</version>
-			</extension>
-
-		</extensions>
-
-		<!-- Ensure default plug-ins configurations and versions. -->
-		<pluginManagement>
-
-			<plugins>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-invoker-plugin</artifactId>
-					<version>1.9</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.9</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.3.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jxr-plugin</artifactId>
-					<version>2.5</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-plugin-plugin</artifactId>
-					<version>3.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>2.7</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.kuali.maven.plugins</groupId>
-					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0.5</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.kuali.maven.plugins</groupId>
-					<artifactId>properties-maven-plugin</artifactId>
-					<version>2.0.1</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-help-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.5</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.9.1</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-patch-plugin</artifactId>
-					<version>1.1.1</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<version>1.9.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.5</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.8</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.7</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>2.5.3</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.6.1</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.1</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
-					<configuration>
-						<source>${projectJavaVersion}</source>
-						<target>${projectJavaVersion}</target>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.9</version>
-				</plugin>
-
-				<!-- Keep in sync with <reporting>. -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.3</version>
-					<configuration>
-						<quiet>true</quiet>
-						<show>protected</show>
-						<linksource>true</linksource>
-						<windowtitle><![CDATA[${project.artifactId}-${project.version}]]></windowtitle>
-						<doctitle><![CDATA[${project.artifactId}-${project.version}]]></doctitle>
-						<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></header>
-						<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></footer>
-						<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
-
-
-
-
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>2.4</version>
-					<executions>
-						<!-- Override default execution from parent super pom.xml. -->
-						<!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->
-						<execution>
-							<!-- Disable default execution. -->
-							<id>attach-sources</id>
-							<phase>invalid</phase>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-						<execution>
-							<!-- Provide new default execution. -->
-							<id>attach-sources-no-fork</id>
-							<phase>package</phase>
-							<goals>
-								<goal>jar-no-fork</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>groovy-maven-plugin</artifactId>
-					<version>1.5</version>
-					<configuration>
-						<providerSelection>2.0</providerSelection>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${projectTestingVersion}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.maven.surefire</groupId>
-							<artifactId>surefire-junit4</artifactId>
-							<version>${projectTestingVersion}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${projectTestingVersion}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>integration-test</goal>
-								<goal>verify</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
-				</plugin>
-
-				<plugin>
-					<groupId>net.alchim31.maven</groupId>
-					<artifactId>scala-maven-plugin</artifactId>
-					<version>3.1.5</version>
-					<configuration>
-						<scalaVersion>${projectScalaVersion}</scalaVersion>
-						<jvmArgs>
-							<jvmArg>-Xms64m</jvmArg>
-							<jvmArg>-Xmx1024m</jvmArg>
-						</jvmArgs>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>add-source</goal>
-								<goal>compile</goal>
-								<goal>testCompile</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<!-- Provide Maven/Eclipse plug-ins connector policies. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<!-- Do not run enforcer in Eclipse. -->
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-enforcer-plugin</artifactId>
-										<versionRange>[0,)</versionRange>
-										<goals>
-											<goal>enforce</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<!-- Do not run enforcer in Eclipse. -->
-									<pluginExecutionFilter>
-										<groupId>org.apache.karaf.tooling</groupId>
-										<artifactId>karaf-maven-plugin</artifactId>
-										<versionRange>[0,)</versionRange>
-										<goals>
-											<goal>features-generate-semantic</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-	                            <pluginExecution>
-	                                <pluginExecutionFilter>
-	                                    <groupId>org.reflections</groupId>
-	                                    <artifactId>reflections-maven</artifactId>
-	                                    <versionRange>[0,)</versionRange>
-	                                    <goals>
-	                                        <goal>reflections</goal>
-	                                    </goals>
-	                                </pluginExecutionFilter>
-	                                <action>
-	                                    <ignore />
-	                                </action>
-	                            </pluginExecution>
-	                            <pluginExecution>
-	                                <pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-antrun-plugin</artifactId>
-	                                    <versionRange>[0,)</versionRange>
-	                                    <goals>
-	                                        <goal>run</goal>
-	                                    </goals>
-	                                </pluginExecutionFilter>
-	                                <action>
-	                                    <ignore />
-	                                </action>
-	                            </pluginExecution>
-	                            <pluginExecution>
-	                                <pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-dependency-plugin</artifactId>
-	                                    <versionRange>[0,)</versionRange>
-	                                    <goals>
-	                                        <goal>unpack-dependencies</goal>
-	                                    </goals>
-	                                </pluginExecutionFilter>
-	                                <action>
-	                                    <ignore />
-	                                </action>
-	                            </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>com.github.igor-petruk.protobuf</groupId>
-                                        <artifactId>protobuf-maven-plugin</artifactId>
-                                        <versionRange>[0,)</versionRange>
-                                        <goals>
-                                            <goal>run</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-	                        </pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-
-				<!-- Enforce Maven and Java versions. -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.3.1</version>
-					<executions>
-						<execution>
-							<id>enforce-maven</id>
-							<goals>
-								<goal>enforce</goal>
-							</goals>
-							<configuration>
-								<rules>
-									<requireMavenVersion>
-										<version>${projectMavenVersion}</version>
-										<message><![CDATA[you must have projectMavenVersion >= ${projectMavenVersion}]]></message>
-									</requireMavenVersion>
-									<requireJavaVersion>
-										<version>${projectJavaVersion}</version>
-										<message><![CDATA[you must have projectJavaVersion >= ${projectJavaVersion}]]></message>
-									</requireJavaVersion>
-								</rules>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-
-				<!-- Manage maven release process. -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.1</version>
-					<configuration>
-
-						<!-- Clone only once. -->
-						<localCheckout>true</localCheckout>
-
-						<!-- Invocataion: release:prepare -->
-						<preparationGoals>${releasePrepareGoals}</preparationGoals>
-
-						<!-- Invocataion: release:perform -->
-						<useReleaseProfile>true</useReleaseProfile>
-						<goals>${releasePerformGoals}</goals>
-						<releaseProfiles>${releaseProfiles}</releaseProfiles>
-
-						<!-- Invocation arguments for both release:prepare and release:perform -->
-						<!-- <arguments>${releaseArguments}</arguments> -->
-
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>com.github.igor-petruk.protobuf</groupId>
-					<artifactId>protobuf-maven-plugin</artifactId>
-					<version>0.6.5</version>
-				</plugin>
-
-				<!-- Generate OSGI DS component descriptors. -->
-				<!-- M2E integration is provided by the plugin. Requires M2E v 1.1+ -->
-				<plugin>
-					<groupId>com.barchart</groupId>
-					<artifactId>carrot-maven-scr-plugin</artifactId>
-					<version>4.0.2</version>
-					<configuration>
-
-						<!-- DS component descriptors location. See maven-bundle-plugin. -->
-						<targetDirectorySCR>${bundleServiceComponent}</targetDirectorySCR>
-
-						<!-- Execute this plug-in only for OSGI bundle projects. -->
-						<properPackaging>
-							<packaging>bundle</packaging>
-						</properPackaging>
-
-						<!-- do not generate OSGI-INF/service-component/null.xml -->
-						<isIncludeEmptyDescriptor>false</isIncludeEmptyDescriptor>
-						
-						<!-- Remove system interfaces form DS component services. -->
-						<excludedServices>
-							<service>scala.ScalaObject</service>
-							<service>java.lang.Cloneable</service>
-							<service>java.io.Serializable</service>
-						</excludedServices>
-
-						<!-- Eclipse maven console settings. -->
-						<enableDebugLogging>false</enableDebugLogging>
-						<enableInfoLogging>true</enableInfoLogging>
-						<enableErrorLogging>true</enableErrorLogging>
-
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>2.5.3</version>
-					<!-- Enable "bundle" packaging and lifecycle. -->
-					<extensions>true</extensions>
-					<configuration>
-						<instructions>
-
-							<!-- DS component descriptors location. See carrot-maven-scr-plugin. -->
-							<Service-Component>${bundleServiceComponent}/*.xml</Service-Component>
-
-							<!-- Semantic version policy. -->
-							<_consumer-policy>${bundleConsumerPolicy}</_consumer-policy>
-							<_provider-policy>${bundleProviderPolicy}</_provider-policy>
-
-						</instructions>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<!-- Barchart custom plugin for feature generation -->
-					<groupId>org.apache.karaf.tooling</groupId>
-					<artifactId>karaf-maven-plugin</artifactId>
-					<version>3.0.0-patch10</version>
-					<!-- Enable "kar" packaging and lifecycle. -->
-					<extensions>true</extensions>
-					<configuration>
-						<installMode>auto</installMode>
-						<startLevel>90</startLevel>
-						<outputFile>${featureTarget}</outputFile>
-						<featuresFile>${featureTarget}</featuresFile>
-						<resolverSettings>
-							<enableRangeSnapshot>false</enableRangeSnapshot>
-						</resolverSettings>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.reflections</groupId>
-					<artifactId>reflections-maven</artifactId>
-					<version>0.9.9-RC2</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>reflections</goal>
-							</goals>
-							<phase>process-classes</phase>
-						</execution>
-					</executions>
-				</plugin>
-			
-			</plugins>
-
-		</pluginManagement>
-
-		<!-- Build plugins active by default. -->
-		<plugins>
-
-			<!-- Enforce maven and java version. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-			</plugin>
-
-			<!-- Enforce java compiler settings. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-
-			<!-- Generate OSGI DS component descriptors. -->
-			<plugin>
-				<groupId>com.carrotgarden.maven</groupId>
-				<artifactId>carrot-maven-scr-plugin</artifactId>
+  <organization>
+    <name>Barchart, Inc.</name>
+    <url>http://www.barchart.com/</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The BSD License</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+
+    <developer>
+      <id>barchart</id>
+      <name>Barchart, Inc.</name>
+      <email>http://www.barchart.com/</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+
+  </developers>
+
+  <mailingLists>
+    <mailingList>
+      <name>barchart</name>
+      <post>tag : barchart</post>
+      <subscribe>http://stackoverflow.com/users/login</subscribe>
+      <archive>http://stackoverflow.com/tags/barchart</archive>
+    </mailingList>
+  </mailingLists>
+
+  <scm>
+    <url>https://github.com/barchart/barchart-archon</url>
+    <connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
+    <tag>master</tag>
+  </scm>
+
+  <properties>
+
+    <!-- Always use UTF-8 file encoding. -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!-- Barchart required versions. -->
+    <projectJavaVersion>1.6</projectJavaVersion>
+    <projectScalaVersion>2.10.2</projectScalaVersion>
+    <projectMavenVersion>3.0.4</projectMavenVersion>
+
+    <!-- Default dependency versions -->
+    <projectNettyVersion>4.0.14.Final</projectNettyVersion>
+    <projectOSGIVersion>4.3.1</projectOSGIVersion>
+
+    <!-- Testing plugins family version. -->
+    <projectTestingVersion>2.18.1</projectTestingVersion>
+
+    <!-- Feature descriptor target location -->
+    <featureFile>${project.artifactId}-${project.version}.xml</featureFile>
+    <featureTarget>target/feature/${featureFile}</featureTarget>
+
+    <!-- Barchart private repository at Amazon. -->
+    <amazonReleaseRepo>maven.aws.barchart.com/release</amazonReleaseRepo>
+    <amazonStagingRepo>maven.aws.barchart.com/snapshot</amazonStagingRepo>
+
+    <!-- Barchart private repository in Office. -->
+    <barchartNexusURL>https://nexus.barchart.com</barchartNexusURL>
+    <barchartArchonURL>${barchartNexusURL}/content/groups/archon</barchartArchonURL>
+    <barchartReleaseURL>${barchartNexusURL}/content/repositories/releases</barchartReleaseURL>
+    <barchartSnapshotsURL>${barchartNexusURL}/content/repositories/snapshots</barchartSnapshotsURL>
+
+    <!-- Public repository at Sonatype. -->
+    <sonatypeArchonURL>https://oss.sonatype.org/content/groups/public</sonatypeArchonURL>
+
+    <!-- Manifest user name customization. -->
+    <barchartBuildUser>${user.name}</barchartBuildUser>
+
+    <!-- Release customization. See maven-release-plugin. -->
+    <releaseProfiles />
+    <!-- <releaseArguments>-Dresume=false</releaseArguments> -->
+    <releasePrepareGoals>clean verify</releasePrepareGoals>
+    <releasePerformGoals>deploy</releasePerformGoals>
+
+    <!-- Maven site customization. See maven site profiles. -->
+    <maven.site.skip>true</maven.site.skip>
+    <maven.site.deploy.skip>true</maven.site.deploy.skip>
+    <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSSZ</maven.build.timestamp.format>
+
+    <!-- OSGI bundle DS component descriptors location in the jar. -->
+    <bundleServiceComponent>OSGI-INF/service-component</bundleServiceComponent>
+
+    <!-- Semantic version import policy for consumer. Bind to MAJOR. -->
+    <bundleConsumerPolicy>$&lt;range;[==,+)&gt;</bundleConsumerPolicy>
+
+    <!-- Semantic version import policy for provider. Bind to MAJOR.MINOR. -->
+    <bundleProviderPolicy>$&lt;range;[==,=+)&gt;</bundleProviderPolicy>
+
+    <!-- Semantic version check. Use latest release by default. -->
+    <bundleBaselineVersion>RELEASE</bundleBaselineVersion>
+    <bundleBaselineExtension>jar</bundleBaselineExtension>
+
+  </properties>
+
+  <!-- Ensure default versions for popular libraries. In general only third-party 
+    libraries should go here, although common Barchart libraries may be added 
+    if they are low entropy. -->
+
+  <dependencyManagement>
+
+    <dependencies>
+
+      <!-- Scala Runtime -->
+
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${projectScalaVersion}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-reflect</artifactId>
+        <version>${projectScalaVersion}</version>
+      </dependency>
+
+      <!-- OSGI Specification -->
+
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.core</artifactId>
+        <version>${projectOSGIVersion}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.compendium</artifactId>
+        <version>${projectOSGIVersion}</version>
+      </dependency>
+
+      <!-- OSGI Component Utilities -->
+
+      <dependency>
+        <groupId>com.barchart.osgi</groupId>
+        <artifactId>barchart-osgi-component</artifactId>
+        <version>[1.0,1.1-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.osgi</groupId>
+        <artifactId>barchart-osgi-factory-ca</artifactId>
+        <version>[1.4,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.osgi</groupId>
+        <artifactId>barchart-osgi-conf</artifactId>
+        <version>[1.2,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.osgi</groupId>
+        <artifactId>barchart-osgi-event</artifactId>
+        <version>[1.2,2-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Dependency Management -->
+
+      <dependency>
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>4.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.inject.extensions</groupId>
+        <artifactId>guice-multibindings</artifactId>
+        <version>4.0</version>
+      </dependency>
+
+      <!-- Barchart Wrapped Bundles -->
+      <!-- TODO not really necessary with non-OSGi apps, replace with normal 
+        dependencies -->
+
+      <dependency>
+        <groupId>com.barchart.wrap</groupId>
+        <artifactId>barchart-wrap-apache-http-all</artifactId>
+        <version>[4.2.3-SNAPSHOT,4.3-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.wrap</groupId>
+        <artifactId>barchart-wrap-aws-java-sdk</artifactId>
+        <version>[1.4.1-SNAPSHOT,1.5-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.wrap</groupId>
+        <artifactId>barchart-wrap-hazelcast-all</artifactId>
+        <version>[2.5.0-SNAPSHOT,2.6.0-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.wrap</groupId>
+        <artifactId>barchart-wrap-elasticsearch-all</artifactId>
+        <version>[0.90.7-build001,1.0.0-build001-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.wrap</groupId>
+        <artifactId>barchart-wrap-astyanax</artifactId>
+        <version>[1.56.42-build003,1.56.43-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Networking / Protocols -->
+
+      <dependency>
+        <groupId>com.barchart.netty</groupId>
+        <artifactId>barchart-netty-server</artifactId>
+        <version>[1-SNAPSHOT,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.netty</groupId>
+        <artifactId>barchart-netty-core</artifactId>
+        <version>[3-SNAPSHOT,4-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-common</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-buffer</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-handler</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-socks</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-sctp</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-udt</artifactId>
+        <version>${projectNettyVersion}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>2.6.1</version>
+      </dependency>
+
+      <!-- HTTP -->
+
+      <dependency>
+        <groupId>com.barchart.osgi</groupId>
+        <artifactId>barchart-osgi-http</artifactId>
+        <version>[4-SNAPSHOT,5-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.netty</groupId>
+        <artifactId>barchart-netty-http-guice</artifactId>
+        <version>[1-SNAPSHOT,2-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Jakarta Commons -->
+
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>3.4</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>[2.6,3-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>[2.4,3-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>[1.1,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>[1.6,2-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Parsers -->
+
+      <dependency>
+        <groupId>com.typesafe</groupId>
+        <artifactId>config</artifactId>
+        <version>[1,1.1-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jdom</groupId>
+        <artifactId>jdom</artifactId>
+        <version>1.1.3</version>
+      </dependency>
+
+      <dependency>
+        <groupId>dom4j</groupId>
+        <artifactId>dom4j</artifactId>
+        <version>[1.6.1,1.7-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Utilities -->
+
+      <dependency>
+        <groupId>com.barchart.util</groupId>
+        <artifactId>barchart-util-common</artifactId>
+        <version>[1,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.util</groupId>
+        <artifactId>barchart-util-value</artifactId>
+        <version>[1,2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.util</groupId>
+        <artifactId>barchart-util-guice</artifactId>
+        <version>1.0.16</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.netflix.rxjava</groupId>
+        <artifactId>rxjava-core</artifactId>
+        <version>[0.18,0.19-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>[2.9.2,)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>[18.0,19.0-rc1)</version>
+      </dependency>
+
+      <!-- Monitoring / Metrics -->
+
+      <dependency>
+        <groupId>com.yammer.metrics</groupId>
+        <artifactId>metrics-core</artifactId>
+        <version>[2.2.0,3.0.0-BETA1)</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>com.yammer.metric</groupId>
+        <artifactId>metrics-core-wrapped</artifactId>
+        <version>[2.2.0,3.0.0-BETA1)</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <!-- Data Storage -->
+
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>[5.1.10,5.2-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.store</groupId>
+        <artifactId>store-api</artifactId>
+        <version>[4.0,5.0-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.store</groupId>
+        <artifactId>store-util</artifactId>
+        <version>[3.0,4.0-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.store</groupId>
+        <artifactId>store-heap</artifactId>
+        <version>[4.0,5.0-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.store</groupId>
+        <artifactId>store-cassandra</artifactId>
+        <version>[5.0,6.0-SNAPSHOT)</version>
+      </dependency>
+
+      <!-- Logging -->
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.21</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>[1.1.7,)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>[1.1.7,)</version>
+      </dependency>
+
+      <!-- Test Frameworks -->
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.barchart.util</groupId>
+        <artifactId>barchart-util-test</artifactId>
+        <version>[4,5-SNAPSHOT)</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.easymock</groupId>
+        <artifactId>easymock</artifactId>
+        <version>3.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.10.19</version>
+        <scope>test</scope>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
+
+  <!-- Libraries included in all projects. -->
+  <dependencies>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <extensions>
+
+      <!-- Enable Amazon S3 bucket transport. -->
+      <extension>
+        <groupId>org.kuali.maven.wagons</groupId>
+        <artifactId>maven-s3-wagon</artifactId>
+        <version>1.2.1</version>
+      </extension>
+
+      <!-- Enable generic HTTP/HTTPS transport. -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-http</artifactId>
+        <version>2.8</version>
+      </extension>
+
+    </extensions>
+
+    <!-- Ensure default plug-ins configurations and versions. -->
+    <pluginManagement>
+
+      <plugins>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <version>1.9</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.9</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.3.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>3.4</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>wagon-maven-plugin</artifactId>
+          <version>1.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.kuali.maven.plugins</groupId>
+          <artifactId>wagon-maven-plugin</artifactId>
+          <version>1.0.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.kuali.maven.plugins</groupId>
+          <artifactId>properties-maven-plugin</artifactId>
+          <version>2.0.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-help-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.9.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-patch-plugin</artifactId>
+          <version>1.1.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-plugin</artifactId>
+          <version>1.9.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.4</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.5.3</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.6.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.2</version>
+          <configuration>
+            <source>${projectJavaVersion}</source>
+            <target>${projectJavaVersion}</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <version>2.9</version>
+        </plugin>
+
+        <!-- Keep in sync with <reporting>. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.3</version>
+          <configuration>
+            <quiet>true</quiet>
+            <show>protected</show>
+            <linksource>true</linksource>
+            <windowtitle><![CDATA[${project.artifactId}-${project.version}]]></windowtitle>
+            <doctitle><![CDATA[${project.artifactId}-${project.version}]]></doctitle>
+            <header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></header>
+            <footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></footer>
+            <bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
+
+
+
+
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.4</version>
+          <executions>
+            <!-- Override default execution from parent super pom.xml. -->
+            <!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->
+            <execution>
+              <!-- Disable default execution. -->
+              <id>attach-sources</id>
+              <phase>invalid</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+            <execution>
+              <!-- Provide new default execution. -->
+              <id>attach-sources-no-fork</id>
+              <phase>package</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>groovy-maven-plugin</artifactId>
+          <version>1.5</version>
+          <configuration>
+            <providerSelection>2.0</providerSelection>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${projectTestingVersion}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.surefire</groupId>
+              <artifactId>surefire-junit4</artifactId>
+              <version>${projectTestingVersion}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${projectTestingVersion}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>net.alchim31.maven</groupId>
+          <artifactId>scala-maven-plugin</artifactId>
+          <version>3.1.5</version>
+          <configuration>
+            <scalaVersion>${projectScalaVersion}</scalaVersion>
+            <jvmArgs>
+              <jvmArg>-Xms64m</jvmArg>
+              <jvmArg>-Xmx1024m</jvmArg>
+            </jvmArgs>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>add-source</goal>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Provide Maven/Eclipse plug-ins connector policies. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <!-- Do not run enforcer in Eclipse. -->
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <!-- Do not run enforcer in Eclipse. -->
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.karaf.tooling</groupId>
+                    <artifactId>karaf-maven-plugin</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>features-generate-semantic</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.reflections</groupId>
+                    <artifactId>reflections-maven</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>reflections</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>unpack-dependencies</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.github.igor-petruk.protobuf</groupId>
+                    <artifactId>protobuf-maven-plugin</artifactId>
+                    <versionRange>[0,)</versionRange>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+
+        <!-- Enforce Maven and Java versions. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>1.3.1</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>${projectMavenVersion}</version>
+                    <message><![CDATA[you must have projectMavenVersion >= ${projectMavenVersion}]]></message>
+                  </requireMavenVersion>
+                  <requireJavaVersion>
+                    <version>${projectJavaVersion}</version>
+                    <message><![CDATA[you must have projectJavaVersion >= ${projectJavaVersion}]]></message>
+                  </requireJavaVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Manage maven release process. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.1</version>
+          <configuration>
+
+            <!-- Clone only once. -->
+            <localCheckout>true</localCheckout>
+
+            <!-- Invocataion: release:prepare -->
+            <preparationGoals>${releasePrepareGoals}</preparationGoals>
+
+            <!-- Invocataion: release:perform -->
+            <useReleaseProfile>true</useReleaseProfile>
+            <goals>${releasePerformGoals}</goals>
+            <releaseProfiles>${releaseProfiles}</releaseProfiles>
+
+            <!-- Invocation arguments for both release:prepare and release:perform -->
+            <!-- <arguments>${releaseArguments}</arguments> -->
+
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>com.github.igor-petruk.protobuf</groupId>
+          <artifactId>protobuf-maven-plugin</artifactId>
+          <version>0.6.5</version>
+        </plugin>
+
+        <!-- Generate OSGI DS component descriptors. -->
+        <!-- M2E integration is provided by the plugin. Requires M2E v 1.1+ -->
+        <plugin>
+          <groupId>com.barchart</groupId>
+          <artifactId>carrot-maven-scr-plugin</artifactId>
+          <version>4.0.2</version>
+          <configuration>
+
+            <!-- DS component descriptors location. See maven-bundle-plugin. -->
+            <targetDirectorySCR>${bundleServiceComponent}</targetDirectorySCR>
+
+            <!-- Execute this plug-in only for OSGI bundle projects. -->
+            <properPackaging>
+              <packaging>bundle</packaging>
+            </properPackaging>
+
+            <!-- do not generate OSGI-INF/service-component/null.xml -->
+            <isIncludeEmptyDescriptor>false</isIncludeEmptyDescriptor>
+
+            <!-- Remove system interfaces form DS component services. -->
+            <excludedServices>
+              <service>scala.ScalaObject</service>
+              <service>java.lang.Cloneable</service>
+              <service>java.io.Serializable</service>
+            </excludedServices>
+
+            <!-- Eclipse maven console settings. -->
+            <enableDebugLogging>false</enableDebugLogging>
+            <enableInfoLogging>true</enableInfoLogging>
+            <enableErrorLogging>true</enableErrorLogging>
+
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>generate</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>2.5.3</version>
+          <!-- Enable "bundle" packaging and lifecycle. -->
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+
+              <!-- DS component descriptors location. See carrot-maven-scr-plugin. -->
+              <Service-Component>${bundleServiceComponent}/*.xml</Service-Component>
+
+              <!-- Semantic version policy. -->
+              <_consumer-policy>${bundleConsumerPolicy}</_consumer-policy>
+              <_provider-policy>${bundleProviderPolicy}</_provider-policy>
+
+            </instructions>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <!-- Barchart custom plugin for feature generation -->
+          <groupId>org.apache.karaf.tooling</groupId>
+          <artifactId>karaf-maven-plugin</artifactId>
+          <version>3.0.0-patch10</version>
+          <!-- Enable "kar" packaging and lifecycle. -->
+          <extensions>true</extensions>
+          <configuration>
+            <installMode>auto</installMode>
+            <startLevel>90</startLevel>
+            <outputFile>${featureTarget}</outputFile>
+            <featuresFile>${featureTarget}</featuresFile>
+            <resolverSettings>
+              <enableRangeSnapshot>false</enableRangeSnapshot>
+            </resolverSettings>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.reflections</groupId>
+          <artifactId>reflections-maven</artifactId>
+          <version>0.9.9-RC2</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>reflections</goal>
+              </goals>
+              <phase>process-classes</phase>
+            </execution>
+          </executions>
+        </plugin>
+
+      </plugins>
+
+    </pluginManagement>
+
+    <!-- Build plugins active by default. -->
+    <plugins>
+
+      <!-- Enforce maven and java version. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+
+      <!-- Enforce java compiler settings. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+
+      <!-- Generate OSGI DS component descriptors. -->
+      <plugin>
+        <groupId>com.carrotgarden.maven</groupId>
+        <artifactId>carrot-maven-scr-plugin</artifactId>
         <version>4.0.2</version>
-			</plugin>
-
-			<!-- Generate OSGI bundle packaging with bundle lifecycle. -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-			</plugin>
-
-			<!-- Always generate sources jar. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources-no-fork</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-
-	</build>
-
-	<profiles>
-
-		<!-- ================================ -->
-
-		<!-- Activated during release. See maven-release-plugin. -->
-		<profile>
-			<id>release</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-
-					<!-- Release must contain sources. -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<!-- Provide custom execution id. -->
-								<id>attach-sources-no-fork</id>
-								<phase>package</phase>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-
-					<!-- Release must be signed. -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- === REPOSITORIES AND DISTRIBUTION MANAGEMENT === -->
-
-		<!-- Private Barchart Amazon repository -->
-		<profile>
-			<id>barchart-amazon-repository</id>
-			<activation>
-				<file>
-					<exists>maven-amazon.md</exists>
-				</file>
-			</activation>
-			<distributionManagement>
-				<repository>
-					<id>barchart-s3-release</id>
-					<url>s3://${amazonReleaseRepo}</url>
-				</repository>
-				<snapshotRepository>
-					<id>barchart-s3-snapshot</id>
-					<url>s3://${amazonStagingRepo}</url>
-				</snapshotRepository>
-			</distributionManagement>
-			<repositories>
-				<repository>
-					<id>barchart-s3-release</id>
-					<name>Barchart Amazon Releases</name>
-					<url>s3://${amazonReleaseRepo}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>barchart-s3-snapshot</id>
-					<name>Barchart Amazon Snapshots</name>
-					<url>s3://${amazonStagingRepo}</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-		</profile>
-
-		<!-- Private Barchart Nexus repository -->
-		<profile>
-			<id>barchart-nexus-repository</id>
-			<activation>
-				<file>
-					<missing>maven-amazon.md</missing>
-				</file>
-			</activation>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>barchart-nexus-snapshots</id>
-					<name>Barchart Nexus Snapshots</name>
-					<url>${barchartSnapshotsURL}</url>
-				</snapshotRepository>
-				<repository>
-					<id>barchart-nexus-releases</id>
-					<name>Barchart Nexus Releases</name>
-					<url>${barchartReleaseURL}</url>
-				</repository>
-			</distributionManagement>
-			<repositories>
-				<repository>
-					<id>barchart-nexus-archon</id>
-					<name>Barchart Nexus Archon / Regular</name>
-					<url>${barchartArchonURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>barchart-nexus-archon</id>
-					<name>Barchart Nexus Archon / Plugins</name>
-					<url>${barchartArchonURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-
-		</profile>
-
-		<!-- Public Sonatype Nexus repository -->
-		<profile>
-			<id>sonatype-nexus-repository</id>
-			<activation>
-				<property>
-					<name>!sonatype-nexus-repository</name>
-				</property>
-			</activation>
-			<repositories>
-				<repository>
-					<id>sonatype-nexus-archon</id>
-					<name>Sonatype Nexus Archon / Regular</name>
-					<url>${sonatypeArchonURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>sonatype-nexus-archon</id>
-					<name>Sonatype Nexus Archon / Plugins</name>
-					<url>${sonatypeArchonURL}</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-
-		<!-- === TEST INTEGRATIONS === -->
-
-		<!-- Properties for developer-interactive / manual mode. -->
-		<profile>
-			<id>build-human</id>
-			<activation>
-				<property>
-					<name>!env.JENKINS_HOME</name>
-				</property>
-			</activation>
-			<properties>
-				<!-- provided by developer -->
-				<projectIntegrationVersion>${integrationVersion}</projectIntegrationVersion>
-				<bundle.manifest.testing.phase>process-ignored</bundle.manifest.testing.phase>
-			</properties>
-		</profile>
-
-		<!-- Properties for continuous-integration / automatic mode. -->
-		<profile>
-			<id>build-robot</id>
-			<activation>
-				<property>
-					<name>env.JENKINS_HOME</name>
-				</property>
-			</activation>
-			<properties>
-				<!-- provided by invoker plug-in -->
-				<projectIntegrationVersion>@project.version@</projectIntegrationVersion>
-				<bundle.manifest.testing.phase>process-classes</bundle.manifest.testing.phase>
-			</properties>
-		</profile>
-
-		<!-- Export tests as a JAR for other projects to use -->
-		<profile>
-			<id>export-tests</id>
-			<activation>
-				<file>
-					<exists>export-tests.md</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<!-- Include test source -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Include test JAR -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- === SERVER APPLICATION FRAMEWORKS === -->
-
-		<!-- Guice component dependency management -->
-		<profile>
-
-			<id>guice-component</id>
-
-			<activation>
-				<file>
-					<exists>guice-component.md</exists>
-				</file>
-			</activation>
-
-			<dependencies>
-
-				<dependency>
-					<groupId>com.barchart.util</groupId>
-					<artifactId>barchart-util-guice</artifactId>
-					<scope>provided</scope>
-				</dependency>
-
-			</dependencies>
-
-		</profile>
-		
-		<!-- Guice application JAR builder -->
-		<profile>
-
-			<id>guice-app</id>
-
-			<activation>
-				<file>
-					<exists>guice-app.md</exists>
-				</file>
-			</activation>
-
-			<properties>
-				<!-- Deployment properties -->
-				<releaseRepo>s3://barchart-applications/apps</releaseRepo>
-				<devRepo>s3://barchart-applications-staging/apps</devRepo>
-				<activeRepo>${devRepo}</activeRepo>
-				<archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
-				<releaseProfiles>guice-app-release</releaseProfiles>
-			</properties>
-
-			<dependencies>
-
-				<dependency>
-					<groupId>com.barchart.util</groupId>
-					<artifactId>barchart-util-guice</artifactId>
-				</dependency>
-
-				<dependency>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</dependency>
-
-				<dependency>
-					<groupId>ch.qos.logback</groupId>
-					<artifactId>logback-classic</artifactId>
-				</dependency>
-
-				<dependency>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</dependency>
-
-			</dependencies>
-
-			<build>
-
-				<plugins>
-
-	 				<plugin>
-		                <groupId>pl.project13.maven</groupId>
-		                <artifactId>git-commit-id-plugin</artifactId>
-		                <version>2.2.1</version>
-		                <executions>
-		                    <execution>
-		                        <id>get-the-git-infos</id>
-		                        <goals>
-		                            <goal>revision</goal>
-		                        </goals>
-		                        <configuration>
-						    		<generateGitPropertiesFile>true</generateGitPropertiesFile>
-								    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-								</configuration>
-		                    </execution>
-		                </executions>
-		
-	                </plugin>
-
-					<!-- Unpack dependency sources for JAR -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>unpack-dependencies</id>
-								<phase>process-sources</phase>
-								<goals>
-									<goal>unpack-dependencies</goal>
-								</goals>
-								<configuration>
-									<includeScope>runtime</includeScope>
-									<!--
-									<excludeTransitive>true</excludeTransitive>
-									-->
-									<excludes>META-INF/MANIFEST.MF,META-INF/*.SF,META-INF/*.DSA</excludes>
-									<outputDirectory>target/classes</outputDirectory>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<configuration>
-							<archive>
-								<manifestEntries>
-									<Main-Class>com.barchart.util.guice.GuiceMain</Main-Class>
-									<Guice-App-Main-Class>${mainClass}</Guice-App-Main-Class>
-									<Build-Date>${maven.build.timestamp}</Build-Date>
-									<Implementation-Vendor>Barchart</Implementation-Vendor>
-									<Implementation-Title>${project.name}</Implementation-Title>
-									<Implementation-Version>${project.version}</Implementation-Version>
-									<Maven-Artifact>${project.groupId}:${project.artifactId}:${project.version}</Maven-Artifact>
-								</manifestEntries>
-							</archive>
-						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.reflections</groupId>
-						<artifactId>reflections-maven</artifactId>
-					</plugin>
-			
-				</plugins>
-
-			</build>
-
-		</profile>
-		
-		<!-- Helper profile for guice-app -->
-		<profile>
-
-			<id>guice-app-release</id>
-
-			<properties>
-				<activeRepo>${releaseRepo}</activeRepo>
-			</properties>
-
-		</profile>
-
-		<!-- Protobuf message builder projects -->
-		<profile>
-
-			<id>protobuf</id>
-
-			<activation>
-				<file>
-					<exists>protobuf.md</exists>
-				</file>
-			</activation>
-
-			<dependencies>
-
-				<dependency>
-					<groupId>com.google.protobuf</groupId>
-					<artifactId>protobuf-java</artifactId>
-					<scope>provided</scope>
-				</dependency>
-
-			</dependencies>
-
-			<build>
-
-				<plugins>
-
-					<plugin>
-						<groupId>com.github.igor-petruk.protobuf</groupId>
-						<artifactId>protobuf-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>protocol-sources</id>
-								<phase>generate-sources</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<!-- Disable, produces build loop. -->
-									<addSources>none</addSources>
-									<ignoreVersions>false</ignoreVersions>
-									<inputDirectories>
-										<entry>src/main/resources/protobuf</entry>
-									</inputDirectories>
-									<outputDirectory>target/main/protobuf</outputDirectory>
-								</configuration>
-							</execution>
-							<execution>
-								<id>protocol-test-sources</id>
-								<phase>generate-test-sources</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<!-- Disable, produces build loop. -->
-									<addSources>none</addSources>
-									<ignoreVersions>false</ignoreVersions>
-									<inputDirectories>
-										<entry>src/test/resources/protobuf</entry>
-									</inputDirectories>
-									<outputDirectory>target/test/protobuf</outputDirectory>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>build-helper-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>protocol-sources</id>
-								<phase>generate-sources</phase>
-								<goals>
-									<goal>add-source</goal>
-								</goals>
-								<configuration>
-									<sources>
-										<source>target/main/protobuf</source>
-									</sources>
-								</configuration>
-							</execution>
-							<execution>
-								<id>protocol-test-sources</id>
-								<phase>generate-test-sources</phase>
-								<goals>
-									<goal>add-test-source</goal>
-								</goals>
-								<configuration>
-									<sources>
-										<source>target/test/protobuf</source>
-									</sources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Include test source. -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Include test archive. -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-				</plugins>
-
-			</build>
-
-		</profile>
-		
-		<!-- TEMPORARY support for OSGI components required by unmigrated projects -->
-		<profile>
-			<id>container-dependencies</id>
-			<activation>
-				<file>
-					<exists>provide-container.md</exists>
-				</file>
-			</activation>
-			<dependencies>
-				<!-- Provided by OSGI framework at runtime. -->
-				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.core</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.compendium</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<!-- Used at build time, not used at runtime. -->
-				<dependency>
-					<groupId>com.barchart.util</groupId>
-					<artifactId>barchart-util-anno</artifactId>
-					<version>[2,3-SNAPSHOT)</version>
-					<scope>provided</scope>
-					<optional>true</optional>
-				</dependency>
-			</dependencies>
-		</profile>
-
-		<!-- Karaf app builder (.KAR) -->
-		<profile>
-			<id>karaf-app</id>
-			<activation>
-				<file>
-					<exists>karaf-app.md</exists>
-				</file>
-			</activation>
-			<properties>
-				<!-- Deployment properties -->
-				<amazonReleaseBucket>s3://barchart-applications</amazonReleaseBucket>
-				<amazonDevBucket>s3://barchart-applications-staging</amazonDevBucket>
-				<amazonBucket>${amazonDevBucket}</amazonBucket>
-				<appAssemblyDirectory>${basedir}/target/config</appAssemblyDirectory>
-				<appConfDirectory>${basedir}/conf</appConfDirectory>
-				<releaseProfiles>karaf-app-release</releaseProfiles>
-				<!-- Test application configuration -->
-				<karafAppGroup>com.barchart.karaf</karafAppGroup>
-				<karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
-				<karafAppVersion>1.5.14</karafAppVersion>
-				<karafAppClassifier>tanuki-distro</karafAppClassifier>
-				<distroSource>${basedir}/target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
-				<distroTarget>${basedir}/target/service</distroTarget>
-				<appTarget>${basedir}/target/app</appTarget>
-			</properties>
-			<build>
-				<plugins>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<executions>
-							<!-- Copy dependency artifiacts to assembly directory -->
-							<execution>
-								<id>copy-kar</id>
-								<phase>validate</phase>
-								<goals>
-									<goal>copy-dependencies</goal>
-								</goals>
-								<configuration>
-									<includeScope>runtime</includeScope>
-									<excludeTransitive>true</excludeTransitive>
-									<outputDirectory>${appAssemblyDirectory}</outputDirectory>
-								</configuration>
-							</execution>
-							<!-- Copy the Karaf distribution base app -->
-							<execution>
-								<id>download-distro</id>
-								<phase>test</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>${karafAppGroup}</groupId>
-											<artifactId>${karafAppArtifact}</artifactId>
-											<version>${karafAppVersion}</version>
-											<classifier>${karafAppClassifier}</classifier>
-											<type>zip</type>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>target</outputDirectory>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Deploy to S3 bucket -->
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>wagon-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>conf-upload</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>upload-single</goal>
-								</goals>
-								<configuration>
-									<serverId>barchart-application-deployer</serverId>
-									<url>${amazonBucket}/config</url>
-									<fromFile>target/${appIdentity}-${project.version}.zip</fromFile>
-									<toFile>${appIdentity}.zip</toFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Skip deploy to Nexus for app deployment config, it will still tag in SCM -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-					</plugin>
-
-					<!-- Unpack karaf distribution -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<!-- Unpack Karaf distribution and copy configuration -->
-							<execution>
-								<id>copy-conf</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<copy todir="${appAssemblyDirectory}">
-											<fileset dir="${appConfDirectory}" />
-										</copy>
-									</target>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-app</id>
-								<phase>test</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
-										<loadproperties srcFile="${distroTarget}/distribution.properties" />
-										<replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
-										<delete dir="${distroTarget}/${archive-folder}/conf" />
-										<symlink link="${distroTarget}/${archive-folder}/conf" resource="${appAssemblyDirectory}" overwrite="true" />
-										<symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />
-										<chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
-									</target>
-								</configuration>
-							</execution>
-							<!-- Zip up config for deployment -->
-							<execution>
-								<id>zip-conf</id>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<zip destfile="target/${appIdentity}-${project.version}.zip" basedir="${appAssemblyDirectory}" />
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- Helper profile for karaf-app -->
-		<profile>
-			<id>karaf-app-release</id>
-			<properties>
-				<amazonBucket>${amazonReleaseBucket}</amazonBucket>
-			</properties>
-		</profile>
-		
-        <!--  Create docker assembly for pipelined docker builds on Jenkins -->
-        <profile>
-            <id>docker-assembly</id>
-            <activation>
-                <file>
-                    <exists>src/main/assembly/docker-assembly.xml</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                            <finalName>${project.groupId}:${project.artifactId}:${project.version}</finalName>
-                            <appendAssemblyId>true</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>src/main/assembly/docker-assembly.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>assembly</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>single</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-		<profile>
-			<id>docker</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-resources-plugin</artifactId>
-						<version>2.7</version>
-						<executions>
-							<execution>
-								<id>prepare-dockerfile</id>
-								<phase>validate</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/docker-stage</outputDirectory>
-									<resources>
-										<resource>
-											<directory>src/main/docker</directory>
-											<filtering>true</filtering>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>com.spotify</groupId>
-						<artifactId>docker-maven-plugin</artifactId>
-						<version>0.2.11</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>build</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<imageName>barchart/${project.name}:${project.version}</imageName>
-							<dockerDirectory>${project.build.directory}/docker-stage</dockerDirectory>
-							<resources>
-								<resource>
-									<targetPath>/</targetPath>
-									<directory>${project.build.directory}</directory>
-									<include>${project.build.finalName}.jar</include>
-								</resource>
-							</resources>
-							<serverId>docker-hub</serverId>
-							<registryUrl>https://index.docker.io/v1/</registryUrl>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>		
-
-	</profiles>
-
-	<reporting>
-
-		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.7</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-
-
-			<!-- Keep in sync with <build>. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<configuration>
-					<quiet>true</quiet>
-					<show>protected</show>
-					<linksource>true</linksource>
-					<windowtitle><![CDATA[${project.artifactId}-${project.version}]]></windowtitle>
-					<doctitle><![CDATA[${project.artifactId}-${project.version}]]></doctitle>
-					<header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></header>
-					<footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></footer>
-					<bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
-				</configuration>
-			</plugin>
-
-		</plugins>
-
-	</reporting>
+      </plugin>
+
+      <!-- Generate OSGI bundle packaging with bundle lifecycle. -->
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+      </plugin>
+
+      <!-- Always generate sources jar. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources-no-fork</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+  <profiles>
+
+    <!-- ================================ -->
+
+    <!-- Activated during release. See maven-release-plugin. -->
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+
+          <!-- Release must contain sources. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- Provide custom execution id. -->
+                <id>attach-sources-no-fork</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+
+          <!-- Release must be signed. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- === REPOSITORIES AND DISTRIBUTION MANAGEMENT === -->
+
+    <!-- Private Barchart Amazon repository -->
+    <profile>
+      <id>barchart-amazon-repository</id>
+      <activation>
+        <file>
+          <exists>maven-amazon.md</exists>
+        </file>
+      </activation>
+      <distributionManagement>
+        <repository>
+          <id>barchart-s3-release</id>
+          <url>s3://${amazonReleaseRepo}</url>
+        </repository>
+        <snapshotRepository>
+          <id>barchart-s3-snapshot</id>
+          <url>s3://${amazonStagingRepo}</url>
+        </snapshotRepository>
+      </distributionManagement>
+      <repositories>
+        <repository>
+          <id>barchart-s3-release</id>
+          <name>Barchart Amazon Releases</name>
+          <url>s3://${amazonReleaseRepo}</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+        <repository>
+          <id>barchart-s3-snapshot</id>
+          <name>Barchart Amazon Snapshots</name>
+          <url>s3://${amazonStagingRepo}</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+
+    <!-- Private Barchart Nexus repository -->
+    <profile>
+      <id>barchart-nexus-repository</id>
+      <activation>
+        <file>
+          <missing>maven-amazon.md</missing>
+        </file>
+      </activation>
+      <distributionManagement>
+        <snapshotRepository>
+          <id>barchart-nexus-snapshots</id>
+          <name>Barchart Nexus Snapshots</name>
+          <url>${barchartSnapshotsURL}</url>
+        </snapshotRepository>
+        <repository>
+          <id>barchart-nexus-releases</id>
+          <name>Barchart Nexus Releases</name>
+          <url>${barchartReleaseURL}</url>
+        </repository>
+      </distributionManagement>
+      <repositories>
+        <repository>
+          <id>barchart-nexus-archon</id>
+          <name>Barchart Nexus Archon / Regular</name>
+          <url>${barchartArchonURL}</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>barchart-nexus-archon</id>
+          <name>Barchart Nexus Archon / Plugins</name>
+          <url>${barchartArchonURL}</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+
+    </profile>
+
+    <!-- Public Sonatype Nexus repository -->
+    <profile>
+      <id>sonatype-nexus-repository</id>
+      <activation>
+        <property>
+          <name>!sonatype-nexus-repository</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>sonatype-nexus-archon</id>
+          <name>Sonatype Nexus Archon / Regular</name>
+          <url>${sonatypeArchonURL}</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>sonatype-nexus-archon</id>
+          <name>Sonatype Nexus Archon / Plugins</name>
+          <url>${sonatypeArchonURL}</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <!-- === TEST INTEGRATIONS === -->
+
+    <!-- Properties for developer-interactive / manual mode. -->
+    <profile>
+      <id>build-human</id>
+      <activation>
+        <property>
+          <name>!env.JENKINS_HOME</name>
+        </property>
+      </activation>
+      <properties>
+        <!-- provided by developer -->
+        <projectIntegrationVersion>${integrationVersion}</projectIntegrationVersion>
+        <bundle.manifest.testing.phase>process-ignored</bundle.manifest.testing.phase>
+      </properties>
+    </profile>
+
+    <!-- Properties for continuous-integration / automatic mode. -->
+    <profile>
+      <id>build-robot</id>
+      <activation>
+        <property>
+          <name>env.JENKINS_HOME</name>
+        </property>
+      </activation>
+      <properties>
+        <!-- provided by invoker plug-in -->
+        <projectIntegrationVersion>@project.version@</projectIntegrationVersion>
+        <bundle.manifest.testing.phase>process-classes</bundle.manifest.testing.phase>
+      </properties>
+    </profile>
+
+    <!-- Export tests as a JAR for other projects to use -->
+    <profile>
+      <id>export-tests</id>
+      <activation>
+        <file>
+          <exists>export-tests.md</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <!-- Include test source -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>test-jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Include test JAR -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>test-jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- === SERVER APPLICATION FRAMEWORKS === -->
+
+    <!-- Guice component dependency management -->
+    <profile>
+
+      <id>guice-component</id>
+
+      <activation>
+        <file>
+          <exists>guice-component.md</exists>
+        </file>
+      </activation>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>com.barchart.util</groupId>
+          <artifactId>barchart-util-guice</artifactId>
+          <scope>provided</scope>
+        </dependency>
+
+      </dependencies>
+
+    </profile>
+
+    <!-- Guice application JAR builder -->
+    <profile>
+
+      <id>guice-app</id>
+
+      <activation>
+        <file>
+          <exists>guice-app.md</exists>
+        </file>
+      </activation>
+
+      <properties>
+        <!-- Deployment properties -->
+        <releaseRepo>s3://barchart-applications/apps</releaseRepo>
+        <devRepo>s3://barchart-applications-staging/apps</devRepo>
+        <activeRepo>${devRepo}</activeRepo>
+        <archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
+        <releaseProfiles>guice-app-release</releaseProfiles>
+      </properties>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>com.barchart.util</groupId>
+          <artifactId>barchart-util-guice</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+        </dependency>
+
+      </dependencies>
+
+      <build>
+
+        <plugins>
+
+          <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <version>2.2.1</version>
+            <executions>
+              <execution>
+                <id>get-the-git-infos</id>
+                <goals>
+                  <goal>revision</goal>
+                </goals>
+                <configuration>
+                  <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                  <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                </configuration>
+              </execution>
+            </executions>
+
+          </plugin>
+
+          <!-- Unpack dependency sources for JAR -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>unpack-dependencies</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>unpack-dependencies</goal>
+                </goals>
+                <configuration>
+                  <includeScope>runtime</includeScope>
+                  <!-- <excludeTransitive>true</excludeTransitive> -->
+                  <excludes>META-INF/MANIFEST.MF,META-INF/*.SF,META-INF/*.DSA</excludes>
+                  <outputDirectory>target/classes</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifestEntries>
+                  <Main-Class>com.barchart.util.guice.GuiceMain</Main-Class>
+                  <Guice-App-Main-Class>${mainClass}</Guice-App-Main-Class>
+                  <Build-Date>${maven.build.timestamp}</Build-Date>
+                  <Implementation-Vendor>Barchart</Implementation-Vendor>
+                  <Implementation-Title>${project.name}</Implementation-Title>
+                  <Implementation-Version>${project.version}</Implementation-Version>
+                  <Maven-Artifact>${project.groupId}:${project.artifactId}:${project.version}</Maven-Artifact>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections-maven</artifactId>
+          </plugin>
+
+        </plugins>
+
+      </build>
+
+    </profile>
+
+    <profile>
+      <!-- Guice Only App -->
+      <id>guice-only-app</id>
+      <activation>
+        <file>
+          <exists>guice-only-app.md</exists>
+        </file>
+      </activation>
+      <properties>
+        <!-- Deployment properties -->
+        <releaseRepo>s3://barchart-applications/apps</releaseRepo>
+        <devRepo>s3://barchart-applications-staging/apps</devRepo>
+        <activeRepo>${devRepo}</activeRepo>
+        <archiveTemplate>${project.groupId}.${project.artifactId}/${project.artifactId}-${project.version}</archiveTemplate>
+        <releaseProfiles>guice-app-release</releaseProfiles>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <version>2.2.1</version>
+            <executions>
+              <execution>
+                <id>get-the-git-infos</id>
+                <goals>
+                  <goal>revision</goal>
+                </goals>
+                <configuration>
+                  <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                  <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Unpack dependency sources for JAR -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>unpack-dependencies</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>unpack-dependencies</goal>
+                </goals>
+                <configuration>
+                  <includeScope>runtime</includeScope>
+                  <!-- <excludeTransitive>true</excludeTransitive> -->
+                  <excludes>META-INF/MANIFEST.MF,META-INF/*.SF,META-INF/*.DSA</excludes>
+                  <outputDirectory>target/classes</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifestEntries>
+                  <Main-Class>com.barchart.util.guice.GuiceMain</Main-Class>
+                  <Guice-App-Main-Class>${mainClass}</Guice-App-Main-Class>
+                  <Build-Date>${maven.build.timestamp}</Build-Date>
+                  <Implementation-Vendor>Barchart</Implementation-Vendor>
+                  <Implementation-Title>${project.name}</Implementation-Title>
+                  <Implementation-Version>${project.version}</Implementation-Version>
+                  <Maven-Artifact>${project.groupId}:${project.artifactId}:${project.version}</Maven-Artifact>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections-maven</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- Helper profile for guice-app -->
+    <profile>
+
+      <id>guice-app-release</id>
+
+      <properties>
+        <activeRepo>${releaseRepo}</activeRepo>
+      </properties>
+
+    </profile>
+
+    <!-- Protobuf message builder projects -->
+    <profile>
+
+      <id>protobuf</id>
+
+      <activation>
+        <file>
+          <exists>protobuf.md</exists>
+        </file>
+      </activation>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+          <scope>provided</scope>
+        </dependency>
+
+      </dependencies>
+
+      <build>
+
+        <plugins>
+
+          <plugin>
+            <groupId>com.github.igor-petruk.protobuf</groupId>
+            <artifactId>protobuf-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>protocol-sources</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <!-- Disable, produces build loop. -->
+                  <addSources>none</addSources>
+                  <ignoreVersions>false</ignoreVersions>
+                  <inputDirectories>
+                    <entry>src/main/resources/protobuf</entry>
+                  </inputDirectories>
+                  <outputDirectory>target/main/protobuf</outputDirectory>
+                </configuration>
+              </execution>
+              <execution>
+                <id>protocol-test-sources</id>
+                <phase>generate-test-sources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <!-- Disable, produces build loop. -->
+                  <addSources>none</addSources>
+                  <ignoreVersions>false</ignoreVersions>
+                  <inputDirectories>
+                    <entry>src/test/resources/protobuf</entry>
+                  </inputDirectories>
+                  <outputDirectory>target/test/protobuf</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>protocol-sources</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>target/main/protobuf</source>
+                  </sources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>protocol-test-sources</id>
+                <phase>generate-test-sources</phase>
+                <goals>
+                  <goal>add-test-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>target/test/protobuf</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Include test source. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>test-jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Include test archive. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>test-jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+
+      </build>
+
+    </profile>
+
+    <!-- TEMPORARY support for OSGI components required by unmigrated projects -->
+    <profile>
+      <id>container-dependencies</id>
+      <activation>
+        <file>
+          <exists>provide-container.md</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <!-- Provided by OSGI framework at runtime. -->
+        <dependency>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.core</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.compendium</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <!-- Used at build time, not used at runtime. -->
+        <dependency>
+          <groupId>com.barchart.util</groupId>
+          <artifactId>barchart-util-anno</artifactId>
+          <version>[2,3-SNAPSHOT)</version>
+          <scope>provided</scope>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
+    </profile>
+
+    <!-- Karaf app builder (.KAR) -->
+    <profile>
+      <id>karaf-app</id>
+      <activation>
+        <file>
+          <exists>karaf-app.md</exists>
+        </file>
+      </activation>
+      <properties>
+        <!-- Deployment properties -->
+        <amazonReleaseBucket>s3://barchart-applications</amazonReleaseBucket>
+        <amazonDevBucket>s3://barchart-applications-staging</amazonDevBucket>
+        <amazonBucket>${amazonDevBucket}</amazonBucket>
+        <appAssemblyDirectory>${basedir}/target/config</appAssemblyDirectory>
+        <appConfDirectory>${basedir}/conf</appConfDirectory>
+        <releaseProfiles>karaf-app-release</releaseProfiles>
+        <!-- Test application configuration -->
+        <karafAppGroup>com.barchart.karaf</karafAppGroup>
+        <karafAppArtifact>barchart-karaf-base-app</karafAppArtifact>
+        <karafAppVersion>1.5.14</karafAppVersion>
+        <karafAppClassifier>tanuki-distro</karafAppClassifier>
+        <distroSource>${basedir}/target/${karafAppArtifact}-${karafAppVersion}-${karafAppClassifier}.zip</distroSource>
+        <distroTarget>${basedir}/target/service</distroTarget>
+        <appTarget>${basedir}/target/app</appTarget>
+      </properties>
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <!-- Copy dependency artifiacts to assembly directory -->
+              <execution>
+                <id>copy-kar</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                  <includeScope>runtime</includeScope>
+                  <excludeTransitive>true</excludeTransitive>
+                  <outputDirectory>${appAssemblyDirectory}</outputDirectory>
+                </configuration>
+              </execution>
+              <!-- Copy the Karaf distribution base app -->
+              <execution>
+                <id>download-distro</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>copy</goal>
+                </goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>${karafAppGroup}</groupId>
+                      <artifactId>${karafAppArtifact}</artifactId>
+                      <version>${karafAppVersion}</version>
+                      <classifier>${karafAppClassifier}</classifier>
+                      <type>zip</type>
+                    </artifactItem>
+                  </artifactItems>
+                  <outputDirectory>target</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Deploy to S3 bucket -->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>wagon-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>conf-upload</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>upload-single</goal>
+                </goals>
+                <configuration>
+                  <serverId>barchart-application-deployer</serverId>
+                  <url>${amazonBucket}/config</url>
+                  <fromFile>target/${appIdentity}-${project.version}.zip</fromFile>
+                  <toFile>${appIdentity}.zip</toFile>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Skip deploy to Nexus for app deployment config, it will still 
+            tag in SCM -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </plugin>
+
+          <!-- Unpack karaf distribution -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <!-- Unpack Karaf distribution and copy configuration -->
+              <execution>
+                <id>copy-conf</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <copy todir="${appAssemblyDirectory}">
+                      <fileset dir="${appConfDirectory}" />
+                    </copy>
+                  </target>
+                </configuration>
+              </execution>
+              <execution>
+                <id>copy-app</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <unzip src="${distroSource}" dest="${distroTarget}"
+                      overwrite="true" />
+                    <loadproperties
+                      srcFile="${distroTarget}/distribution.properties" />
+                    <replace
+                      file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh"
+                      token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
+                    <delete dir="${distroTarget}/${archive-folder}/conf" />
+                    <symlink link="${distroTarget}/${archive-folder}/conf"
+                      resource="${appAssemblyDirectory}" overwrite="true" />
+                    <symlink link="${appTarget}" resource="service/${archive-folder}"
+                      overwrite="true" />
+                    <chmod dir="${distroTarget}" perm="ugo+rx"
+                      includes="**/*.sh,**/*.bin" />
+                  </target>
+                </configuration>
+              </execution>
+              <!-- Zip up config for deployment -->
+              <execution>
+                <id>zip-conf</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <zip destfile="target/${appIdentity}-${project.version}.zip"
+                      basedir="${appAssemblyDirectory}" />
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- Helper profile for karaf-app -->
+    <profile>
+      <id>karaf-app-release</id>
+      <properties>
+        <amazonBucket>${amazonReleaseBucket}</amazonBucket>
+      </properties>
+    </profile>
+
+    <!-- Create docker assembly for pipelined docker builds on Jenkins -->
+    <profile>
+      <id>docker-assembly</id>
+      <activation>
+        <file>
+          <exists>src/main/assembly/docker-assembly.xml</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <finalName>${project.groupId}:${project.artifactId}:${project.version}</finalName>
+              <appendAssemblyId>true</appendAssemblyId>
+              <descriptors>
+                <descriptor>src/main/assembly/docker-assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+            <executions>
+              <execution>
+                <id>assembly</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.7</version>
+            <executions>
+              <execution>
+                <id>prepare-dockerfile</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/docker-stage</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>src/main/docker</directory>
+                      <filtering>true</filtering>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.2.11</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <imageName>barchart/${project.name}:${project.version}</imageName>
+              <dockerDirectory>${project.build.directory}/docker-stage</dockerDirectory>
+              <resources>
+                <resource>
+                  <targetPath>/</targetPath>
+                  <directory>${project.build.directory}</directory>
+                  <include>${project.build.finalName}.jar</include>
+                </resource>
+              </resources>
+              <serverId>docker-hub</serverId>
+              <registryUrl>https://index.docker.io/v1/</registryUrl>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
+  <reporting>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.7</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.5</version>
+      </plugin>
+
+
+      <!-- Keep in sync with <build>. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <quiet>true</quiet>
+          <show>protected</show>
+          <linksource>true</linksource>
+          <windowtitle><![CDATA[${project.artifactId}-${project.version}]]></windowtitle>
+          <doctitle><![CDATA[${project.artifactId}-${project.version}]]></doctitle>
+          <header><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></header>
+          <footer><![CDATA[<a href="${project.url}" target="_blank">${project.artifactId}</a><br>${project.version}]]></footer>
+          <bottom><![CDATA[Copyright © {inceptionYear}-{currentYear} <a href="${project.organization.url}" target="_blank">${project.organization.name}</a>. All Rights Reserved.]]></bottom>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </reporting>
 
 </project>

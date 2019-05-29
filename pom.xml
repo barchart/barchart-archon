@@ -734,7 +734,7 @@ ${project.artifactId}
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>2.4</version>
+           <version>3.1.0</version>
           <executions>
             <!-- Override default execution from parent super pom.xml. -->
             <!-- http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html -->

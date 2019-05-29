@@ -1,13 +1,12 @@
 <!-- Copyright (C) 2011-2013 Barchart, Inc. <http://www.barchart.com /> All 
   erights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.barchart.base</groupId>
   <artifactId>barchart-archon</artifactId>
-  <version>10.0.0-SNAPSHOT</version>
+  <version>10.0.0</version>
   <packaging>pom</packaging>
 
   <url>http://www.barchart.com/</url>
@@ -58,7 +57,7 @@ ${project.artifactId}
     <url>https://github.com/barchart/barchart-archon</url>
     <connection>scm:git:git://github.com/barchart/barchart-archon.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/barchart/barchart-archon.git</developerConnection>
-    <tag>master</tag>
+    <tag>barchart-archon-10.0.0</tag>
   </scm>
 
   <properties>
@@ -1895,20 +1894,13 @@ ${project.artifactId}
                 </goals>
                 <configuration>
                   <target>
-                    <unzip src="${distroSource}" dest="${distroTarget}"
-                      overwrite="true" />
-                    <loadproperties
-                      srcFile="${distroTarget}/distribution.properties" />
-                    <replace
-                      file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh"
-                      token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
+                    <unzip src="${distroSource}" dest="${distroTarget}" overwrite="true" />
+                    <loadproperties srcFile="${distroTarget}/distribution.properties" />
+                    <replace file="${distroTarget}/${archive-folder}/nix-wrapper-manager.sh" token="RUN_AS_USER=&quot;karaf&quot;" value="RUN_AS_USER=&quot;${user.name}&quot;" />
                     <delete dir="${distroTarget}/${archive-folder}/conf" />
-                    <symlink link="${distroTarget}/${archive-folder}/conf"
-                      resource="${appAssemblyDirectory}" overwrite="true" />
-                    <symlink link="${appTarget}" resource="service/${archive-folder}"
-                      overwrite="true" />
-                    <chmod dir="${distroTarget}" perm="ugo+rx"
-                      includes="**/*.sh,**/*.bin" />
+                    <symlink link="${distroTarget}/${archive-folder}/conf" resource="${appAssemblyDirectory}" overwrite="true" />
+                    <symlink link="${appTarget}" resource="service/${archive-folder}" overwrite="true" />
+                    <chmod dir="${distroTarget}" perm="ugo+rx" includes="**/*.sh,**/*.bin" />
                   </target>
                 </configuration>
               </execution>
@@ -1921,8 +1913,7 @@ ${project.artifactId}
                 </goals>
                 <configuration>
                   <target>
-                    <zip destfile="target/${appIdentity}-${project.version}.zip"
-                      basedir="${appAssemblyDirectory}" />
+                    <zip destfile="target/${appIdentity}-${project.version}.zip" basedir="${appAssemblyDirectory}" />
                   </target>
                 </configuration>
               </execution>

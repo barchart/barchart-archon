@@ -24,3 +24,4 @@ target/
 #
 release.properties
 pom.xml.*
+*.iml

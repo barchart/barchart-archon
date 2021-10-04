@@ -72,7 +72,7 @@ ${project.artifactId}
     <projectMavenVersion>3.0.4</projectMavenVersion>
 
     <!-- Default dependency versions -->
-    <projectNettyVersion>4.0.14.Final</projectNettyVersion>
+    <projectNettyVersion>4.1.68.Final</projectNettyVersion>
     <projectOSGIVersion>4.3.1</projectOSGIVersion>
 
     <!-- Testing plugins family version. -->
@@ -356,8 +356,8 @@ ${project.artifactId}
 
       <dependency>
         <groupId>org.jdom</groupId>
-        <artifactId>jdom</artifactId>
-        <version>1.1.3</version>
+        <artifactId>jdom2</artifactId>
+        <version>2.0.6</version>
       </dependency>
 
       <dependency>
@@ -401,7 +401,7 @@ ${project.artifactId}
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>29.0-jre</version>
+        <version>30.0-jre</version>
       </dependency>
 
       <!-- Monitoring / Metrics -->
@@ -435,7 +435,7 @@ ${project.artifactId}
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>[5.1.10,5.2-SNAPSHOT)</version>
+        <version>8.0.26</version>
       </dependency>
 
       <dependency>

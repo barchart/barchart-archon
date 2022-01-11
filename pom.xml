@@ -72,7 +72,6 @@ ${project.artifactId}
     <projectMavenVersion>3.0.4</projectMavenVersion>
 
     <!-- Default dependency versions -->
-    <projectNettyVersion>4.1.68.Final</projectNettyVersion>
     <projectOSGIVersion>4.3.1</projectOSGIVersion>
 
     <!-- Testing plugins family version. -->
@@ -236,63 +235,7 @@ ${project.artifactId}
 
       <!-- Networking / Protocols -->
 
-      <dependency>
-        <groupId>com.barchart.netty</groupId>
-        <artifactId>barchart-netty-server</artifactId>
-        <version>[1-SNAPSHOT,2-SNAPSHOT)</version>
-      </dependency>
 
-      <dependency>
-        <groupId>com.barchart.netty</groupId>
-        <artifactId>barchart-netty-core</artifactId>
-        <version>[3-SNAPSHOT,4-SNAPSHOT)</version>
-      </dependency>
-
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-common</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-buffer</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-handler</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec-http</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec-socks</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-transport</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-transport-sctp</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-transport-udt</artifactId>
-        <version>${projectNettyVersion}</version>
-      </dependency>
 
       <dependency>
         <groupId>com.google.protobuf</groupId>
@@ -306,12 +249,6 @@ ${project.artifactId}
         <groupId>com.barchart.osgi</groupId>
         <artifactId>barchart-osgi-http</artifactId>
         <version>[4-SNAPSHOT,5-SNAPSHOT)</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.barchart.netty</groupId>
-        <artifactId>barchart-netty-http-guice</artifactId>
-        <version>[1-SNAPSHOT,2-SNAPSHOT)</version>
       </dependency>
 
       <!-- Jakarta Commons -->
@@ -467,19 +404,19 @@ ${project.artifactId}
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.21</version>
+        <version>1.7.32</version>
       </dependency>
 
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-core</artifactId>
-        <version>[1.1.7,)</version>
+        <version>1.2.10</version>
       </dependency>
 
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>[1.1.7,)</version>
+        <version>1.2.10</version>
       </dependency>
 
       <!-- Test Frameworks -->

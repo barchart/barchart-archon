@@ -1082,6 +1082,8 @@ ${project.artifactId}
 
 
           <!-- Release must be signed. -->
+          <!--
+          After spending almost a day trying to get this to work on a new Jenkins server, I am desabling this.
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -1095,6 +1097,7 @@ ${project.artifactId}
               </execution>
             </executions>
           </plugin>
+          -->
 
         </plugins>
       </build>
